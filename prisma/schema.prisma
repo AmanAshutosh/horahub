@@ -1,0 +1,112 @@
+// HoraHub database schema.
+// Charts are deterministic given birth data, so they are cached by inputHash.
+// Readings record which KB version produced them, so re-indexing never
+// silently mutates an existing report.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String?
+  name         String?
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  profiles     Profile[]
+
+  @@index([email])
+}
+
+/// A saved birth profile belonging to a user (a user can save many).
+model Profile {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName  String
+  gender    Gender
+  birthDate DateTime // stored as the resolved UTC instant of birth
+  tzName    String // IANA timezone resolved at creation
+  placeName String
+  latitude  Float
+  longitude Float
+  charts    Chart[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+/// A computed chart. inputHash makes identical births a cache hit.
+model Chart {
+  id        String    @id @default(cuid())
+  profileId String?
+  profile   Profile?  @relation(fields: [profileId], references: [id], onDelete: SetNull)
+  inputHash String    @unique
+  facts     Json // serialized ChartFacts
+  createdAt DateTime  @default(now())
+  readings  Reading[]
+
+  @@index([profileId])
+}
+
+/// An interpretation rendered from a chart + a specific KB version.
+model Reading {
+  id         String   @id @default(cuid())
+  chartId    String
+  chart      Chart    @relation(fields: [chartId], references: [id], onDelete: Cascade)
+  kbVersion  String
+  sections   Json // serialized ReadingSection[]
+  createdAt  DateTime @default(now())
+
+  @@unique([chartId, kbVersion])
+  @@index([chartId])
+}
+
+/// A published, immutable snapshot of the knowledge base.
+model KbVersion {
+  id        String    @id @default(cuid())
+  version   String    @unique // e.g. "kb-v1"
+  notes     String?
+  published Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  rules     KbRule[]
+
+  @@index([version])
+}
+
+/// A single encoded interpretation rule (the project's OWN wording).
+model KbRule {
+  id          String    @id @default(cuid())
+  kbVersionId String
+  kbVersion   KbVersion @relation(fields: [kbVersionId], references: [id], onDelete: Cascade)
+  ruleKey     String // stable identifier, e.g. "planet.sig.Saturn"
+  subject     String // "planet" | "house" | "dasha" | ...
+  conditions  Json
+  reading     String // original prose
+  sourceWork  String // e.g. "BPHS"
+  sourceRef   String // e.g. "Vol.1, Ch.3, v.14-15"
+  tradition   String   @default("Parashari")
+
+  @@unique([kbVersionId, ruleKey])
+  @@index([subject])
+}

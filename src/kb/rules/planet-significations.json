@@ -1,0 +1,15 @@
+{
+  "kbVersion": "kb-v1",
+  "subject": "planet",
+  "rules": [
+    { "ruleKey": "planet.sig.Sun", "planet": "Sun", "themes": "soul, authority, father, vitality, status", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted of royal status among the planetary cabinet." } },
+    { "ruleKey": "planet.sig.Moon", "planet": "Moon", "themes": "mind, mother, emotions, fluids, public life", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted of royal status among the planetary cabinet." } },
+    { "ruleKey": "planet.sig.Mars", "planet": "Mars", "themes": "energy, courage, siblings, land, conflict", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Described as the army-chief of the planetary cabinet." } },
+    { "ruleKey": "planet.sig.Mercury", "planet": "Mercury", "themes": "intellect, speech, commerce, learning", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Described as the heir-apparent of the planetary cabinet." } },
+    { "ruleKey": "planet.sig.Jupiter", "planet": "Jupiter", "themes": "wisdom, wealth, children, dharma, teachers", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted among the ministerial planets." } },
+    { "ruleKey": "planet.sig.Venus", "planet": "Venus", "themes": "relationships, comfort, art, spouse, vehicles", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted among the ministerial planets." } },
+    { "ruleKey": "planet.sig.Saturn", "planet": "Saturn", "themes": "discipline, delay, labour, service, longevity", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Described as a servant in the planetary cabinet." } },
+    { "ruleKey": "planet.sig.Rahu", "planet": "Rahu", "themes": "ambition, foreign matters, obsession, disruption", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted as part of the planetary army." } },
+    { "ruleKey": "planet.sig.Ketu", "planet": "Ketu", "themes": "detachment, moksha, past patterns, sudden loss", "source": { "work": "BPHS", "ref": "Vol.1, Ch.3, v.14-15", "tradition": "Parashari", "text": "Counted as part of the planetary army." } }
+  ]
+}

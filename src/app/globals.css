@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(900px 500px at 75% -8%, #1b1733 0%, #08080d 55%);
+  min-height: 100dvh;
+}
+
+/* Thin scrollbars for the horizontal nav chips */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

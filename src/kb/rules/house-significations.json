@@ -1,0 +1,18 @@
+{
+  "kbVersion": "kb-v1",
+  "subject": "house",
+  "rules": [
+    { "ruleKey": "house.sig.1", "house": 1, "title": "Self & Body", "themes": "physical self, vitality, temperament, overall life-direction" },
+    { "ruleKey": "house.sig.2", "house": 2, "title": "Wealth & Speech", "themes": "accumulated wealth, family, food, speech, early values" },
+    { "ruleKey": "house.sig.3", "house": 3, "title": "Courage & Siblings", "themes": "initiative, younger siblings, communication, short journeys, effort" },
+    { "ruleKey": "house.sig.4", "house": 4, "title": "Home & Mother", "themes": "mother, home, property, vehicles, inner peace, foundational education" },
+    { "ruleKey": "house.sig.5", "house": 5, "title": "Intellect & Children", "themes": "intelligence, creativity, children, romance, past merit" },
+    { "ruleKey": "house.sig.6", "house": 6, "title": "Health & Service", "themes": "health, debts, adversaries, daily work, discipline, obstacles overcome" },
+    { "ruleKey": "house.sig.7", "house": 7, "title": "Marriage & Partnership", "themes": "spouse, marriage, business partners, public dealings" },
+    { "ruleKey": "house.sig.8", "house": 8, "title": "Transformation", "themes": "longevity, upheavals, inheritances, hidden matters, research" },
+    { "ruleKey": "house.sig.9", "house": 9, "title": "Fortune & Dharma", "themes": "fortune, father, higher learning, long journeys, philosophy" },
+    { "ruleKey": "house.sig.10", "house": 10, "title": "Career & Status", "themes": "profession, public standing, authority, action in the world" },
+    { "ruleKey": "house.sig.11", "house": 11, "title": "Gains & Network", "themes": "income, gains, elder siblings, friendships, fulfilment of aims" },
+    { "ruleKey": "house.sig.12", "house": 12, "title": "Loss & Liberation", "themes": "expenses, foreign lands, isolation, rest, spiritual release" }
+  ]
+}

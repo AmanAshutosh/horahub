@@ -1,0 +1,19 @@
+HoraHub — attributions
+
+The interpretation rules in kb/ are HoraHub's own encoding of classical Jyotiṣa
+principles, written in original wording. They draw on the following sources for
+their underlying ideas. Attribution credits these works; it does not include or
+redistribute their text, and no copyrighted translation is shipped in this repo.
+
+  • Maharṣi Parāśara, Bṛhat Parāśara Horā Śāstra (BPHS) — the underlying Sanskrit
+    verses are an ancient, public-domain text. The R. Santhanam English
+    translation, where consulted, is copyrighted by its publisher and is NOT
+    redistributed here.
+  • Robert Svoboda, "Light on Life: An Introduction to the Astrology of India" —
+    copyright the author/publisher; consulted only, not reproduced.
+
+Source PDFs belong in the git-ignored /kb/sources directory and must never be
+committed. See docs/CONTRIBUTING.md and docs/KB_PIPELINE.md.
+
+Astronomical calculations use orbital-element methods after Paul Schlyter
+("Computing planetary positions"), a freely published algorithm.
