@@ -17,7 +17,15 @@
     "db:deploy": "dotenv -e .env.local -- prisma migrate deploy",
     "db:validate": "dotenv -e .env.local -- prisma validate",
     "db:seed": "tsx prisma/seed.ts",
-    "kb:build": "tsx scripts/build-kb.ts"
+    "kb:build": "tsx scripts/build-kb.ts",
+    "kb:extract": "tsx scripts/kb-extract.ts",
+    "kb:segment": "tsx scripts/kb-segment.ts",
+    "kb:report": "tsx scripts/kb-report.ts",
+    "kb:encode": "tsx scripts/kb-encode.ts",
+    "kb:parser-stats": "tsx scripts/kb-parser-stats.ts",
+    "kb:index": "tsx scripts/kb-index.ts",
+    "kb:conflicts": "tsx scripts/kb-conflicts.ts",
+    "kb:summary": "tsx scripts/kb-summary.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
