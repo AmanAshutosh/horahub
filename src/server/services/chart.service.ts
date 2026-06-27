@@ -8,7 +8,8 @@ import { chartRepository } from '@/server/repositories/chart.repository';
 import { cache } from '@/lib/cache';
 import { birthHash } from '@/lib/hash';
 import { localToUtc } from '@/lib/timezone';
-import { AppError } from '@/lib/errors';
+import { AppError, DatabaseNotConfiguredError } from '@/lib/errors';
+import { isDatabasePlaceholder } from '@/lib/prisma';
 import { APP, env } from '@/config';
 import { logger } from '@/lib/logger';
 
@@ -19,6 +20,8 @@ import { logger } from '@/lib/logger';
  */
 export const chartService = {
   async generate(dto: GenerateChartDto): Promise<GenerateChartResponse> {
+    if (isDatabasePlaceholder(env.DATABASE_URL)) throw new DatabaseNotConfiguredError();
+
     const [y, mo, d] = dto.birthDate.split('-').map(Number) as [number, number, number];
     const [h, mi] = dto.birthTime.split(':').map(Number) as [number, number];
     const resolved = localToUtc(y, mo, d, h, mi, dto.tzName);
@@ -58,6 +61,8 @@ export const chartService = {
   },
 
   async getById(id: string): Promise<GenerateChartResponse | null> {
+    if (isDatabasePlaceholder(env.DATABASE_URL)) throw new DatabaseNotConfiguredError();
+
     const chart = await chartRepository.findById(id);
     if (!chart) return null;
     const facts = chart.facts as unknown as ChartFacts;

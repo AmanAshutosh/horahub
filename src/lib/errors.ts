@@ -30,3 +30,10 @@ export class NotFoundError extends AppError {
     this.name = 'NotFoundError';
   }
 }
+
+export class DatabaseNotConfiguredError extends AppError {
+  constructor() {
+    super('Database is not configured.', 503);
+    this.name = 'DatabaseNotConfiguredError';
+  }
+}

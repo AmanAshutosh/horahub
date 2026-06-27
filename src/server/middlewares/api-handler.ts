@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
-import { AppError } from '@/lib/errors';
+import { AppError, DatabaseNotConfiguredError } from '@/lib/errors';
 import { logger } from '@/lib/logger';
 
 type Handler = (req: Request) => Promise<NextResponse>;
@@ -16,6 +16,16 @@ export function withApi(handler: Handler): Handler {
     } catch (err) {
       if (err instanceof ZodError) {
         return NextResponse.json({ error: 'Invalid request', details: err.flatten() }, { status: 422 });
+      }
+      if (err instanceof DatabaseNotConfiguredError) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: err.message,
+            message: 'Please configure DATABASE_URL before generating charts.',
+          },
+          { status: err.status },
+        );
       }
       if (err instanceof AppError) {
         return NextResponse.json({ error: err.message, details: err.details }, { status: err.status });
