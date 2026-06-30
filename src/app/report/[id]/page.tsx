@@ -10,6 +10,7 @@ import { Spinner } from '@/components/ui/Spinner';
 export default function ReportPage() {
   const params = useParams<{ id: string }>();
   const stored = useChartStore((s) => s.result);
+  const person = useChartStore((s) => s.person);
   const [data, setData] = useState<GenerateChartResponse | null>(
     stored && stored.chartId === params.id ? stored : null,
   );
@@ -40,5 +41,5 @@ export default function ReportPage() {
       </main>
     );
   }
-  return <ReportView data={data} />;
+  return <ReportView data={data} person={person} />;
 }

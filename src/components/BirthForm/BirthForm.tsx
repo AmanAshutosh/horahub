@@ -12,6 +12,7 @@ import { validateBirthForm } from './BirthForm.validation';
 export function BirthForm() {
   const router = useRouter();
   const setResult = useChartStore((s) => s.setResult);
+  const setPerson = useChartStore((s) => s.setPerson);
   const [form, setForm] = useState<BirthFormState>(initialBirthForm);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -48,6 +49,7 @@ export function BirthForm() {
       }
       const data = (await res.json()) as GenerateChartResponse;
       setResult(data);
+      setPerson({ fullName: form.fullName, gender: form.gender, birthDate: form.birthDate, birthTime: form.birthTime, placeName: form.place!.name });
       router.push(`/report/${data.chartId}`);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong.');

@@ -1,0 +1,82 @@
+/**
+ * Report rendering contracts.
+ *
+ * These types define what every report section can receive from the Inference
+ * Engine. When `status === 'pending'` (or when the section is absent entirely)
+ * the component renders "Pending Knowledge Engine" instead of content.
+ *
+ * No text is ever fabricated: a section must have real evidence[] or it must
+ * show the pending placeholder. The layout and components are ready; the data
+ * is not yet.
+ */
+
+export type ReportSectionStatus = 'populated' | 'partial' | 'pending';
+
+/** One KB-sourced rule that supports a claim in this section. */
+export interface ReportEvidence {
+  ruleId: string;
+  book: string;
+  chapter: string | null;
+  verse: string | null;
+  /** Verbatim extracted rule text — never paraphrased or summarised. */
+  text: string;
+  categories: string[];
+  extractionConfidence: number;
+  validationConfidence: number | null;
+}
+
+/** A primary-source citation shown alongside section items. */
+export interface ReportCitation {
+  work: string;    // "BPHS", "Phaladeepika", etc.
+  ref: string;     // "Ch.24, v.12"
+  tradition?: string;
+  /** Verbatim source fragment — never rewritten. */
+  text: string;
+}
+
+export interface ReportTableRow {
+  cells: (string | number | null)[];
+  highlight?: boolean;
+  variant?: 'positive' | 'negative' | 'warning' | 'neutral';
+}
+
+export interface ReportTable {
+  caption?: string;
+  columns: string[];
+  rows: ReportTableRow[];
+}
+
+/** A single claim inside a section — backed by evidence, never invented. */
+export interface ReportItem {
+  title: string;
+  body: string;
+  direction?: 'positive' | 'negative' | 'neutral';
+  citations?: ReportCitation[];
+  evidence?: ReportEvidence[];
+  tags?: string[];
+}
+
+export interface ReportSectionData {
+  id: string;
+  title: string;
+  subtitle?: string;
+  /** Short intro — must come from evidence, never fabricated. */
+  summary?: string;
+  status: ReportSectionStatus;
+  items?: ReportItem[];
+  tables?: ReportTable[];
+  citations?: ReportCitation[];
+  evidence?: ReportEvidence[];
+  note?: string;
+}
+
+/** Person info stored alongside the chart result so the report cover can render it. */
+export interface PersonInfo {
+  fullName: string;
+  gender: 'MALE' | 'FEMALE' | 'OTHER';
+  /** YYYY-MM-DD (local date as entered) */
+  birthDate: string;
+  /** HH:mm (local time as entered) */
+  birthTime: string;
+  placeName: string;
+}
