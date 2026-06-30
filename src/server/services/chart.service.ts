@@ -12,6 +12,7 @@ import { AppError, DatabaseNotConfiguredError } from '@/lib/errors';
 import { isDatabasePlaceholder } from '@/lib/prisma';
 import { APP, env } from '@/config';
 import { logger } from '@/lib/logger';
+import { generateReportSections } from '@/inference';
 
 /**
  * Orchestrates chart generation:
@@ -51,10 +52,21 @@ export const chartService = {
     const reading = interpret(facts, kb);
     await chartRepository.upsertReading(chartId, kbVersion, reading);
 
+    // 3. inference engine — populates life-area sections from KB rules
+    //    Gracefully absent when kb/graph has not been built yet.
+    let sections: GenerateChartResponse['sections'];
+    try {
+      const generated = generateReportSections(facts);
+      if (generated.length > 0) sections = generated;
+    } catch (inferenceErr) {
+      logger.warn({ err: inferenceErr }, 'Inference engine error — report sections omitted');
+    }
+
     return {
       chartId,
       facts,
       reading,
+      sections,
       kbVersion,
       resolved: { utcOffset: resolved.offsetLabel, coordinates: { lat: dto.latitude, lon: dto.longitude } },
     };
@@ -71,10 +83,19 @@ export const chartService = {
     const reading = existing
       ? (existing.sections as unknown as GenerateChartResponse['reading'])
       : interpret(facts, loadKnowledgeBase());
+    let sections: GenerateChartResponse['sections'];
+    try {
+      const generated = generateReportSections(facts);
+      if (generated.length > 0) sections = generated;
+    } catch {
+      // KB graph not built — sections remain undefined
+    }
+
     return {
       chartId: chart.id,
       facts,
       reading,
+      sections,
       kbVersion,
       resolved: { utcOffset: '', coordinates: { lat: 0, lon: 0 } },
     };

@@ -34,10 +34,21 @@ export function ReportView({ data, person }: Props) {
     day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
   });
 
-  // Life area sections: null until Inference Engine populates them.
+  // Look up an inference section by id, fall back to null (shows "Pending").
+  const findSection = (id: string): ReportSectionData | null =>
+    data.sections?.find((s) => s.id === id) ?? null;
+
+  // Life area sections: populated from inference engine if available.
   const lifeAreaData: Record<string, ReportSectionData | null> = {
-    career: null, marriage: null, health: null, finance: null, remedies: null,
+    career:   findSection('career'),
+    marriage: findSection('marriage'),
+    health:   findSection('health'),
+    finance:  findSection('finance'),
+    remedies: findSection('remedies'),
   };
+
+  // Yoga and yoga-adjacent sections from inference engine.
+  const yogaData = findSection('yogas');
 
   return (
     <div className="mx-auto max-w-[800px] px-4 pb-24 pt-3 print:max-w-none print:px-8 print:pb-4 print:pt-0">
@@ -90,7 +101,7 @@ export function ReportView({ data, person }: Props) {
       <HouseAnalysisSection facts={facts} housesSection={housesSection} num={6} />
 
       {/* 07 — Yoga Analysis */}
-      <YogaSection num={7} />
+      <YogaSection num={7} data={yogaData} />
 
       {/* 08 — Dasha Timeline */}
       <SectionShell id="dasha" num={8} title="Vimśottari Daśā Timeline" subtitle="120-year planetary period sequence">

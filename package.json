@@ -25,7 +25,8 @@
     "kb:parser-stats": "tsx scripts/kb-parser-stats.ts",
     "kb:index": "tsx scripts/kb-index.ts",
     "kb:conflicts": "tsx scripts/kb-conflicts.ts",
-    "kb:summary": "tsx scripts/kb-summary.ts"
+    "kb:summary": "tsx scripts/kb-summary.ts",
+    "kg:build": "tsx scripts/kb-build-graph.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

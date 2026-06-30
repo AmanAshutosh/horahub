@@ -8,5 +8,5 @@ export default defineConfig({
     // (e.g. the Swiss adapter) can be unit-tested in the node environment.
     conditions: ['react-server'],
   },
-  test: { environment: 'node', include: ['tests/**/*.test.ts'] },
+  test: { environment: 'node', include: ['tests/**/*.test.ts', 'src/**/__tests__/**/*.test.ts'] },
 });
