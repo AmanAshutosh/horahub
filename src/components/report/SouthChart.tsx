@@ -53,6 +53,64 @@ export function SouthChart({
   );
 }
 
+/** Standalone legend for use below a group of SouthChart instances. */
+export function SouthChartLegend() {
+  return (
+    <div className="mt-3 rounded-lg border border-line/60 bg-bg/40 p-3.5 text-[11px] leading-relaxed text-ink-muted print:border-gray-200 print:bg-white">
+      {/* How to read */}
+      <p className="mb-2.5">
+        <span className="font-semibold text-[#cfd0dd] print:text-gray-700">How to read: </span>
+        Each cell is one zodiac sign (3-letter code in the top corner). Signs are fixed in position —
+        they do not rotate. Planets appear in the cell matching the sign they occupied at your birth.{' '}
+        <span className="font-semibold text-accent print:text-blue-600">As</span>{' '}
+        marks your rising sign (Lagna).
+      </p>
+
+      {/* Planet key */}
+      <div className="mb-2">
+        <span className="font-semibold text-[#cfd0dd] print:text-gray-700">Planet codes — </span>
+        <span>
+          {([
+            ['Su', 'Sun'],
+            ['Mo', 'Moon'],
+            ['Ma', 'Mars'],
+            ['Me', 'Mercury'],
+            ['Ju', 'Jupiter'],
+            ['Ve', 'Venus'],
+            ['Sa', 'Saturn'],
+            ['Ra', 'Rahu (N.Node)'],
+            ['Ke', 'Ketu (S.Node)'],
+          ] as const).map(([abbr, name], i, arr) => (
+            <span key={abbr}>
+              <span className="font-bold text-gold-soft print:text-gray-800">{abbr}</span>
+              <span className="text-ink-muted/80 print:text-gray-500"> = {name}</span>
+              {i < arr.length - 1 && <span className="mx-1 select-none opacity-40">·</span>}
+            </span>
+          ))}
+        </span>
+      </div>
+
+      {/* Sign key */}
+      <div>
+        <span className="font-semibold text-[#cfd0dd] print:text-gray-700">Sign codes — </span>
+        <span className="inline-grid grid-cols-3 gap-x-4 gap-y-0.5 sm:grid-cols-4 md:grid-cols-6">
+          {([
+            ['Ari', 'Aries'],   ['Tau', 'Taurus'],  ['Gem', 'Gemini'],
+            ['Can', 'Cancer'],  ['Leo', 'Leo'],      ['Vir', 'Virgo'],
+            ['Lib', 'Libra'],   ['Sco', 'Scorpio'], ['Sag', 'Sagittarius'],
+            ['Cap', 'Capricorn'], ['Aqu', 'Aquarius'], ['Pis', 'Pisces'],
+          ] as const).map(([abbr, name]) => (
+            <span key={abbr} className="whitespace-nowrap">
+              <span className="font-bold text-[#cfd0dd] print:text-gray-700">{abbr}</span>
+              <span className="text-ink-muted/80 print:text-gray-500"> = {name}</span>
+            </span>
+          ))}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function navamsaOfAsc(facts: ChartFacts): number {
   // Lagna's own navamsa, derived from ascendant longitude.
   const lon = facts.lagnaSign * 30 + facts.ascendant.degree;

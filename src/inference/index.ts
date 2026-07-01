@@ -51,7 +51,7 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
 
   // ── Stage 3: Domain aggregation ───────────────────────────────────────────
 
-  const domains = aggregateDomains(allMatches, facts, yogaNames, detectedYogas);
+  const domains = aggregateDomains(allMatches, facts, yogaNames);
 
   // ── Stage 4: Timeline ─────────────────────────────────────────────────────
 

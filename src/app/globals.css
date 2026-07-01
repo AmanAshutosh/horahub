@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design token imports ─────────────────────────────────────────────── */
+@import '../styles/tokens/colors.css';
+@import '../styles/tokens/shadows.css';
+@import '../styles/tokens/animations.css';
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
 :root {
   color-scheme: dark;
 }
@@ -12,7 +18,7 @@ body {
   min-height: 100dvh;
 }
 
-/* Thin scrollbars for the horizontal nav chips */
+/* Thin scrollbars for horizontal nav chips */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
@@ -27,38 +33,33 @@ body {
     font-size: 11pt;
   }
 
-  /* Remove decorative background gradient */
   body::before { display: none !important; }
 
-  /* Standard A4 page margins */
   @page { margin: 18mm 16mm; }
 
-  /* Keep section headings with their content */
   section { break-inside: avoid; }
-
-  /* Avoid orphan table rows */
   tr { break-inside: avoid; }
 
-  /* Force white backgrounds on dark panels */
   [class*="bg-panel"],
   [class*="bg-bg"],
-  [class*="bg-panel-soft"] {
+  [class*="bg-panel-soft"],
+  [class*="bg-panel-raised"] {
     background-color: white !important;
   }
 
-  /* Borders: swap dark tokens for light grays */
   [class*="border-line"] { border-color: #d1d5db !important; }
   [class*="border-[#25303f]"] { border-color: #d1d5db !important; }
 
-  /* Text: swap dark-mode tokens */
   [class*="text-ink-muted"] { color: #6b7280 !important; }
   [class*="text-[#cfd0dd]"] { color: #374151 !important; }
-  [class*="text-gold"] { color: #92400e !important; }
+  [class*="text-gold"]   { color: #92400e !important; }
   [class*="text-accent"] { color: #1d4ed8 !important; }
-  [class*="text-good"] { color: #065f46 !important; }
+  [class*="text-good"]   { color: #065f46 !important; }
   [class*="text-danger"] { color: #991b1b !important; }
-  [class*="text-warn"] { color: #92400e !important; }
+  [class*="text-warn"]   { color: #92400e !important; }
 
-  /* Accordion open by default in print — remove the interactive collapse */
-  [class*="animate-fade"] { animation: none !important; }
+  [class*="animate-"] { animation: none !important; }
+
+  /* Hide home-page-only elements */
+  .print\:hidden { display: none !important; }
 }

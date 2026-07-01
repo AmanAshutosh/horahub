@@ -9,15 +9,9 @@
 import type { ChartFacts } from '@/types/chart';
 import type { MatchedRule, TimelineEvent } from './types';
 
-const YEAR_MS = 365.25 * 24 * 60 * 60 * 1000;
-
 /** Number of dasha periods to include before/after current period. */
 const PERIODS_BEFORE = 3;
 const PERIODS_AFTER = 4;
-
-function msToYear(ms: number): number {
-  return new Date(ms).getFullYear();
-}
 
 export function buildTimeline(
   facts: ChartFacts,

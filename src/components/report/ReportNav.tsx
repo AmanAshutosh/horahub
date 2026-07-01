@@ -2,21 +2,19 @@
 import { useEffect, useState } from 'react';
 
 const SECTIONS = [
-  ['cover', 'Cover'],
-  ['birth', 'Birth'],
-  ['planets', 'Planets'],
-  ['charts', 'Charts'],
-  ['d-charts', 'Vargas'],
-  ['strength', 'Strength'],
-  ['houses', 'Houses'],
-  ['yogas', 'Yogas'],
-  ['dasha', 'Daśā'],
-  ['transit', 'Transit'],
-  ['career', 'Career'],
-  ['marriage', 'Marriage'],
-  ['health', 'Health'],
-  ['finance', 'Finance'],
+  ['cover',    'Cover'],
+  ['career',   'Career'],
+  ['marriage', 'Relationships'],
+  ['health',   'Health'],
+  ['finance',  'Finance'],
+  ['yogas',    'Patterns'],
+  ['charts',   'Birth Chart'],
+  ['planets',  'Planets'],
+  ['houses',   'Life Areas'],
+  ['dasha',    'Timeline'],
+  ['transit',  'Today'],
   ['remedies', 'Remedies'],
+  ['tech-ref', 'Reference'],
   ['appendix', 'Appendix'],
 ] as const;
 

@@ -14,6 +14,7 @@
 import type { ChartFacts, PlanetName } from '@/types/chart';
 import type { Rule } from '../../scripts/kb-lib/rule-schema';
 import type { MatchedRule } from './types';
+import type { QueryResult } from '../../scripts/kg/schema';
 import { getKnowledgeGraph, getRuleIndex } from './loader';
 import { checkAllConditions } from './condition-checker';
 import { computeConfidence } from './confidence';
@@ -46,7 +47,7 @@ function nodeIdToRuleId(nodeId: string): string {
  */
 function candidateIdsFromQuery(
   kg: ReturnType<typeof getKnowledgeGraph>,
-  queryFn: () => import('../../scripts/kg/schema').QueryResult | null,
+  queryFn: () => QueryResult | null,
 ): string[] {
   if (!kg) return [];
   try {

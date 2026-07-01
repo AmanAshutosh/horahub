@@ -1,5 +1,5 @@
 interface Props {
-  /** Describes what the section will show once the Inference Engine is connected. */
+  /** What this section will show once analysis data is available. */
   willContain?: string[];
 }
 
@@ -17,17 +17,17 @@ export function PendingState({ willContain }: Props) {
         <path d="M12 6v6l4 2" />
       </svg>
       <p className="text-[13px] font-semibold text-ink-muted print:text-gray-600">
-        Pending Knowledge Engine
+        Analysis not yet available
       </p>
-      <p className="mx-auto mt-1.5 max-w-[360px] text-[12px] text-ink-muted print:text-gray-500">
-        This section will be populated when the Inference Engine is connected to the Knowledge Base.
-        No content is shown here because nothing has been fabricated.
+      <p className="mx-auto mt-1.5 max-w-[360px] text-[12px] leading-relaxed text-ink-muted print:text-gray-500">
+        This section will be filled with findings once the analysis data is ready.
+        Nothing is shown here rather than showing you something invented.
       </p>
       {willContain && willContain.length > 0 && (
-        <ul className="mx-auto mt-4 max-w-[300px] space-y-1 text-left">
+        <ul className="mx-auto mt-4 max-w-[320px] space-y-1 text-left">
           {willContain.map((item) => (
-            <li key={item} className="flex items-center gap-2 text-[12px] text-ink-muted print:text-gray-500">
-              <span className="h-px w-3 flex-none bg-line print:bg-gray-300" />
+            <li key={item} className="flex items-start gap-2 text-[12px] text-ink-muted print:text-gray-500">
+              <span className="mt-[5px] h-px w-3 flex-none bg-line print:bg-gray-300" />
               {item}
             </li>
           ))}

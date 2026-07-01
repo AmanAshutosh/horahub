@@ -11,7 +11,6 @@ import type { ChartFacts } from '@/types/chart';
 import type { MatchedRule, DomainResult } from './types';
 import { matchRulesForCategory, matchYogaRules } from './rule-matcher';
 import { resolveConflicts, splitByResolution } from './conflict-resolver';
-import type { DetectedYoga } from './types';
 
 // ── Configuration ─────────────────────────────────────────────────────────────
 
@@ -72,7 +71,6 @@ export function aggregateDomains(
   allMatches: MatchedRule[],
   facts: ChartFacts,
   detectedYogaNames: ReadonlySet<string>,
-  detectedYogas: DetectedYoga[],
 ): DomainResult[] {
   const domains: DomainResult[] = [];
 

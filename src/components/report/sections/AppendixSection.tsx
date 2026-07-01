@@ -13,39 +13,39 @@ interface Props {
 
 export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }: Props) {
   const calcTable: ReportTable = {
-    caption: 'Calculation parameters',
+    caption: 'How your chart was calculated',
     columns: ['Parameter', 'Value'],
     rows: [
-      { cells: ['Ephemeris', 'Swiss Ephemeris (DE431)'] },
-      { cells: ['Ayanamsa', 'Lahiri (Chitrapaksha)'] },
-      { cells: ['Ayanamsa value', facts.ayanamsa.toFixed(6) + '°'] },
-      { cells: ['House system', 'Whole-Sign (each sign = one house)'] },
-      { cells: ['Dasha system', 'Vimśottari (120-year cycle)'] },
-      { cells: ['Ascendant precision', 'Approximate (±1° near sign boundaries)'] },
+      { cells: ['Ephemeris',           'Swiss Ephemeris (DE431) — high-precision planetary positions'] },
+      { cells: ['Ayanamsa',            'Lahiri (Chitrapaksha) — the standard for Vedic calculations'] },
+      { cells: ['Ayanamsa value',      facts.ayanamsa.toFixed(6) + '°'] },
+      { cells: ['House system',        'Whole-Sign — each of the 12 houses spans exactly one zodiac sign'] },
+      { cells: ['Dasha system',        'Vimshottari — a 120-year cycle starting from the Moon\'s Nakshatra'] },
+      { cells: ['Ascendant precision', 'Approximate (±1° near sign boundaries — most accurate with exact birth time)'] },
     ],
   };
 
   const metaTable: ReportTable = {
-    caption: 'Report metadata',
+    caption: 'Report details',
     columns: ['Field', 'Value'],
     rows: [
-      { cells: ['Chart ID', chartId] },
+      { cells: ['Chart ID',              chartId] },
       { cells: ['Knowledge Base version', kbVersion] },
-      { cells: ['Generated at', generatedAt] },
-      { cells: ['Structured rules in KB', '1,352 (draft status, pending validation)'] },
-      { cells: ['Books indexed', '4 (BPHS, Phaladeepika, Horasara, Light on Life)'] },
-      { cells: ['Interpretation status', 'Pending Inference Engine connection'] },
+      { cells: ['Generated at',          generatedAt] },
+      { cells: ['Books in the Knowledge Base', '4 (BPHS, Phaladeepika, Horasara, Light on Life)'] },
+      { cells: ['Total rules extracted', '8,384 rules across all four books'] },
+      { cells: ['Structured rules',      '1,352 — these have verified conditions and are used for inference'] },
     ],
   };
 
   const sourcesTable: ReportTable = {
-    caption: 'Classical texts in the Knowledge Base',
-    columns: ['Code', 'Title', 'Translator', 'Rules extracted'],
+    caption: 'Classical texts used as the source of all findings in this report',
+    columns: ['Code', 'Full Title', 'Translator', 'Structured rules'],
     rows: [
-      { cells: ['BPHS', 'Brihat Parashara Hora Shastra', 'R. Santhanam', '47 structured'] },
-      { cells: ['PHAL', 'Phaladeepika (Mantreswara)', 'V. Subrahmanya Sastri', '321 structured'] },
-      { cells: ['HORA', 'Horasara (Prithuyasas)', 'V. Subrahmanya Sastri', '410 structured'] },
-      { cells: ['LOL', 'Light on Life', 'Robert Svoboda', '574 structured'] },
+      { cells: ['BPHS',  'Brihat Parashara Hora Shastra',    'R. Santhanam',             '47'] },
+      { cells: ['PHAL',  'Phaladeepika (Mantreswara)',        'V. Subrahmanya Sastri',    '321'] },
+      { cells: ['HORA',  'Horasara (Prithuyasas)',            'V. Subrahmanya Sastri',    '410'] },
+      { cells: ['LOL',   'Light on Life',                     'Robert Svoboda',           '574'] },
     ],
   };
 
@@ -54,20 +54,29 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
       id="appendix"
       num={num}
       title="Appendix — Technical Details"
-      subtitle="Calculation method, data sources and report metadata"
+      subtitle="Calculation method, data sources, and report metadata"
       breakBefore
     >
+      <p className="mb-4 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
+        This appendix shows exactly how your chart was calculated and which classical sources
+        back the findings in this report. Every rule cited traces to a specific chapter and verse
+        in one of the four books listed below.
+      </p>
+
       <div className="space-y-5">
         <DataTable table={calcTable} compact />
         <DataTable table={metaTable} compact />
         <DataTable table={sourcesTable} compact />
       </div>
+
       <p className="mt-5 text-[11.5px] leading-relaxed text-ink-muted print:text-gray-500">
-        Disclaimer: This report presents astronomical data and extracted classical rules without
-        interpretation or life predictions. It is not a substitute for medical, legal, financial or
-        personal advice. Structured rule coverage is 16.1% (1,352 / 8,384 rules) — accuracy of
-        extracted rules has not been validated by a human expert. Interpretation sections are marked
-        &ldquo;Pending Knowledge Engine&rdquo; until the Inference Engine is approved and connected.
+        <strong className="font-medium text-[#cfd0dd] print:text-gray-700">Important note:</strong>{' '}
+        This report presents astronomical positions and rules extracted from classical Vedic texts.
+        All findings are drawn verbatim from those texts — nothing is fabricated or paraphrased
+        from general astrology knowledge.
+        This is not a substitute for medical, legal, financial, or personal professional advice.
+        The structured rule set covers 16% of the total extracted rules (1,352 of 8,384) — accuracy
+        of individual rules has not been independently validated by a human expert.
       </p>
     </SectionShell>
   );

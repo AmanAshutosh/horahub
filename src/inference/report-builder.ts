@@ -272,7 +272,6 @@ function buildRemedySection(
 
 function buildPastValidationSection(
   observations: PastObservation[],
-  allMatches: MatchedRule[],
 ): ReportSectionData {
   if (observations.length === 0) {
     return {
@@ -345,7 +344,7 @@ export function buildReportSections(result: InferenceResult): ReportSectionData[
   );
 
   // Past validation
-  sections.push(buildPastValidationSection(result.pastObservations, []));
+  sections.push(buildPastValidationSection(result.pastObservations));
 
   return sections;
 }

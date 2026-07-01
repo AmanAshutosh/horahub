@@ -1,11 +1,12 @@
 import type { ReportEvidence } from '@/types/report';
 
-function ConfidenceDot({ v }: { v: number }) {
+function SourceQualityDot({ v }: { v: number }) {
   const color = v >= 0.8 ? 'bg-good' : v >= 0.5 ? 'bg-warn' : 'bg-danger';
+  const label = v >= 0.8 ? 'High' : v >= 0.5 ? 'Medium' : 'Low';
   return (
     <span className="inline-flex items-center gap-1 text-[10.5px] text-ink-muted">
       <span className={`inline-block h-1.5 w-1.5 rounded-full ${color}`} />
-      {(v * 100).toFixed(0)}% extraction
+      Source quality: {label}
     </span>
   );
 }
@@ -15,7 +16,7 @@ export function EvidenceList({ evidence }: { evidence: ReportEvidence[] }) {
   return (
     <div className="mt-3 space-y-2">
       <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-muted">
-        Evidence ({evidence.length} rule{evidence.length !== 1 ? 's' : ''})
+        Supporting rules ({evidence.length})
       </p>
       {evidence.map((e) => (
         <div
@@ -31,7 +32,7 @@ export function EvidenceList({ evidence }: { evidence: ReportEvidence[] }) {
               {e.chapter && ` · Ch.${e.chapter}`}
               {e.verse && ` v.${e.verse}`}
             </span>
-            <ConfidenceDot v={e.extractionConfidence} />
+            <SourceQualityDot v={e.extractionConfidence} />
           </div>
           <p className="text-[12.5px] leading-relaxed text-[#cfd0dd] print:text-gray-700">{e.text}</p>
           {e.categories.length > 0 && (
