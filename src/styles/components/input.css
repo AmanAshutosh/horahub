@@ -1,0 +1,67 @@
+/* Input component — tactile inset depth with premium focus ring. */
+
+/* ── Field wrapper ────────────────────────────────────────────── */
+  .hh-field {
+    display: block;
+  }
+
+  .hh-field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  .hh-field-hint {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--color-ink-subtle);
+  }
+
+  /* ── Base input ───────────────────────────────────────────────── */
+  .hh-input {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1.5px solid var(--color-line);
+    background: var(--color-bg-soft);
+    padding: 0.875rem 1rem;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    color: var(--color-ink);
+    line-height: 1.4;
+    outline: none;
+    appearance: none;
+    box-shadow: var(--shadow-input);
+    transition:
+      border-color  var(--dur-fast) var(--ease-out),
+      box-shadow    var(--dur-fast) var(--ease-out),
+      background    var(--dur-fast) var(--ease-out);
+  }
+
+  .hh-input::placeholder {
+    color: var(--color-ink-subtle);
+  }
+
+  .hh-input:hover {
+    border-color: #3c3830;
+  }
+
+  .hh-input:focus {
+    border-color: rgba(201,168,76,0.55);
+    background: var(--color-panel);
+    box-shadow: var(--shadow-input-focus);
+  }
+
+  /* ── Select variant — restores arrow ─────────────────────────── */
+  .hh-select {
+    padding-right: 2.5rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23565249' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }

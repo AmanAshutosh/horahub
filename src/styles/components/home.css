@@ -1,0 +1,243 @@
+/* Home page — typography and layout primitives. */
+
+/* ── Eyebrow ──────────────────────────────────────────────────── */
+  .home-eyebrow {
+    margin-bottom: 3rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(201,168,76,0.48);
+  }
+
+  /* ── Hero heading ─────────────────────────────────────────────── */
+  .home-preheading {
+    margin-bottom: 0.625rem;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    color: var(--color-ink-muted);
+    line-height: 1;
+  }
+
+  .home-h1 {
+    font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: clamp(2.75rem, 9vw, 3.875rem);
+    line-height: 1.0;
+    letter-spacing: -0.022em;
+    color: var(--color-ink);
+    margin-bottom: 2rem;
+  }
+
+  .home-h1 span { display: block; }
+
+  .home-h1-gold { color: var(--color-gold); }
+
+  /* ── Subtitle ─────────────────────────────────────────────────── */
+  .home-subtitle {
+    margin-bottom: 2.5rem;
+    font-size: 1.0625rem;
+    line-height: 1.78;
+    color: var(--color-ink-muted);
+    max-width: 46ch;
+  }
+
+  /* ── Form card header ─────────────────────────────────────────── */
+  .home-form-header {
+    padding: 1.5rem 1.75rem 1.25rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .home-form-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .home-form-eyebrow-star {
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .home-form-hint {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-ink-subtle);
+  }
+
+  /* ── Form body ────────────────────────────────────────────────── */
+  .home-form-body {
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  /* ── Form footer ─────────────────────────────────────────────── */
+  .home-form-footer {
+    padding: 0 1.75rem 1.75rem;
+  }
+
+  /* ── Error banner ─────────────────────────────────────────────── */
+  .home-error {
+    margin-bottom: 1rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(212,96,96,0.25);
+    background: rgba(212,96,96,0.08);
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-danger);
+  }
+
+  /* ── Place selected confirmation ─────────────────────────────── */
+  .home-place-confirm {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    color: var(--color-good);
+    line-height: 1.4;
+  }
+
+  /* ── Dropdown ─────────────────────────────────────────────────── */
+  .home-dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 30;
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 1rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-panel-soft);
+    box-shadow: var(--shadow-pop);
+  }
+
+  .home-dropdown-item {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid var(--color-line-soft);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background: transparent;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out);
+    font-family: inherit;
+    border-radius: 0;
+  }
+
+  .home-dropdown-item:last-child { border-bottom: none; }
+
+  .home-dropdown-item:hover {
+    background: rgba(201,168,76,0.08);
+  }
+
+  .home-dropdown-item-name {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin-bottom: 0.125rem;
+  }
+
+  .home-dropdown-item-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+  }
+
+  .home-dropdown-status {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--color-ink-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* ── Trust signal cards ───────────────────────────────────────── */
+  .home-trust-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .home-trust-card {
+    padding: 1.125rem 0.875rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-panel);
+    box-shadow: var(--shadow-neu-sm);
+    text-align: center;
+    transition:
+      border-color  var(--dur-base) var(--ease-out),
+      box-shadow    var(--dur-base) var(--ease-out),
+      transform     var(--dur-base) var(--ease-out);
+  }
+
+  .home-trust-card:hover {
+    border-color: rgba(201,168,76,0.16);
+    box-shadow: var(--shadow-neu-md);
+    transform: translateY(-2px);
+  }
+
+  .home-trust-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-ink);
+    margin-bottom: 0.3125rem;
+  }
+
+  .home-trust-detail {
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    color: var(--color-ink-subtle);
+  }
+
+  /* ── Sources row ──────────────────────────────────────────────── */
+  .home-sources {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.125rem 0.375rem;
+  }
+
+  .home-sources-label {
+    font-size: 0.6875rem;
+    color: var(--color-ink-subtle);
+    margin-right: 0.25rem;
+  }
+
+  .home-sources-sep {
+    font-size: 0.6875rem;
+    color: rgba(86,82,73,0.35);
+    user-select: none;
+  }
+
+  .home-sources-name {
+    font-size: 0.6875rem;
+    color: var(--color-ink-subtle);
+  }
+
+  /* ── Footer disclaimer ───────────────────────────────────────── */
+  .home-disclaimer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.625rem;
+    color: rgba(86,82,73,0.45);
+    letter-spacing: 0.02em;
+  }

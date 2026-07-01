@@ -57,10 +57,7 @@ export function ReportView({ data, person }: Props) {
     <div className="mx-auto max-w-[800px] px-4 pb-24 pt-3 print:max-w-none print:px-8 print:pb-4 print:pt-0">
       <ReportNav />
 
-      <Link
-        href="/"
-        className="mb-3 inline-block rounded-full border border-line bg-panel-soft px-3.5 py-1.5 text-[12.5px] text-ink-muted transition-colors hover:text-ink print:hidden"
-      >
+      <Link href="/" className="report-back-link print:hidden">
         ← New chart
       </Link>
 
@@ -77,7 +74,9 @@ export function ReportView({ data, person }: Props) {
       <AtAGlanceSection facts={facts} sections={data.sections} />
 
       {/* ── Current Life Chapter (Dasha callout — human-first, no section number) ── */}
-      <DashaCallout facts={facts} />
+      <div className="mb-10">
+        <DashaCallout facts={facts} />
+      </div>
 
       {/* ── §01–04 Life Areas (career, relationships, health, finance) ── */}
       {MAIN_AREAS.map((area) => (
@@ -179,7 +178,7 @@ export function ReportView({ data, person }: Props) {
         num={15}
       />
 
-      <p className="mt-8 border-t border-line pt-4 text-center text-[11px] text-ink-muted print:text-gray-400">
+      <p className="report-footer">
         HoraHub · Vedic Astrology · positions by Swiss Ephemeris · all findings drawn from
         classical texts: BPHS, Phaladeepika, Horasara, Light on Life · nothing invented.
       </p>

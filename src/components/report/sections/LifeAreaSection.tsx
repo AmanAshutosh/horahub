@@ -6,20 +6,12 @@ import { CitationList } from '../primitives/CitationList';
 import { EvidenceList } from '../primitives/EvidenceList';
 import { TechnicalPanel } from '../primitives/TechnicalPanel';
 
-const DIRECTION_CLS: Record<string, string> = {
-  positive: 'border-l-good',
-  negative: 'border-l-danger',
-  neutral:  'border-l-line',
-};
-
 export interface LifeAreaConfig {
   id: string;
   num: number;
   title: string;
   subtitle: string;
-  /** Question this section answers — shown before any findings. */
   question: string;
-  /** Brief context shown above findings when data is present. */
   intro: string;
   willContain: string[];
 }
@@ -39,36 +31,31 @@ export function LifeAreaSection({ config, data }: Props) {
       title={config.title}
       subtitle={config.subtitle}
     >
-      {/* Question first */}
-      <p className="mb-3 text-[15px] font-medium leading-relaxed text-ink print:text-gray-800">
-        {config.question}
-      </p>
+      {/* The question this section answers */}
+      <p className="life-area-question">{config.question}</p>
 
       {isPending ? (
         <PendingState willContain={config.willContain} />
       ) : (
         <>
-          <p className="mb-4 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
-            {config.intro}
-          </p>
+          <p className="life-area-intro">{config.intro}</p>
 
           {data.summary && (
-            <p className="mb-4 text-[13.5px] leading-relaxed text-[#cfd0dd] print:text-gray-700">
-              {data.summary}
-            </p>
+            <div className="life-area-summary">{data.summary}</div>
           )}
 
           {data.items?.map((item) => (
             <Accordion key={item.title} title={item.title}>
               <div
-                className={`border-l-2 pl-3 ${item.direction ? (DIRECTION_CLS[item.direction] ?? 'border-l-line') : 'border-l-line'}`}
+                className="life-area-item-body"
+                data-direction={item.direction ?? 'neutral'}
               >
-                <p className="text-[13px] leading-relaxed">{item.body}</p>
+                {item.body}
               </div>
               <TechnicalPanel>
                 {item.tags && item.tags.length > 0 && (
                   <p className="mb-1">
-                    <span className="text-ink-subtle">Chart indicators: </span>
+                    <span style={{ color: 'var(--color-ink-subtle)' }}>Chart indicators: </span>
                     {item.tags.join(' · ')}
                   </p>
                 )}
@@ -79,13 +66,13 @@ export function LifeAreaSection({ config, data }: Props) {
           ))}
 
           {data.citations && !data.items?.length && (
-            <div className="mt-3">
+            <div className="mt-4">
               <CitationList citations={data.citations} />
             </div>
           )}
 
           {data.note && (
-            <p className="mt-3 text-[11.5px] text-ink-muted print:text-gray-500">{data.note}</p>
+            <p className="life-area-note">{data.note}</p>
           )}
         </>
       )}

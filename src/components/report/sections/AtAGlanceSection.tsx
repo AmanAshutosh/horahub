@@ -7,7 +7,7 @@ import { fmtDate } from '@/interpret';
 import { TechnicalPanel } from '../primitives/TechnicalPanel';
 
 // ---------------------------------------------------------------------------
-// Planet descriptions for human-language context
+// Planet descriptions
 // ---------------------------------------------------------------------------
 
 const PLANET_PERIOD_THEME: Record<string, string> = {
@@ -42,17 +42,12 @@ const DIGNITY_PLAIN: Record<string, string> = {
 };
 
 // ---------------------------------------------------------------------------
-// Planet strength scoring (same logic as before, unchanged)
+// Scoring
 // ---------------------------------------------------------------------------
 
-const DIGNITY_SCORE: Record<string, number> = {
-  exalted: 4, own: 3, neutral: 2, debilitated: 0,
-};
+const DIGNITY_SCORE: Record<string, number> = { exalted: 4, own: 3, neutral: 2, debilitated: 0 };
 const DIGNITY_LABEL: Record<string, string> = {
-  exalted:     'Exalted',
-  own:         'Own sign',
-  neutral:     'Neutral',
-  debilitated: 'Debilitated',
+  exalted: 'Exalted', own: 'Own sign', neutral: 'Neutral', debilitated: 'Debilitated',
 };
 const DIGNITY_CLS: Record<string, string> = {
   exalted:     'bg-good/20 text-good',
@@ -61,18 +56,14 @@ const DIGNITY_CLS: Record<string, string> = {
   debilitated: 'bg-danger/20 text-danger',
 };
 const HOUSE_BONUS: Record<number, number> = {
-  1: 4, 5: 3, 9: 3, 4: 2, 7: 2, 10: 2,
-  3: 1, 11: 1, 2: 0, 6: -1, 8: -1, 12: -1,
+  1: 4, 5: 3, 9: 3, 4: 2, 7: 2, 10: 2, 3: 1, 11: 1, 2: 0, 6: -1, 8: -1, 12: -1,
 };
 const SCORED_PLANETS: PlanetName[] = [
   'Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn',
 ];
 
 function planetScore(p: PlanetPlacement): number {
-  const d = DIGNITY_SCORE[p.dignity] ?? 2;
-  const h = HOUSE_BONUS[p.house] ?? 0;
-  const v = p.sign === p.navamsaSign ? 1 : 0;
-  return d + h + v;
+  return (DIGNITY_SCORE[p.dignity] ?? 2) + (HOUSE_BONUS[p.house] ?? 0) + (p.sign === p.navamsaSign ? 1 : 0);
 }
 
 function findStrongest(facts: ChartFacts): { name: PlanetName; p: PlanetPlacement } | null {
@@ -94,33 +85,18 @@ const LIFE_AREA_LABEL: Record<string, string> = {
 };
 
 // ---------------------------------------------------------------------------
-// Card wrapper
+// Card
 // ---------------------------------------------------------------------------
 
-function GlanceCard({
-  label,
-  anchor,
-  children,
-}: {
-  label: string;
-  anchor: string;
-  children: ReactNode;
-}) {
+function GlanceCard({ label, anchor, children }: { label: string; anchor: string; children: ReactNode }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-line bg-panel-soft print:rounded-none print:border-gray-200 print:bg-white">
-      <div className="flex-1 px-5 pb-4 pt-5">
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold/70 print:text-gray-400">
-          {label}
-        </p>
-        <div className="mt-3">{children}</div>
+    <div className="glance-card">
+      <div className="glance-card-body">
+        <p className="glance-card-label">{label}</p>
+        {children}
       </div>
-      <div className="border-t border-line/60 px-5 py-2.5 print:border-gray-200">
-        <a
-          href={`#${anchor}`}
-          className="text-[11.5px] font-medium text-gold/80 transition-colors hover:text-gold print:text-gray-600"
-        >
-          See full detail →
-        </a>
+      <div className="glance-card-footer">
+        <a href={`#${anchor}`} className="glance-card-link">See full detail →</a>
       </div>
     </div>
   );
@@ -138,15 +114,11 @@ interface Props {
 export function AtAGlanceSection({ facts, sections }: Props) {
   const mahadasha = facts.dasha.periods[facts.dasha.currentMahaIndex];
   const antardasha = facts.dasha.antardashas[facts.dasha.currentAntarIndex];
-
   const strongest = findStrongest(facts);
 
   const yogaSection = sections?.find((s) => s.id === 'yogas');
   const topYoga =
-    yogaSection &&
-    yogaSection.status !== 'pending' &&
-    yogaSection.items &&
-    yogaSection.items.length > 0
+    yogaSection?.status !== 'pending' && yogaSection?.items && yogaSection.items.length > 0
       ? (yogaSection.items[0] ?? null)
       : null;
 
@@ -160,39 +132,30 @@ export function AtAGlanceSection({ facts, sections }: Props) {
   const lifeAreaSnippet = topLifeArea?.summary ?? topLifeArea?.items?.[0]?.body;
 
   return (
-    <section className="mb-6 scroll-mt-24">
-      {/* Header */}
-      <div className="mb-4 px-1">
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold/70 print:text-gray-400">
-          At a Glance
-        </p>
-        <h2 className="mt-0.5 text-[22px] font-bold leading-tight tracking-tight print:text-gray-900">
-          Your Chart Summary
-        </h2>
-        <p className="mt-1 text-[13px] text-ink-muted print:text-gray-500">
-          The four most important signals from your birth chart.
-        </p>
+    <section className="glance-section">
+      <div className="px-1">
+        <p className="glance-eyebrow">At a Glance</p>
+        <h2 className="glance-title">Your Chart Summary</h2>
+        <p className="glance-desc">The four most important signals from your birth chart.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="glance-grid">
 
         {/* ── Card 1: Current Life Chapter ── */}
         {mahadasha && (
           <GlanceCard label="Your Current Chapter" anchor="dasha">
-            <p className="text-[20px] font-bold leading-tight tracking-tight print:text-gray-900">
+            <p className="glance-card-heading">
               You&apos;re in a {mahadasha.lord} period.
             </p>
             {mahaTheme && (
-              <p className="mt-1.5 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
-                A chapter shaped by {mahaTheme}.
-              </p>
+              <p className="glance-card-text">A chapter shaped by {mahaTheme}.</p>
             )}
             {antardasha && (
-              <p className="mt-1.5 text-[12.5px] text-ink-muted print:text-gray-400">
+              <p className="glance-card-small">
                 {antardasha.lord}&apos;s sub-period is now active within it.
               </p>
             )}
-            <p className="mt-2 text-[12px] text-ink-subtle print:text-gray-400">
+            <p className="glance-card-meta">
               {fmtDate(mahadasha.startMs)} — {fmtDate(mahadasha.endMs)}
             </p>
             <TechnicalPanel>
@@ -208,48 +171,39 @@ export function AtAGlanceSection({ facts, sections }: Props) {
         {/* ── Card 2: Strongest theme ── */}
         {strongest && (
           <GlanceCard label="Your Strongest Theme" anchor="planets">
-            <p className="text-[18px] font-bold leading-snug tracking-tight print:text-gray-900">
-              {PLANET_QUALITY[strongest.name]}
-            </p>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
+            <p className="glance-card-heading">{PLANET_QUALITY[strongest.name]}</p>
+            <p className="glance-card-text">
               {strongest.name} is {DIGNITY_PLAIN[strongest.p.dignity] ?? 'well-placed'} in your
               chart — these qualities tend to come naturally.
             </p>
             <span
-              className={`mt-3 inline-block rounded-[8px] px-2 py-px text-[10.5px] font-medium ${DIGNITY_CLS[strongest.p.dignity] ?? 'bg-ink-muted/15 text-ink-muted'}`}
+              className={`glance-card-badge ${DIGNITY_CLS[strongest.p.dignity] ?? 'bg-ink-muted/15 text-ink-muted'}`}
             >
               {DIGNITY_LABEL[strongest.p.dignity] ?? strongest.p.dignity}
             </span>
             <TechnicalPanel>
               <p>
-                {strongest.name} in {RASHI[strongest.p.sign] ?? '—'} · House{' '}
-                {strongest.p.house}
+                {strongest.name} in {RASHI[strongest.p.sign] ?? '—'} · House {strongest.p.house}
                 {strongest.p.sign === strongest.p.navamsaSign ? ' · Vargottama' : ''}
               </p>
               <p className="mt-1">
-                Scored by dignity ({DIGNITY_LABEL[strongest.p.dignity] ?? '—'}) + house position +
-                D9 agreement
+                Scored by dignity ({DIGNITY_LABEL[strongest.p.dignity] ?? '—'}) + house position + D9 agreement
               </p>
             </TechnicalPanel>
           </GlanceCard>
         )}
 
-        {/* ── Card 3: Distinctive pattern (conditional) ── */}
+        {/* ── Card 3: Distinctive pattern ── */}
         {topYoga && (
           <GlanceCard label="A Distinctive Pattern" anchor="yogas">
-            <p className="text-[16px] font-bold leading-snug print:text-gray-900">
-              {topYoga.body.length > 110
-                ? topYoga.body.slice(0, 107) + '…'
-                : topYoga.body}
+            <p className="glance-card-heading">
+              {topYoga.body.length > 110 ? topYoga.body.slice(0, 107) + '…' : topYoga.body}
             </p>
             <TechnicalPanel>
-              <p>
-                <span className="text-ink-subtle">Classical name: </span>
-                {topYoga.title}
-              </p>
+              <p><span style={{ color: 'var(--color-ink-subtle)' }}>Classical name: </span>{topYoga.title}</p>
               {topYoga.tags && topYoga.tags.length > 0 && (
                 <p className="mt-1">
-                  <span className="text-ink-subtle">Combination: </span>
+                  <span style={{ color: 'var(--color-ink-subtle)' }}>Combination: </span>
                   {topYoga.tags.join(' · ')}
                 </p>
               )}
@@ -257,26 +211,21 @@ export function AtAGlanceSection({ facts, sections }: Props) {
           </GlanceCard>
         )}
 
-        {/* ── Card 4: Main life theme (conditional) ── */}
+        {/* ── Card 4: Main life theme ── */}
         {topLifeArea && (
-          <GlanceCard
-            label="Where Your Chart Speaks Clearly"
-            anchor={topLifeArea.id}
-          >
-            <p className="text-[20px] font-bold leading-tight print:text-gray-900">
+          <GlanceCard label="Where Your Chart Speaks Clearly" anchor={topLifeArea.id}>
+            <p className="glance-card-heading">
               {LIFE_AREA_LABEL[topLifeArea.id] ?? topLifeArea.title}
             </p>
             {lifeAreaSnippet && (
-              <p className="mt-2 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
+              <p className="glance-card-text">
                 {lifeAreaSnippet.length > 120
                   ? lifeAreaSnippet.slice(0, 117) + '…'
                   : lifeAreaSnippet}
               </p>
             )}
             <TechnicalPanel>
-              <p>
-                {topLifeArea.evidence?.length ?? 0} supporting rules from classical sources
-              </p>
+              <p>{topLifeArea.evidence?.length ?? 0} supporting rules from classical sources</p>
             </TechnicalPanel>
           </GlanceCard>
         )}

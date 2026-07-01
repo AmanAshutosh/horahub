@@ -36,18 +36,15 @@ export function ReportNav() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-20 -mx-4 mb-3 border-b border-line bg-bg/90 px-4 py-2 backdrop-blur print:hidden">
-      <div className="no-scrollbar flex gap-1 overflow-x-auto">
+    <nav className="report-nav print:hidden">
+      <div className="report-nav-list">
         {SECTIONS.map(([id, label]) => (
           <button
             key={id}
             type="button"
             onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-            className={`flex-none rounded-full border px-3 py-1 text-[11.5px] transition-colors ${
-              active === id
-                ? 'border-gold bg-gold/10 text-gold'
-                : 'border-line text-ink-muted hover:border-ink-muted/40 hover:text-ink'
-            }`}
+            className="report-nav-chip"
+            data-active={active === id}
           >
             {label}
           </button>

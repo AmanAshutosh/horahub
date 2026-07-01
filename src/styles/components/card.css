@@ -1,0 +1,60 @@
+/* Card component — elevated surfaces with soft neumorphism. */
+
+/* ── Base card ────────────────────────────────────────────────── */
+  .hh-card {
+    border-radius: 1.25rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-panel);
+    box-shadow: var(--shadow-neu-md);
+    transition:
+      box-shadow    var(--dur-base) var(--ease-out),
+      border-color  var(--dur-base) var(--ease-out),
+      transform     var(--dur-base) var(--ease-out);
+  }
+
+  .hh-card-raised {
+    background: var(--color-panel-raised);
+    box-shadow: var(--shadow-neu-lg);
+  }
+
+  /* ── Form card — gradient border + deeper elevation ──────────── */
+  .hh-form-card {
+    position: relative;
+    border-radius: 1.5rem;
+    background: var(--color-panel);
+    box-shadow: var(--shadow-neu-lg);
+  }
+
+  /* Gradient border via mask technique */
+  .hh-form-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      155deg,
+      rgba(201,168,76,0.22) 0%,
+      rgba(46,43,36,0.7)    35%,
+      rgba(46,43,36,0.35)   100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* ── Gold callout card ────────────────────────────────────────── */
+  .hh-card-gold {
+    border-color: rgba(201,168,76,0.18);
+    box-shadow: var(--shadow-gold-neu);
+  }
+
+  /* ── Hover lift — opt-in ─────────────────────────────────────── */
+  .hh-card-hover:hover {
+    border-color: rgba(201,168,76,0.14);
+    box-shadow: var(--shadow-neu-lg);
+    transform: translateY(-2px);
+  }

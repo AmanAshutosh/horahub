@@ -2,64 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Design token imports ─────────────────────────────────────────────── */
+/* ── Design tokens ────────────────────────────────────────────── */
 @import '../styles/tokens/colors.css';
 @import '../styles/tokens/shadows.css';
 @import '../styles/tokens/animations.css';
 
-/* ── Base ─────────────────────────────────────────────────────────────── */
+/* ── Component CSS ────────────────────────────────────────────── */
+@import '../styles/components/button.css';
+@import '../styles/components/input.css';
+@import '../styles/components/card.css';
+@import '../styles/components/home.css';
+@import '../styles/components/report.css';
+
+/* ── Base ─────────────────────────────────────────────────────── */
 :root {
   color-scheme: dark;
 }
 
 body {
-  background:
-    radial-gradient(900px 500px at 75% -8%, #1b1733 0%, #08080d 55%);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 900px 600px at 50% -60px, rgba(201,168,76,0.055) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 400px at 92% 5%,    rgba(136,120,232,0.04) 0%, transparent 60%);
   min-height: 100dvh;
 }
 
-/* Thin scrollbars for horizontal nav chips */
+/* Thin scrollbars */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-/* ── Print styles ─────────────────────────────────────────────────────── */
+/* ── Print ────────────────────────────────────────────────────── */
 @media print {
   :root { color-scheme: light; }
 
   body {
     background: white !important;
-    color: #1a1a2e !important;
+    color: #1a1a1a !important;
     min-height: unset;
     font-size: 11pt;
+    background-image: none !important;
   }
-
-  body::before { display: none !important; }
 
   @page { margin: 18mm 16mm; }
 
   section { break-inside: avoid; }
-  tr { break-inside: avoid; }
+  tr      { break-inside: avoid; }
 
   [class*="bg-panel"],
   [class*="bg-bg"],
   [class*="bg-panel-soft"],
-  [class*="bg-panel-raised"] {
+  [class*="bg-panel-raised"],
+  .hh-card,
+  .hh-form-card {
     background-color: white !important;
+    box-shadow: none !important;
   }
 
-  [class*="border-line"] { border-color: #d1d5db !important; }
-  [class*="border-[#25303f]"] { border-color: #d1d5db !important; }
+  [class*="border-line"],
+  .hh-card,
+  .hh-form-card { border-color: #d1d5db !important; }
 
-  [class*="text-ink-muted"] { color: #6b7280 !important; }
-  [class*="text-[#cfd0dd]"] { color: #374151 !important; }
-  [class*="text-gold"]   { color: #92400e !important; }
-  [class*="text-accent"] { color: #1d4ed8 !important; }
-  [class*="text-good"]   { color: #065f46 !important; }
-  [class*="text-danger"] { color: #991b1b !important; }
-  [class*="text-warn"]   { color: #92400e !important; }
+  [class*="text-ink-muted"], .hh-field-label  { color: #6b7280 !important; }
+  [class*="text-gold"],  .home-h1-gold        { color: #92400e !important; }
+  [class*="text-good"],  .home-place-confirm  { color: #065f46 !important; }
+  [class*="text-danger"], .home-error         { color: #991b1b !important; }
 
-  [class*="animate-"] { animation: none !important; }
+  [class*="animate-"], .home-form-card::before { animation: none !important; }
 
-  /* Hide home-page-only elements */
   .print\:hidden { display: none !important; }
 }

@@ -1,0 +1,94 @@
+/* Button component — premium lift-on-hover system. */
+
+/* ── Base ─────────────────────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    border-radius: 0.875rem;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    line-height: 1;
+    padding-block: 1rem;
+    padding-inline: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    white-space: nowrap;
+    transition:
+      opacity      var(--dur-fast) var(--ease-out),
+      transform    var(--dur-fast) var(--ease-out),
+      box-shadow   var(--dur-base) var(--ease-out),
+      background-position var(--dur-base) var(--ease-out);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    transform: none !important;
+  }
+
+  .btn-full { width: 100%; }
+
+  /* ── Primary — gold gradient CTA ─────────────────────────────── */
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      var(--color-gold)      0%,
+      var(--color-gold-soft) 50%,
+      var(--color-gold)      100%
+    );
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    color: #1a1305;
+    box-shadow:
+      0 4px 18px rgba(201,168,76,0.28),
+      0 1px 5px  rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-position: 100% 0%;
+    box-shadow:
+      0 8px 32px rgba(201,168,76,0.38),
+      0 2px 10px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.22);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0) scale(0.995);
+    box-shadow:
+      0 2px 10px rgba(201,168,76,0.22),
+      0 1px 4px  rgba(0,0,0,0.3);
+    background-position: 0% 0%;
+  }
+
+  /* ── Ghost — subtle secondary action ─────────────────────────── */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-neu-sm);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--color-ink);
+    border-color: rgba(201,168,76,0.2);
+    box-shadow: var(--shadow-neu-md);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-neu-sm);
+  }

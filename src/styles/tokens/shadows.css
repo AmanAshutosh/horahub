@@ -1,28 +1,55 @@
-/* HoraHub shadow tokens — soft neumorphism (15–20% depth, never plastic). */
+/* HoraHub shadow tokens — warm neumorphism, 15–20% depth, never plastic. */
 
 :root {
-  /* Standard elevation */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
-  --shadow-lg: 0 16px 40px rgba(0,0,0,0.6), 0 8px 16px rgba(0,0,0,0.4);
+  /* ── Standard elevation ──────────────────────────────────────── */
+  --shadow-sm:  0 2px 8px  rgba(0,0,0,0.42),  0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md:  0 8px 24px rgba(0,0,0,0.52),  0 3px 8px rgba(0,0,0,0.36);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.46);
 
-  /* Soft neumorphic raised — for cards, panels */
+  /* ── Soft neumorphic — warm highlight on uplift edge ─────────── */
   --shadow-neu-sm:
-    2px 2px 6px rgba(0,0,0,0.5),
-    -1px -1px 3px rgba(255,255,255,0.025);
+    3px  3px  8px  rgba(0,0,0,0.55),
+    -1px -1px  4px  rgba(255,248,225,0.032);
 
   --shadow-neu-md:
-    4px 4px 12px rgba(0,0,0,0.6),
-    -2px -2px 6px rgba(255,255,255,0.03);
+    6px  6px  18px rgba(0,0,0,0.62),
+    -2px -2px  8px  rgba(255,248,225,0.038);
 
-  /* Gold glow — premium callout cards only */
+  --shadow-neu-lg:
+    10px 10px 32px rgba(0,0,0,0.70),
+    -3px -3px 12px rgba(255,248,225,0.042);
+
+  /* ── Button hover lift ───────────────────────────────────────── */
+  --shadow-btn:
+    0 4px 16px rgba(0,0,0,0.4),
+    0 1px 4px  rgba(0,0,0,0.3);
+
+  --shadow-btn-hover:
+    0 8px 28px rgba(0,0,0,0.5),
+    0 2px 8px  rgba(0,0,0,0.32);
+
+  /* ── Gold glow — for callout cards and primary CTA ───────────── */
   --shadow-gold-glow:
-    0 0 24px rgba(216,180,106,0.12),
-    0 0 48px rgba(216,180,106,0.04);
+    0 0 32px rgba(201,168,76,0.14),
+    0 0 64px rgba(201,168,76,0.05);
 
-  /* Combined: neumorphic + gold glow */
   --shadow-gold-neu:
-    2px 2px 8px rgba(0,0,0,0.55),
-    -1px -1px 4px rgba(255,255,255,0.025),
-    0 0 24px rgba(216,180,106,0.10);
+    4px  4px 14px rgba(0,0,0,0.62),
+    -1px -1px  6px rgba(255,248,225,0.036),
+    0 0 30px rgba(201,168,76,0.11);
+
+  /* ── Input inset — tactile depth ─────────────────────────────── */
+  --shadow-input:
+    inset 2px 2px 6px  rgba(0,0,0,0.38),
+    inset -1px -1px 3px rgba(255,248,225,0.018);
+
+  --shadow-input-focus:
+    inset 2px 2px 6px  rgba(0,0,0,0.32),
+    inset -1px -1px 3px rgba(255,248,225,0.018),
+    0 0 0 3px rgba(201,168,76,0.13);
+
+  /* ── Dropdown pop ───────────────────────────────────────────── */
+  --shadow-pop:
+    0 16px 48px rgba(0,0,0,0.56),
+    0 4px  12px rgba(0,0,0,0.36);
 }

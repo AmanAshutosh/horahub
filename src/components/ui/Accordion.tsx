@@ -14,19 +14,21 @@ export function Accordion({
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="mb-2 overflow-hidden rounded-xl2 border border-line bg-panel-soft">
+    <div className="hh-accordion">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between gap-2.5 px-3.5 py-3 text-left"
+        className="hh-accordion-trigger"
       >
         <span>
-          <span className="block text-[14px] font-semibold">{title}</span>
-          {subtitle && <span className="block text-[11.5px] text-ink-muted">{subtitle}</span>}
+          <span className="hh-accordion-title">{title}</span>
+          {subtitle && <span className="hh-accordion-subtitle">{subtitle}</span>}
         </span>
-        <span className={`text-ink-muted transition-transform ${open ? 'rotate-90' : ''}`}>›</span>
+        <span className="hh-accordion-icon" data-open={open}>›</span>
       </button>
-      {open && <div className="px-3.5 pb-3.5 text-[13px] text-[#cfd0dd] animate-fade">{children}</div>}
+      {open && (
+        <div className="hh-accordion-body">{children}</div>
+      )}
     </div>
   );
 }

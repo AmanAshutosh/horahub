@@ -1,58 +1,67 @@
-/* HoraHub color tokens — single source of truth.
-   Tailwind config references these for opacity-modifier compatibility.
-   Use these CSS vars in custom CSS files inside /styles/components/. */
+/* HoraHub color tokens — warm charcoal premium palette.
+   Tailwind config mirrors these values for utility-class support.
+   All custom CSS uses these vars; never hardcode colors in JSX. */
 
 :root {
-  /* Base */
-  --color-bg:          #08080d;
-  --color-bg-soft:     #0e0e17;
-  --color-panel:       #13131f;
-  --color-panel-soft:  #191926;
-  --color-panel-raised:#1e1d2e;
-  --color-line:        #272736;
+  /* ── Base surfaces — warm charcoal, layered depth ─────────────── */
+  --color-bg:           #0c0b09;
+  --color-bg-soft:      #111009;
+  --color-panel:        #161410;
+  --color-panel-soft:   #1c1916;
+  --color-panel-raised: #23201b;
+  --color-line:         #2e2b24;
+  --color-line-soft:    #252219;
 
-  /* Text */
-  --color-ink:         #ececf4;
-  --color-ink-muted:   #9292ad;
-  --color-ink-subtle:  #4e4c60;
+  /* ── Text — warm white hierarchy ─────────────────────────────── */
+  --color-ink:          #f0ede6;
+  --color-ink-muted:    #a09c92;
+  --color-ink-subtle:   #565249;
 
-  /* Accent */
-  --color-gold:        #d8b46a;
-  --color-gold-soft:   #f1d8a0;
-  --color-gold-dim:    #3a2e18;
-  --color-accent:      #8b7cf0;
+  /* ── Accent — gold used sparingly ────────────────────────────── */
+  --color-gold:         #c9a84c;
+  --color-gold-soft:    #e8cc7e;
+  --color-gold-dim:     #2c2410;
+  --color-accent:       #8878e8;
 
-  /* Status */
-  --color-good:        #5fbf8f;
-  --color-warn:        #d9a05f;
-  --color-danger:      #d96a6a;
+  /* ── Status ──────────────────────────────────────────────────── */
+  --color-good:         #5ab87e;
+  --color-warn:         #d4955a;
+  --color-danger:       #d46060;
 
-  /* Planet glows (used as accents only — not for large backgrounds) */
-  --planet-sun-glow:     #d4973b;
-  --planet-sun-soft:     #e8b96a;
-  --planet-sun-bg:       #1c1508;
-  --planet-moon-glow:    #9ba8c8;
-  --planet-moon-soft:    #c0cae0;
-  --planet-moon-bg:      #10121e;
-  --planet-mars-glow:    #c94444;
-  --planet-mars-soft:    #e07070;
-  --planet-mars-bg:      #1e0e0e;
-  --planet-mercury-glow: #4aad7a;
-  --planet-mercury-soft: #6dcc96;
-  --planet-mercury-bg:   #0c1a12;
-  --planet-jupiter-glow: #c8a048;
-  --planet-jupiter-soft: #e0bc72;
-  --planet-jupiter-bg:   #1c1606;
-  --planet-venus-glow:   #c45c84;
-  --planet-venus-soft:   #dc82a8;
-  --planet-venus-bg:     #1e0e16;
-  --planet-saturn-glow:  #4c72b0;
-  --planet-saturn-soft:  #7898cc;
-  --planet-saturn-bg:    #0e1220;
-  --planet-rahu-glow:    #7060d8;
-  --planet-rahu-soft:    #9880f0;
-  --planet-rahu-bg:      #100e20;
-  --planet-ketu-glow:    #8a7a9e;
-  --planet-ketu-soft:    #b0a0c4;
-  --planet-ketu-bg:      #120e18;
+  /* ── Planet accents — used only for individual planet identity ── */
+  --planet-sun-glow:      #d49a3c;
+  --planet-sun-soft:      #e8b96a;
+  --planet-sun-bg:        #1c1608;
+
+  --planet-moon-glow:     #9daac8;
+  --planet-moon-soft:     #c2ccdf;
+  --planet-moon-bg:       #10121e;
+
+  --planet-mars-glow:     #c84040;
+  --planet-mars-soft:     #e07070;
+  --planet-mars-bg:       #1e0d0d;
+
+  --planet-mercury-glow:  #48ab78;
+  --planet-mercury-soft:  #6dcc96;
+  --planet-mercury-bg:    #0b1a12;
+
+  --planet-jupiter-glow:  #c8a040;
+  --planet-jupiter-soft:  #dfbc6e;
+  --planet-jupiter-bg:    #1c1606;
+
+  --planet-venus-glow:    #c45c84;
+  --planet-venus-soft:    #dc84aa;
+  --planet-venus-bg:      #1e0e16;
+
+  --planet-saturn-glow:   #4a6eac;
+  --planet-saturn-soft:   #7898cc;
+  --planet-saturn-bg:     #0e1220;
+
+  --planet-rahu-glow:     #6e5ed4;
+  --planet-rahu-soft:     #9880f0;
+  --planet-rahu-bg:       #100e20;
+
+  --planet-ketu-glow:     #8878a0;
+  --planet-ketu-soft:     #b0a0c4;
+  --planet-ketu-bg:       #120e18;
 }
