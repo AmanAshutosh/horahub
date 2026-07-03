@@ -1,4 +1,4 @@
-import type { ReportSectionData } from '@/types/report';
+import type { ReportSectionData, ReportItem } from '@/types/report';
 import { SectionShell } from '../primitives/SectionShell';
 import { PendingState } from '../primitives/PendingState';
 import { Accordion } from '@/components/ui/Accordion';
@@ -21,8 +21,69 @@ interface Props {
   data?: ReportSectionData | null;
 }
 
+// ── Strengths / challenges group ──────────────────────────────────────────────
+
+function InterpretedGroup({
+  items,
+  variant,
+}: {
+  items: ReportItem[];
+  variant: 'strengths' | 'challenges';
+}) {
+  if (items.length === 0) return null;
+
+  const label = variant === 'strengths'
+    ? 'What your chart suggests going for you'
+    : 'Points the classical texts flag';
+
+  return (
+    <div className={`life-area-group life-area-group--${variant}`}>
+      <p className="life-area-group-label">{label}</p>
+      {items.map((item, i) => (
+        <div key={i} className="life-area-group-item">
+          <p className="life-area-group-item-body">{item.body}</p>
+          <TechnicalPanel>
+            {item.tags && item.tags.length > 0 && (
+              <p className="mb-1">
+                <span style={{ color: 'var(--color-ink-subtle)' }}>Match type: </span>
+                {item.tags.join(' · ')}
+              </p>
+            )}
+            {item.citations && <CitationList citations={item.citations} />}
+            {item.evidence && <EvidenceList evidence={item.evidence} />}
+          </TechnicalPanel>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── Advice block ──────────────────────────────────────────────────────────────
+
+function AdviceBlock({ advice }: { advice: string[] }) {
+  if (advice.length === 0) return null;
+  return (
+    <div className="life-area-advice">
+      <p className="life-area-advice-label">Practical direction</p>
+      <ul className="life-area-advice-list">
+        {advice.map((line, i) => (
+          <li key={i}>{line}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// ── Main section ──────────────────────────────────────────────────────────────
+
 export function LifeAreaSection({ config, data }: Props) {
   const isPending = !data || data.status === 'pending';
+
+  const hasInterpretedContent = !isPending && (
+    (data.strengths && data.strengths.length > 0) ||
+    (data.challenges && data.challenges.length > 0) ||
+    (data.advice && data.advice.length > 0)
+  );
 
   return (
     <SectionShell
@@ -38,37 +99,82 @@ export function LifeAreaSection({ config, data }: Props) {
         <PendingState willContain={config.willContain} />
       ) : (
         <>
-          <p className="life-area-intro">{config.intro}</p>
+          {/* Chart context — factual paragraph about relevant house/planet positions */}
+          {data.chartContext ? (
+            <p className="life-area-context">{data.chartContext}</p>
+          ) : (
+            <p className="life-area-intro">{config.intro}</p>
+          )}
 
+          {/* Brief summary count */}
           {data.summary && (
             <div className="life-area-summary">{data.summary}</div>
           )}
 
-          {data.items?.map((item) => (
-            <Accordion key={item.title} title={item.title}>
-              <div
-                className="life-area-item-body"
-                data-direction={item.direction ?? 'neutral'}
-              >
-                {item.body}
-              </div>
-              <TechnicalPanel>
-                {item.tags && item.tags.length > 0 && (
-                  <p className="mb-1">
-                    <span style={{ color: 'var(--color-ink-subtle)' }}>Chart indicators: </span>
-                    {item.tags.join(' · ')}
-                  </p>
-                )}
-                {item.citations && <CitationList citations={item.citations} />}
-                {item.evidence && <EvidenceList evidence={item.evidence} />}
-              </TechnicalPanel>
-            </Accordion>
-          ))}
+          {/* Interpreted: strengths, challenges, advice */}
+          {hasInterpretedContent ? (
+            <>
+              <InterpretedGroup items={data.strengths ?? []} variant="strengths" />
+              <InterpretedGroup items={data.challenges ?? []} variant="challenges" />
+              <AdviceBlock advice={data.advice ?? []} />
 
-          {data.citations && !data.items?.length && (
-            <div className="mt-4">
-              <CitationList citations={data.citations} />
-            </div>
+              {/* All matched rules as collapsed technical evidence */}
+              {data.items && data.items.length > 0 && (
+                <div>
+                  <p className="life-area-evidence-label">Classical text evidence</p>
+                  {data.items.map((item) => (
+                    <Accordion key={item.title} title={item.title}>
+                      <div
+                        className="life-area-item-body"
+                        data-direction={item.direction ?? 'neutral'}
+                      >
+                        {item.body}
+                      </div>
+                      <TechnicalPanel>
+                        {item.tags && item.tags.length > 0 && (
+                          <p className="mb-1">
+                            <span style={{ color: 'var(--color-ink-subtle)' }}>Chart indicators: </span>
+                            {item.tags.join(' · ')}
+                          </p>
+                        )}
+                        {item.citations && <CitationList citations={item.citations} />}
+                        {item.evidence && <EvidenceList evidence={item.evidence} />}
+                      </TechnicalPanel>
+                    </Accordion>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            /* Fallback: flat accordion list (no interpreter data available) */
+            <>
+              {data.items?.map((item) => (
+                <Accordion key={item.title} title={item.title}>
+                  <div
+                    className="life-area-item-body"
+                    data-direction={item.direction ?? 'neutral'}
+                  >
+                    {item.body}
+                  </div>
+                  <TechnicalPanel>
+                    {item.tags && item.tags.length > 0 && (
+                      <p className="mb-1">
+                        <span style={{ color: 'var(--color-ink-subtle)' }}>Chart indicators: </span>
+                        {item.tags.join(' · ')}
+                      </p>
+                    )}
+                    {item.citations && <CitationList citations={item.citations} />}
+                    {item.evidence && <EvidenceList evidence={item.evidence} />}
+                  </TechnicalPanel>
+                </Accordion>
+              ))}
+
+              {data.citations && !data.items?.length && (
+                <div className="mt-4">
+                  <CitationList citations={data.citations} />
+                </div>
+              )}
+            </>
           )}
 
           {data.note && (

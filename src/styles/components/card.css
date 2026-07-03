@@ -1,14 +1,13 @@
-/* Card component — elevated surfaces with soft neumorphism. */
+/* Card component — soft neumorphic surfaces on pale lavender. */
 
 /* ── Base card ────────────────────────────────────────────────── */
   .hh-card {
-    border-radius: 1.25rem;
-    border: 1px solid var(--color-line);
+    border-radius: 1.5rem;
+    border: none;
     background: var(--color-panel);
     box-shadow: var(--shadow-neu-md);
     transition:
       box-shadow    var(--dur-base) var(--ease-out),
-      border-color  var(--dur-base) var(--ease-out),
       transform     var(--dur-base) var(--ease-out);
   }
 
@@ -17,7 +16,7 @@
     box-shadow: var(--shadow-neu-lg);
   }
 
-  /* ── Form card — gradient border + deeper elevation ──────────── */
+/* ── Form card — deeper elevation, subtle gradient edge ──────── */
   .hh-form-card {
     position: relative;
     border-radius: 1.5rem;
@@ -25,7 +24,7 @@
     box-shadow: var(--shadow-neu-lg);
   }
 
-  /* Gradient border via mask technique */
+  /* Gradient edge via mask technique — navy shimmer on top-left */
   .hh-form-card::before {
     content: '';
     position: absolute;
@@ -34,9 +33,9 @@
     padding: 1px;
     background: linear-gradient(
       155deg,
-      rgba(201,168,76,0.22) 0%,
-      rgba(46,43,36,0.7)    35%,
-      rgba(46,43,36,0.35)   100%
+      rgba(29,45,80,0.18)  0%,
+      rgba(208,191,232,0.12) 45%,
+      rgba(255,255,255,0.10) 100%
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -46,15 +45,13 @@
     pointer-events: none;
   }
 
-  /* ── Gold callout card ────────────────────────────────────────── */
+/* ── Accent card ──────────────────────────────────────────────── */
   .hh-card-gold {
-    border-color: rgba(201,168,76,0.18);
     box-shadow: var(--shadow-gold-neu);
   }
 
-  /* ── Hover lift — opt-in ─────────────────────────────────────── */
+/* ── Hover lift — opt-in ─────────────────────────────────────── */
   .hh-card-hover:hover {
-    border-color: rgba(201,168,76,0.14);
     box-shadow: var(--shadow-neu-lg);
     transform: translateY(-2px);
   }

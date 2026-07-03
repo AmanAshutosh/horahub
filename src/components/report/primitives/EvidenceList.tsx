@@ -34,7 +34,7 @@ export function EvidenceList({ evidence }: { evidence: ReportEvidence[] }) {
             </span>
             <SourceQualityDot v={e.extractionConfidence} />
           </div>
-          <p className="text-[12.5px] leading-relaxed text-[#cfd0dd] print:text-gray-700">{e.text}</p>
+          <p className="text-[12.5px] leading-relaxed text-ink-muted print:text-gray-700">{e.text}</p>
           {e.categories.length > 0 && (
             <div className="mt-1.5 flex flex-wrap gap-1">
               {e.categories.map((c) => (

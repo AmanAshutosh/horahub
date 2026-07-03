@@ -94,7 +94,7 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
 export function generateReportSections(facts: ChartFacts): ReportSectionData[] {
   const result = runInference(facts);
   if (!result) return [];
-  return buildReportSections(result);
+  return buildReportSections(result, facts);
 }
 
 // Re-export for external use

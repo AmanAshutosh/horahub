@@ -7,7 +7,8 @@
     font-weight: 700;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(201,168,76,0.48);
+    color: var(--color-primary);
+    opacity: 0.55;
   }
 
   /* ── Hero heading ─────────────────────────────────────────────── */
@@ -23,7 +24,7 @@
   .home-h1 {
     font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
     font-weight: 700;
-    font-size: clamp(2.75rem, 9vw, 3.875rem);
+    font-size: clamp(3.5rem, 9vw, 4.5rem);
     line-height: 1.0;
     letter-spacing: -0.022em;
     color: var(--color-ink);
@@ -32,13 +33,13 @@
 
   .home-h1 span { display: block; }
 
-  .home-h1-gold { color: var(--color-gold); }
+  .home-h1-gold { color: var(--color-primary); }
 
   /* ── Subtitle ─────────────────────────────────────────────────── */
   .home-subtitle {
     margin-bottom: 2.5rem;
-    font-size: 1.0625rem;
-    line-height: 1.78;
+    font-size: 1.125rem;
+    line-height: 1.75;
     color: var(--color-ink-muted);
     max-width: 46ch;
   }
@@ -58,7 +59,7 @@
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-gold);
+    color: var(--color-primary);
   }
 
   .home-form-eyebrow-star {
@@ -139,7 +140,7 @@
   .home-dropdown-item:last-child { border-bottom: none; }
 
   .home-dropdown-item:hover {
-    background: rgba(201,168,76,0.08);
+    background: rgba(29,45,80,0.06);
   }
 
   .home-dropdown-item-name {
@@ -176,7 +177,7 @@
   .home-trust-card {
     padding: 1.125rem 0.875rem;
     border-radius: 1rem;
-    border: 1px solid var(--color-line);
+    border: none;
     background: var(--color-panel);
     box-shadow: var(--shadow-neu-sm);
     text-align: center;
@@ -187,7 +188,7 @@
   }
 
   .home-trust-card:hover {
-    border-color: rgba(201,168,76,0.16);
+    border-color: rgba(29,45,80,0.18);
     box-shadow: var(--shadow-neu-md);
     transform: translateY(-2px);
   }
@@ -224,7 +225,7 @@
 
   .home-sources-sep {
     font-size: 0.6875rem;
-    color: rgba(86,82,73,0.35);
+    color: rgba(122,143,175,0.5);
     user-select: none;
   }
 
@@ -238,6 +239,6 @@
     margin-top: 2rem;
     text-align: center;
     font-size: 0.625rem;
-    color: rgba(86,82,73,0.45);
+    color: rgba(122,143,175,0.55);
     letter-spacing: 0.02em;
   }

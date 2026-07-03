@@ -39,7 +39,7 @@ export function TransitSection({ data, num }: Props) {
       ) : (
         <>
           {data.summary && (
-            <p className="mb-4 text-[13.5px] leading-relaxed text-[#cfd0dd] print:text-gray-700">
+            <p className="mb-4 text-[13.5px] leading-relaxed text-ink-muted print:text-gray-700">
               {data.summary}
             </p>
           )}

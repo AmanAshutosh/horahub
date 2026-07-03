@@ -68,6 +68,31 @@ export interface ReportSectionData {
   citations?: ReportCitation[];
   evidence?: ReportEvidence[];
   note?: string;
+
+  /**
+   * Chart-specific factual context paragraph — states which houses/planets/signs
+   * are relevant to this domain in this person's chart. Derived from ChartFacts
+   * and KB signification tables. Never astrologically fabricated.
+   */
+  chartContext?: string;
+
+  /**
+   * Positive-direction items filtered from items[] by the LifeDomainInterpreter.
+   * Each body is a verbatim classical text that supports a favourable pattern.
+   */
+  strengths?: ReportItem[];
+
+  /**
+   * Negative-direction items filtered from items[] by the LifeDomainInterpreter.
+   * Each body is a verbatim classical text that flags a point of attention.
+   */
+  challenges?: ReportItem[];
+
+  /**
+   * Practical direction statements derived from KB planet/house themes.
+   * References chart positions and classical significations — no invented claims.
+   */
+  advice?: string[];
 }
 
 /** Person info stored alongside the chart result so the report cover can render it. */

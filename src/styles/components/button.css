@@ -1,4 +1,4 @@
-/* Button component — premium lift-on-hover system. */
+/* Button component — raised neumorphic on pale lavender surface. */
 
 /* ── Base ─────────────────────────────────────────────────────── */
   .btn {
@@ -7,14 +7,14 @@
     justify-content: center;
     gap: 0.5rem;
     border: none;
-    border-radius: 0.875rem;
+    border-radius: 1rem;
     font-family: inherit;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.02em;
     line-height: 1;
-    padding-block: 1rem;
-    padding-inline: 1.5rem;
+    padding-block: 1.0625rem;
+    padding-inline: 1.75rem;
     cursor: pointer;
     outline: none;
     user-select: none;
@@ -22,12 +22,11 @@
     transition:
       opacity      var(--dur-fast) var(--ease-out),
       transform    var(--dur-fast) var(--ease-out),
-      box-shadow   var(--dur-base) var(--ease-out),
-      background-position var(--dur-base) var(--ease-out);
+      box-shadow   var(--dur-base) var(--ease-out);
   }
 
   .btn:focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-primary);
     outline-offset: 3px;
   }
 
@@ -39,56 +38,38 @@
 
   .btn-full { width: 100%; }
 
-  /* ── Primary — gold gradient CTA ─────────────────────────────── */
+  /* ── Primary — Deep Navy raised on lavender ──────────────────── */
   .btn-primary {
-    background: linear-gradient(
-      135deg,
-      var(--color-gold)      0%,
-      var(--color-gold-soft) 50%,
-      var(--color-gold)      100%
-    );
-    background-size: 200% 100%;
-    background-position: 0% 0%;
-    color: #1a1305;
-    box-shadow:
-      0 4px 18px rgba(201,168,76,0.28),
-      0 1px 5px  rgba(0,0,0,0.35),
-      inset 0 1px 0 rgba(255,255,255,0.18);
+    background: var(--color-primary);
+    color: #FFFFFF;
+    box-shadow: var(--shadow-neu-md);
   }
 
   .btn-primary:hover:not(:disabled) {
-    background-position: 100% 0%;
-    box-shadow:
-      0 8px 32px rgba(201,168,76,0.38),
-      0 2px 10px rgba(0,0,0,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.22);
+    background: var(--color-primary-soft);
+    box-shadow: var(--shadow-btn-hover);
     transform: translateY(-2px);
   }
 
   .btn-primary:active:not(:disabled) {
-    transform: translateY(0) scale(0.995);
-    box-shadow:
-      0 2px 10px rgba(201,168,76,0.22),
-      0 1px 4px  rgba(0,0,0,0.3);
-    background-position: 0% 0%;
+    transform: translateY(0) scale(0.998);
+    box-shadow: var(--shadow-neu-sm);
   }
 
-  /* ── Ghost — subtle secondary action ─────────────────────────── */
+  /* ── Ghost — soft panel surface ─────────────────────────────── */
   .btn-ghost {
-    background: transparent;
+    background: var(--color-panel);
     color: var(--color-ink-muted);
-    border: 1px solid var(--color-line);
     box-shadow: var(--shadow-neu-sm);
   }
 
   .btn-ghost:hover:not(:disabled) {
     color: var(--color-ink);
-    border-color: rgba(201,168,76,0.2);
     box-shadow: var(--shadow-neu-md);
     transform: translateY(-1px);
   }
 
   .btn-ghost:active:not(:disabled) {
     transform: translateY(0);
-    box-shadow: var(--shadow-neu-sm);
+    box-shadow: inset 3px 3px 6px rgba(190,170,215,0.35), inset -3px -3px 6px rgba(255,255,255,0.75);
   }

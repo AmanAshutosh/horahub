@@ -23,8 +23,8 @@
     z-index: 20;
     margin-inline: -1rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(46,43,36,0.6);
-    background: rgba(12,11,9,0.92);
+    border-bottom: 1px solid var(--color-line);
+    background: rgba(231,217,245,0.92);
     padding-block: 0.625rem;
     padding-inline: 1rem;
     backdrop-filter: blur(20px);
@@ -62,9 +62,9 @@
     border-color: var(--color-line);
   }
   .report-nav-chip[data-active="true"] {
-    border-color: rgba(201,168,76,0.35);
-    background: rgba(201,168,76,0.08);
-    color: var(--color-gold);
+    border-color: rgba(29,45,80,0.35);
+    background: rgba(29,45,80,0.08);
+    color: var(--color-primary);
   }
 
   /* ── Cover — premium editorial document ─────────────────────── */
@@ -197,7 +197,7 @@
     scroll-margin-top: 5rem;
     margin-top: 6.5rem;
     padding-top: 3rem;
-    border-top: 1px solid rgba(46,43,36,0.5);
+    border-top: 1px solid var(--color-line);
   }
 
   .report-section-header { margin-bottom: 2.25rem; }
@@ -329,7 +329,7 @@
 
   .glance-card-footer {
     padding: 0.875rem 1.5rem;
-    border-top: 1px solid rgba(46,43,36,0.5);
+    border-top: 1px solid var(--color-line);
   }
 
   .glance-card-link {
@@ -345,7 +345,7 @@
   .dasha-callout {
     margin-bottom: 3rem;
     padding: 2rem 0 2rem 2rem;
-    border-left: 2px solid rgba(201,168,76,0.38);
+    border-left: 2px solid rgba(29,45,80,0.35);
   }
 
   .dasha-callout-label {
@@ -391,7 +391,7 @@
 
   .dasha-callout-remaining {
     font-weight: 600;
-    color: var(--color-gold);
+    color: var(--color-primary);
   }
 
   /* ── Technical panel ────────────────────────────────────────── */
@@ -416,7 +416,7 @@
   }
   .tech-panel-trigger:hover { color: var(--color-ink-muted); }
   .tech-panel-trigger:focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-primary);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -456,8 +456,8 @@
   }
 
   /* ── Accordion — editorial disclosure ───────────────────────── */
-  .hh-accordion { border-bottom: 1px solid rgba(46,43,36,0.5); }
-  .hh-accordion:first-child { border-top: 1px solid rgba(46,43,36,0.5); }
+  .hh-accordion { border-bottom: 1px solid var(--color-line); }
+  .hh-accordion:first-child { border-top: 1px solid var(--color-line); }
 
   .hh-accordion-trigger {
     display: flex;
@@ -501,8 +501,8 @@
 
   .hh-accordion-body {
     padding-bottom: 1.5rem;
-    font-size: 0.875rem;
-    line-height: 1.82;
+    font-size: 1.0625rem;
+    line-height: 1.78;
     color: var(--color-ink-muted);
     animation: hh-fade var(--dur-fast) var(--ease-out);
   }
@@ -511,7 +511,7 @@
   .hh-cite {
     margin-top: 1.125rem;
     padding-left: 1rem;
-    border-left: 2px solid rgba(136,120,232,0.3);
+    border-left: 2px solid rgba(29,45,80,0.25);
   }
 
   .hh-cite-source {
@@ -519,7 +519,8 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-primary);
+    opacity: 0.65;
     margin-bottom: 0.3125rem;
     opacity: 0.75;
   }
@@ -601,7 +602,7 @@
     line-height: 1.6;
     color: var(--color-ink-subtle);
     padding-block: 0.3125rem;
-    border-top: 1px solid rgba(46,43,36,0.4);
+    border-top: 1px solid var(--color-line);
   }
 
   .pending-state-item-dash {
@@ -614,7 +615,7 @@
   /* ── Life area ───────────────────────────────────────────────── */
   .life-area-question {
     margin-bottom: 1.25rem;
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     font-weight: 500;
     line-height: 1.65;
     color: var(--color-ink);
@@ -622,8 +623,8 @@
 
   .life-area-intro {
     margin-bottom: 2rem;
-    font-size: 0.875rem;
-    line-height: 1.85;
+    font-size: 1.0625rem;
+    line-height: 1.78;
     color: var(--color-ink-muted);
     max-width: 68ch;
   }
@@ -631,9 +632,9 @@
   .life-area-summary {
     margin-bottom: 2rem;
     padding: 1.125rem 1.375rem;
-    border-left: 2px solid rgba(46,43,36,0.8);
-    font-size: 0.9375rem;
-    line-height: 1.78;
+    border-left: 2px solid var(--color-line);
+    font-size: 1.0625rem;
+    line-height: 1.75;
     color: var(--color-ink-muted);
     font-style: italic;
   }
@@ -641,18 +642,18 @@
   /* Item body with direction accent */
   .life-area-item-body {
     padding-left: 1rem;
-    border-left: 2px solid rgba(46,43,36,0.45);
-    font-size: 0.875rem;
-    line-height: 1.82;
+    border-left: 2px solid rgba(208,191,232,0.80);
+    font-size: 1.0625rem;
+    line-height: 1.78;
     color: var(--color-ink-muted);
   }
 
   .life-area-item-body[data-direction="positive"] {
-    border-left-color: rgba(90,184,126,0.45);
+    border-left-color: rgba(42,107,74,0.50);
   }
 
   .life-area-item-body[data-direction="negative"] {
-    border-left-color: rgba(212,96,96,0.45);
+    border-left-color: rgba(139,58,58,0.50);
   }
 
   .life-area-note {
@@ -661,6 +662,144 @@
     line-height: 1.65;
     color: var(--color-ink-subtle);
     font-style: italic;
+  }
+
+  /* ── Life area — 5-part interpreted structure ───────────────── */
+
+  /* Chart context — factual chart-position paragraph */
+  .life-area-context {
+    margin-bottom: 2rem;
+    font-size: 1.0625rem;
+    line-height: 1.78;
+    color: var(--color-ink-muted);
+    max-width: 68ch;
+  }
+
+  /* Strengths / challenges groups */
+  .life-area-group {
+    margin-bottom: 2rem;
+  }
+
+  .life-area-group-label {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--color-ink-subtle);
+  }
+
+  .life-area-group-label::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .life-area-group--strengths .life-area-group-label { color: var(--color-good); }
+  .life-area-group--challenges .life-area-group-label { color: var(--color-warn); }
+
+  .life-area-group-item {
+    margin-bottom: 1.375rem;
+    padding-left: 1.125rem;
+    border-left: 2px solid rgba(208,191,232,0.55);
+  }
+
+  .life-area-group--strengths .life-area-group-item {
+    border-left-color: rgba(42,107,74,0.40);
+  }
+
+  .life-area-group--challenges .life-area-group-item {
+    border-left-color: rgba(139,107,53,0.45);
+  }
+
+  .life-area-group-item-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.375rem;
+    line-height: 1.4;
+  }
+
+  .life-area-group-item-body {
+    font-size: 1.0625rem;
+    line-height: 1.78;
+    color: var(--color-ink-muted);
+  }
+
+  /* Advice block */
+  .life-area-advice {
+    margin-top: 0.5rem;
+    margin-bottom: 2.25rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(29,45,80,0.03);
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+  }
+
+  .life-area-advice-label {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-subtle);
+    margin-bottom: 0.875rem;
+  }
+
+  .life-area-advice-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .life-area-advice-list li {
+    font-size: 0.9375rem;
+    line-height: 1.72;
+    color: var(--color-ink-muted);
+    padding-block: 0.4375rem;
+    border-bottom: 1px solid var(--color-line);
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .life-area-advice-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .life-area-advice-list li:first-child { padding-top: 0; }
+
+  .life-area-advice-list li::before {
+    content: '→';
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    opacity: 0.55;
+    margin-top: 0.15rem;
+  }
+
+  /* Evidence section divider */
+  .life-area-evidence-label {
+    margin-top: 2.5rem;
+    margin-bottom: 0.625rem;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-ink-subtle);
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .life-area-evidence-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-line);
   }
 
   /* ── Section accordions (dasha effects / house reading) ─────── */
@@ -695,14 +834,14 @@
     max-width: 64ch;
   }
 
-  .planet-list { border-top: 1px solid rgba(46,43,36,0.5); }
+  .planet-list { border-top: 1px solid var(--color-line); }
 
   /* Each planet row */
   .planet-row {
     width: 100%;
     display: block;
     padding-block: 1.375rem;
-    border-bottom: 1px solid rgba(46,43,36,0.5);
+    border-bottom: 1px solid var(--color-line);
     border-left: 2px solid transparent;
     padding-left: 1rem;
     background: transparent;
@@ -714,7 +853,7 @@
       border-color   var(--dur-fast) var(--ease-out);
   }
 
-  .planet-row:hover { background: rgba(255,255,255,0.015); }
+  .planet-row:hover { background: rgba(29,45,80,0.04); }
 
   /* Planet accent colors via CSS custom property */
   .planet-row { --p-accent: var(--color-ink-subtle); }
@@ -767,13 +906,13 @@
   .planet-detail {
     margin-top: 1.25rem;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(46,43,36,0.5);
+    border-top: 1px solid var(--color-line);
     animation: hh-fade var(--dur-fast) var(--ease-out);
   }
 
   .planet-detail-body {
-    font-size: 0.875rem;
-    line-height: 1.85;
+    font-size: 1.0625rem;
+    line-height: 1.78;
     color: var(--color-ink-muted);
   }
 
@@ -781,7 +920,7 @@
   .report-footer {
     margin-top: 4rem;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(46,43,36,0.4);
+    border-top: 1px solid var(--color-line);
     text-align: center;
     font-size: 0.6875rem;
     line-height: 1.75;
@@ -789,58 +928,21 @@
   }
 
   /* ── Print overrides ────────────────────────────────────────── */
+  /* Light theme is already print-friendly — minimal overrides needed */
   @media print {
-    .report-cover-rule { border-color: #e5e7eb; }
-    .report-cover-wordmark,
-    .report-cover-gendate { color: #9ca3af; }
-    .report-cover-report-type { color: #9ca3af; }
-    .report-cover-name { font-family: Georgia, serif; color: #111; }
-    .report-cover-bio { color: #6b7280; }
-    .report-cover-fact-label { color: #9ca3af; }
-    .report-cover-fact-hint { color: #d1d5db; }
-    .report-cover-fact-value { color: #111; }
-    .report-cover-intro { color: #4b5563; }
-    .report-cover-footer { color: #d1d5db; }
+    .report-nav { display: none; }
+    .report-back-link { display: none; }
 
-    .report-section { border-color: #e5e7eb; margin-top: 2rem; padding-top: 1.5rem; }
-    .report-section-num { color: #9ca3af; }
-    .report-section-title { font-family: Georgia, serif; color: #111; }
-    .report-section-subtitle { color: #6b7280; }
+    .report-cover-name { font-family: Georgia, serif; }
+    .report-section-title { font-family: Georgia, serif; }
+    .report-section { margin-top: 2rem; padding-top: 1.5rem; }
 
-    .glance-grid { background: #e5e7eb; border-color: #e5e7eb; }
-    .glance-card { background: white; }
+    .glance-card { background: white; box-shadow: none; }
     .glance-card:hover { background: white; }
-    .glance-card-label { color: #9ca3af; }
-    .glance-card-heading { color: #111; }
-    .glance-card-text,
-    .glance-card-small { color: #4b5563; }
-    .glance-card-footer { border-color: #e5e7eb; }
-    .glance-card-link { color: #6b7280; }
-
-    .dasha-callout { border-color: #e5e7eb; }
-    .dasha-callout-label { color: #9ca3af; }
-    .dasha-callout-heading { color: #111; }
-    .dasha-callout-body,
-    .dasha-callout-sub { color: #4b5563; }
-    .dasha-callout-remaining { color: #111; }
 
     .tech-panel-trigger { display: none; }
     .tech-panel-body { display: none; }
     .tech-panel-print { display: block; }
 
-    .hh-accordion { border-color: #e5e7eb; }
-    .hh-accordion-title { color: #111; }
-    .hh-accordion-body { color: #4b5563; }
-
-    .life-area-question { color: #111; }
-    .life-area-intro,
-    .life-area-summary { color: #4b5563; }
-
-    .planet-row { border-color: #e5e7eb; border-left-color: transparent; }
-    .planet-row-name { color: #111; }
-    .planet-row-theme { color: #4b5563; }
-    .planet-row-meta { color: #9ca3af; }
-    .planet-row-dignity { color: #9ca3af; }
-
-    .report-footer { color: #9ca3af; border-color: #e5e7eb; }
+    .planet-row { border-left-color: transparent; }
   }

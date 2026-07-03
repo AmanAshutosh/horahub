@@ -18,7 +18,9 @@ import type {
   ReportTable,
   ReportTableRow,
 } from '@/types/report';
+import type { ChartFacts } from '@/types/chart';
 import type { InferenceResult, MatchedRule, DomainResult, DetectedYoga, ExtractedRemedy, PastObservation } from './types';
+import { interpretDomain } from '@/lib/interpreter/LifeDomainInterpreter';
 
 // ── Book display names ────────────────────────────────────────────────────────
 
@@ -120,6 +122,7 @@ function buildLifeAreaSection(
   title: string,
   subtitle: string,
   domain: DomainResult | undefined,
+  facts?: ChartFacts,
 ): ReportSectionData {
   if (!domain || domain.matches.length === 0) {
     return { id, title, subtitle, status: 'pending' };
@@ -140,7 +143,7 @@ function buildLifeAreaSection(
     note = `${conflictCount} rule${conflictCount > 1 ? 's' : ''} in this section have conflicting statements in other classical texts — both are shown.`;
   }
 
-  return {
+  const base: ReportSectionData = {
     id,
     title,
     subtitle,
@@ -150,6 +153,21 @@ function buildLifeAreaSection(
     evidence: domain.matches.slice(0, 8).map(toReportEvidence),
     note,
   };
+
+  // Enrich with chart-specific interpretation when ChartFacts are available
+  if (facts && items.length > 0) {
+    const interp = interpretDomain(id, items, facts);
+    return {
+      ...base,
+      summary: interp.summary,
+      chartContext: interp.chartContext || undefined,
+      strengths: interp.strengths.length > 0 ? interp.strengths : undefined,
+      challenges: interp.challenges.length > 0 ? interp.challenges : undefined,
+      advice: interp.advice.length > 0 ? interp.advice : undefined,
+    };
+  }
+
+  return base;
 }
 
 // ── Yoga section builder ──────────────────────────────────────────────────────
@@ -318,20 +336,23 @@ const LIFE_AREA_CONFIG: Array<{ id: string; title: string; subtitle: string }> =
 
 /**
  * Build the full list of ReportSectionData from an InferenceResult.
+ * When ChartFacts are provided, life-area sections are enriched with
+ * chart-specific context via LifeDomainInterpreter.
+ *
  * Sections are returned in report order:
  *   career, marriage, health, finance, yogas, remedies, past-validation
  */
-export function buildReportSections(result: InferenceResult): ReportSectionData[] {
+export function buildReportSections(result: InferenceResult, facts?: ChartFacts): ReportSectionData[] {
   const domainByKey = new Map<string, DomainResult>(
     result.domains.map((d) => [d.domain, d]),
   );
 
   const sections: ReportSectionData[] = [];
 
-  // Life areas
+  // Life areas — pass facts so interpreter can add chart-specific context
   for (const cfg of LIFE_AREA_CONFIG) {
     sections.push(
-      buildLifeAreaSection(cfg.id, cfg.title, cfg.subtitle, domainByKey.get(cfg.id)),
+      buildLifeAreaSection(cfg.id, cfg.title, cfg.subtitle, domainByKey.get(cfg.id), facts),
     );
   }
 

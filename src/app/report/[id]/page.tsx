@@ -30,7 +30,7 @@ export default function ReportPage() {
   if (error) {
     return (
       <main className="mx-auto max-w-[760px] px-4 py-10 text-center text-ink-muted">
-        {error} — <Link href="/" className="text-accent underline">start a new chart</Link>.
+        {error} — <Link href="/" className="text-primary underline">start a new chart</Link>.
       </main>
     );
   }

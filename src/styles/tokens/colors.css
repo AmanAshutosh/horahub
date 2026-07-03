@@ -1,67 +1,72 @@
-/* HoraHub color tokens — warm charcoal premium palette.
+/* HoraHub color tokens — Pale Lavender / Deep Navy premium palette.
    Tailwind config mirrors these values for utility-class support.
-   All custom CSS uses these vars; never hardcode colors in JSX. */
+   All custom CSS uses these vars; never hardcode colors in TSX. */
 
 :root {
-  /* ── Base surfaces — warm charcoal, layered depth ─────────────── */
-  --color-bg:           #0c0b09;
-  --color-bg-soft:      #111009;
-  --color-panel:        #161410;
-  --color-panel-soft:   #1c1916;
-  --color-panel-raised: #23201b;
-  --color-line:         #2e2b24;
-  --color-line-soft:    #252219;
+  /* ── Base surfaces — layered lavender depth ──────────────────── */
+  --color-bg:           #E7D9F5;
+  --color-bg-soft:      #EDE4F7;
+  --color-panel:        #EAE0F6;
+  --color-panel-soft:   #F0E9FA;
+  --color-panel-raised: #F5F1FC;
+  --color-line:         #D0BFE8;
+  --color-line-soft:    #DBD0EE;
 
-  /* ── Text — warm white hierarchy ─────────────────────────────── */
-  --color-ink:          #f0ede6;
-  --color-ink-muted:    #a09c92;
-  --color-ink-subtle:   #565249;
+  /* ── Text — deep navy hierarchy ──────────────────────────────── */
+  --color-ink:          #0D1B2A;
+  --color-ink-muted:    #3A4F70;
+  --color-ink-subtle:   #7A8FAF;
 
-  /* ── Accent — gold used sparingly ────────────────────────────── */
-  --color-gold:         #c9a84c;
-  --color-gold-soft:    #e8cc7e;
-  --color-gold-dim:     #2c2410;
-  --color-accent:       #8878e8;
+  /* ── Brand ───────────────────────────────────────────────────── */
+  --color-primary:      #1D2D50;
+  --color-primary-soft: #2D4070;
+  --color-accent:       #F1CBB8;
+  --color-accent-soft:  #F8DDD0;
+
+  /* ── Legacy — minimal use only (dasha remaining text) ─────────── */
+  --color-gold:         #1D2D50;
+  --color-gold-soft:    #2D4070;
+  --color-gold-dim:     #E8E0F0;
 
   /* ── Status ──────────────────────────────────────────────────── */
-  --color-good:         #5ab87e;
-  --color-warn:         #d4955a;
-  --color-danger:       #d46060;
+  --color-good:         #2A6B4A;
+  --color-warn:         #8B6B35;
+  --color-danger:       #8B3A3A;
 
-  /* ── Planet accents — used only for individual planet identity ── */
-  --planet-sun-glow:      #d49a3c;
-  --planet-sun-soft:      #e8b96a;
-  --planet-sun-bg:        #1c1608;
+  /* ── Planet accents — muted dark tones for light backgrounds ─── */
+  --planet-sun-glow:      #7B5230;
+  --planet-sun-soft:      #A07248;
+  --planet-sun-bg:        #F8F0E8;
 
-  --planet-moon-glow:     #9daac8;
-  --planet-moon-soft:     #c2ccdf;
-  --planet-moon-bg:       #10121e;
+  --planet-moon-glow:     #3A5A88;
+  --planet-moon-soft:     #5878A8;
+  --planet-moon-bg:       #ECF0F8;
 
-  --planet-mars-glow:     #c84040;
-  --planet-mars-soft:     #e07070;
-  --planet-mars-bg:       #1e0d0d;
+  --planet-mars-glow:     #8B3030;
+  --planet-mars-soft:     #A85050;
+  --planet-mars-bg:       #F8EDED;
 
-  --planet-mercury-glow:  #48ab78;
-  --planet-mercury-soft:  #6dcc96;
-  --planet-mercury-bg:    #0b1a12;
+  --planet-mercury-glow:  #2D6A6A;
+  --planet-mercury-soft:  #4A8A8A;
+  --planet-mercury-bg:    #E8F5F5;
 
-  --planet-jupiter-glow:  #c8a040;
-  --planet-jupiter-soft:  #dfbc6e;
-  --planet-jupiter-bg:    #1c1606;
+  --planet-jupiter-glow:  #4A3A7A;
+  --planet-jupiter-soft:  #6A5A9A;
+  --planet-jupiter-bg:    #EEEAF8;
 
-  --planet-venus-glow:    #c45c84;
-  --planet-venus-soft:    #dc84aa;
-  --planet-venus-bg:      #1e0e16;
+  --planet-venus-glow:    #8B3A6B;
+  --planet-venus-soft:    #AA5A8B;
+  --planet-venus-bg:      #F8EDF5;
 
-  --planet-saturn-glow:   #4a6eac;
-  --planet-saturn-soft:   #7898cc;
-  --planet-saturn-bg:     #0e1220;
+  --planet-saturn-glow:   #3A3A6A;
+  --planet-saturn-soft:   #5A5A8A;
+  --planet-saturn-bg:     #EDEDF5;
 
-  --planet-rahu-glow:     #6e5ed4;
-  --planet-rahu-soft:     #9880f0;
-  --planet-rahu-bg:       #100e20;
+  --planet-rahu-glow:     #4A2A7A;
+  --planet-rahu-soft:     #6A4A9A;
+  --planet-rahu-bg:       #EEE8F8;
 
-  --planet-ketu-glow:     #8878a0;
-  --planet-ketu-soft:     #b0a0c4;
-  --planet-ketu-bg:       #120e18;
+  --planet-ketu-glow:     #5A5230;
+  --planet-ketu-soft:     #7A7250;
+  --planet-ketu-bg:       #F2F0E8;
 }

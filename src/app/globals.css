@@ -16,14 +16,14 @@
 
 /* ── Base ─────────────────────────────────────────────────────── */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   background-color: var(--color-bg);
   background-image:
-    radial-gradient(ellipse 900px 600px at 50% -60px, rgba(201,168,76,0.055) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 400px at 92% 5%,    rgba(136,120,232,0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 900px 600px at 50% -60px, rgba(29,45,80,0.055) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 400px at 92% 5%,    rgba(241,203,184,0.08) 0%, transparent 60%);
   min-height: 100dvh;
 }
 
@@ -48,26 +48,14 @@ body {
   section { break-inside: avoid; }
   tr      { break-inside: avoid; }
 
-  [class*="bg-panel"],
-  [class*="bg-bg"],
-  [class*="bg-panel-soft"],
-  [class*="bg-panel-raised"],
   .hh-card,
   .hh-form-card {
     background-color: white !important;
     box-shadow: none !important;
+    border: 1px solid #e2d9f0 !important;
   }
 
-  [class*="border-line"],
-  .hh-card,
-  .hh-form-card { border-color: #d1d5db !important; }
-
-  [class*="text-ink-muted"], .hh-field-label  { color: #6b7280 !important; }
-  [class*="text-gold"],  .home-h1-gold        { color: #92400e !important; }
-  [class*="text-good"],  .home-place-confirm  { color: #065f46 !important; }
-  [class*="text-danger"], .home-error         { color: #991b1b !important; }
-
-  [class*="animate-"], .home-form-card::before { animation: none !important; }
+  [class*="animate-"], .hh-form-card::before { animation: none !important; }
 
   .print\:hidden { display: none !important; }
 }

@@ -11,38 +11,41 @@ const config: Config = {
       },
 
       colors: {
-        /* ── Surfaces — warm charcoal ── */
-        bg:    { DEFAULT: '#0c0b09', soft: '#111009' },
-        panel: { DEFAULT: '#161410', soft: '#1c1916', raised: '#23201b' },
-        line:  '#2e2b24',
+        /* ── Surfaces — pale lavender depth ── */
+        bg:    { DEFAULT: '#E7D9F5', soft: '#EDE4F7' },
+        panel: { DEFAULT: '#EAE0F6', soft: '#F0E9FA', raised: '#F5F1FC' },
+        line:  { DEFAULT: '#D0BFE8', soft: '#DBD0EE' },
 
-        /* ── Text ── */
+        /* ── Text — deep navy hierarchy ── */
         ink: {
-          DEFAULT: '#f0ede6',
-          muted:   '#a09c92',
-          subtle:  '#565249',
+          DEFAULT: '#0D1B2A',
+          muted:   '#3A4F70',
+          subtle:  '#7A8FAF',
         },
 
-        /* ── Accent ── */
-        gold:   { DEFAULT: '#c9a84c', soft: '#e8cc7e', dim: '#2c2410' },
-        accent: '#8878e8',
+        /* ── Brand ── */
+        primary: { DEFAULT: '#1D2D50', soft: '#2D4070' },
+        accent:  { DEFAULT: '#F1CBB8', soft: '#F8DDD0' },
+
+        /* ── Legacy — minimal use, mapped to primary ── */
+        gold: { DEFAULT: '#1D2D50', soft: '#2D4070', dim: '#E8E0F0' },
 
         /* ── Status ── */
-        good:   '#5ab87e',
-        warn:   '#d4955a',
-        danger: '#d46060',
+        good:   '#2A6B4A',
+        warn:   '#8B6B35',
+        danger: '#8B3A3A',
 
-        /* ── Planet accents — never for large fills ── */
+        /* ── Planet accents — muted dark tones for light backgrounds ── */
         planet: {
-          sun:     { glow: '#d49a3c', soft: '#e8b96a', bg: '#1c1608' },
-          moon:    { glow: '#9daac8', soft: '#c2ccdf', bg: '#10121e' },
-          mars:    { glow: '#c84040', soft: '#e07070', bg: '#1e0d0d' },
-          mercury: { glow: '#48ab78', soft: '#6dcc96', bg: '#0b1a12' },
-          jupiter: { glow: '#c8a040', soft: '#dfbc6e', bg: '#1c1606' },
-          venus:   { glow: '#c45c84', soft: '#dc84aa', bg: '#1e0e16' },
-          saturn:  { glow: '#4a6eac', soft: '#7898cc', bg: '#0e1220' },
-          rahu:    { glow: '#6e5ed4', soft: '#9880f0', bg: '#100e20' },
-          ketu:    { glow: '#8878a0', soft: '#b0a0c4', bg: '#120e18' },
+          sun:     { glow: '#7B5230', soft: '#A07248', bg: '#F8F0E8' },
+          moon:    { glow: '#3A5A88', soft: '#5878A8', bg: '#ECF0F8' },
+          mars:    { glow: '#8B3030', soft: '#A85050', bg: '#F8EDED' },
+          mercury: { glow: '#2D6A6A', soft: '#4A8A8A', bg: '#E8F5F5' },
+          jupiter: { glow: '#4A3A7A', soft: '#6A5A9A', bg: '#EEEAF8' },
+          venus:   { glow: '#8B3A6B', soft: '#AA5A8B', bg: '#F8EDF5' },
+          saturn:  { glow: '#3A3A6A', soft: '#5A5A8A', bg: '#EDEDF5' },
+          rahu:    { glow: '#4A2A7A', soft: '#6A4A9A', bg: '#EEE8F8' },
+          ketu:    { glow: '#5A5230', soft: '#7A7250', bg: '#F2F0E8' },
         },
       },
 
@@ -53,15 +56,15 @@ const config: Config = {
       },
 
       boxShadow: {
-        sm:         '0 2px 8px rgba(0,0,0,0.42), 0 1px 3px rgba(0,0,0,0.3)',
-        md:         '0 8px 24px rgba(0,0,0,0.52), 0 3px 8px rgba(0,0,0,0.36)',
-        lg:         '0 20px 60px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.46)',
-        pop:        '0 16px 48px rgba(0,0,0,0.56), 0 4px 12px rgba(0,0,0,0.36)',
-        'neu-sm':   '3px 3px 8px rgba(0,0,0,0.55), -1px -1px 4px rgba(255,248,225,0.032)',
-        'neu-md':   '6px 6px 18px rgba(0,0,0,0.62), -2px -2px 8px rgba(255,248,225,0.038)',
-        'neu-lg':   '10px 10px 32px rgba(0,0,0,0.70), -3px -3px 12px rgba(255,248,225,0.042)',
-        'gold-glow':'0 0 32px rgba(201,168,76,0.14), 0 0 64px rgba(201,168,76,0.05)',
-        'gold-neu': '4px 4px 14px rgba(0,0,0,0.62), -1px -1px 6px rgba(255,248,225,0.036), 0 0 30px rgba(201,168,76,0.11)',
+        sm:        '0 2px 8px rgba(29,45,80,0.08), 0 1px 3px rgba(29,45,80,0.05)',
+        md:        '0 8px 24px rgba(29,45,80,0.10), 0 3px 8px rgba(29,45,80,0.07)',
+        lg:        '0 20px 60px rgba(29,45,80,0.14), 0 8px 24px rgba(29,45,80,0.09)',
+        pop:       '6px 6px 20px rgba(190,170,215,0.52), -3px -3px 12px rgba(255,255,255,0.88)',
+        'neu-sm':  '4px 4px 8px rgba(190,170,215,0.48), -4px -4px 8px rgba(255,255,255,0.88)',
+        'neu-md':  '7px 7px 15px rgba(190,170,215,0.50), -7px -7px 15px rgba(255,255,255,0.90)',
+        'neu-lg':  '10px 10px 24px rgba(190,170,215,0.54), -10px -10px 24px rgba(255,255,255,0.92)',
+        'gold-glow': '0 0 24px rgba(29,45,80,0.10), 0 0 48px rgba(29,45,80,0.05)',
+        'gold-neu':  '6px 6px 14px rgba(190,170,215,0.48), -4px -4px 10px rgba(255,255,255,0.88)',
       },
 
       keyframes: {

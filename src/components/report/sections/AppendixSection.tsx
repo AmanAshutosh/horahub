@@ -70,7 +70,7 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
       </div>
 
       <p className="mt-5 text-[11.5px] leading-relaxed text-ink-muted print:text-gray-500">
-        <strong className="font-medium text-[#cfd0dd] print:text-gray-700">Important note:</strong>{' '}
+        <strong className="font-medium text-ink-muted print:text-gray-700">Important note:</strong>{' '}
         This report presents astronomical positions and rules extracted from classical Vedic texts.
         All findings are drawn verbatim from those texts — nothing is fabricated or paraphrased
         from general astrology knowledge.
