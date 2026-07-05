@@ -1,20 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ── Design tokens ────────────────────────────────────────────── */
+/* Design tokens */
 @import '../styles/tokens/colors.css';
 @import '../styles/tokens/shadows.css';
 @import '../styles/tokens/animations.css';
 
-/* ── Component CSS ────────────────────────────────────────────── */
+/* Component CSS */
 @import '../styles/components/button.css';
 @import '../styles/components/input.css';
 @import '../styles/components/card.css';
 @import '../styles/components/home.css';
 @import '../styles/components/report.css';
 
-/* ── Base ─────────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Base */
 :root {
   color-scheme: light;
 }
@@ -22,18 +23,40 @@
 body {
   background-color: var(--color-bg);
   background-image:
-    radial-gradient(ellipse 900px 600px at 50% -60px, rgba(29,45,80,0.055) 0%, transparent 70%),
-    radial-gradient(ellipse 600px 400px at 92% 5%,    rgba(241,203,184,0.08) 0%, transparent 60%);
+    radial-gradient(
+      ellipse 900px 600px at 50% -60px,
+      rgba(29, 45, 80, 0.055) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 600px 400px at 92% 5%,
+      rgba(241, 203, 184, 0.08) 0%,
+      transparent 60%
+    );
+
   min-height: 100dvh;
 }
 
-/* Thin scrollbars */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { scrollbar-width: none; }
 
-/* ── Print ────────────────────────────────────────────────────── */
+/* Thin scrollbars */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+
+/* Print */
+
 @media print {
-  :root { color-scheme: light; }
+
+  :root {
+    color-scheme: light;
+  }
+
 
   body {
     background: white !important;
@@ -43,10 +66,21 @@ body {
     background-image: none !important;
   }
 
-  @page { margin: 18mm 16mm; }
 
-  section { break-inside: avoid; }
-  tr      { break-inside: avoid; }
+  @page {
+    margin: 18mm 16mm;
+  }
+
+
+  section {
+    break-inside: avoid;
+  }
+
+
+  tr {
+    break-inside: avoid;
+  }
+
 
   .hh-card,
   .hh-form-card {
@@ -55,7 +89,14 @@ body {
     border: 1px solid #e2d9f0 !important;
   }
 
-  [class*="animate-"], .hh-form-card::before { animation: none !important; }
 
-  .print\:hidden { display: none !important; }
+  [class*='animate-'],
+  .hh-form-card::before {
+    animation: none !important;
+  }
+
+
+  .print\:hidden {
+    display: none !important;
+  }
 }
