@@ -24,14 +24,31 @@
   .home-h1 {
     font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
     font-weight: 700;
-    font-size: clamp(3.5rem, 9vw, 4.5rem);
-    line-height: 1.0;
+    /*
+     * clamp: 2.5rem floor ensures "Vedic Astrology" fits at 320px+;
+     * 8.5vw scales with viewport; 4.25rem cap keeps desktop premium.
+     * Each span is display:block so "Report." never orphans on a line.
+     */
+    font-size: clamp(2.5rem, 8.5vw, 4.25rem);
+    line-height: 1.04;
     letter-spacing: -0.022em;
     color: var(--color-ink);
     margin-bottom: 2rem;
   }
 
-  .home-h1 span { display: block; }
+  .home-h1 span {
+    display: block;
+    /* Prevent "Vedic Astrology" from splitting across lines */
+    white-space: nowrap;
+  }
+
+  /*
+   * Safety: if font is somehow too wide for a very narrow viewport,
+   * clip silently rather than causing horizontal scroll.
+   */
+  .home-h1 {
+    overflow: hidden;
+  }
 
   .home-h1-gold { color: var(--color-primary); }
 
@@ -244,11 +261,16 @@
   }
 
 /* ── Hero wrapper ─────────────────────────────────────────────── */
+/*
+ * min-height: 100dvh ensures the hero fills the first viewport so
+ * the cosmic section only appears after the user scrolls.
+ * overflow-x: hidden prevents the solar system's orbit rings from
+ * causing a horizontal scroll bar if they are close to the edge.
+ */
 .home-hero-section {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 4rem;
-  padding-bottom: 3rem;
+  min-height: 100dvh;
+  padding: 4rem 1.25rem 5rem;
+  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
