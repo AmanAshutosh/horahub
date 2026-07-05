@@ -25,6 +25,11 @@ export function BirthForm() {
     if (problem) { setError(problem); return; }
     setError(null);
     setSubmitting(true);
+
+    // Normalise time to HH:MM — some browsers return HH:MM:SS with certain step/locale settings.
+    const birthTime = form.birthTime.slice(0, 5);
+
+    let chartId: string | null = null;
     try {
       const res = await fetch('/api/chart', {
         method: 'POST',
@@ -33,7 +38,7 @@ export function BirthForm() {
           fullName:  form.fullName,
           gender:    form.gender,
           birthDate: form.birthDate,
-          birthTime: form.birthTime,
+          birthTime,
           placeName: form.place!.name,
           latitude:  form.place!.latitude,
           longitude: form.place!.longitude,
@@ -41,8 +46,9 @@ export function BirthForm() {
         }),
       });
       if (!res.ok) {
-        const body = (await res.json()) as { error?: string };
-        throw new Error(body.error ?? 'Could not generate the chart.');
+        // Guard against non-JSON error bodies (e.g. gateway HTML pages).
+        const errBody = await res.json().catch(() => ({})) as { error?: string };
+        throw new Error(errBody.error ?? `Request failed (${res.status})`);
       }
       const data = (await res.json()) as GenerateChartResponse;
       setResult(data);
@@ -53,11 +59,17 @@ export function BirthForm() {
         birthTime: form.birthTime,
         placeName: form.place!.name,
       });
-      router.push(`/report/${data.chartId}`);
+      chartId = data.chartId;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Something went wrong.');
     } finally {
       setSubmitting(false);
+    }
+
+    // Navigate outside the try/catch — router.push() uses URLPattern internally
+    // and can throw a DOMException that must not be caught as a form error.
+    if (chartId) {
+      router.push(`/report/${chartId}`);
     }
   }
 
@@ -116,6 +128,7 @@ export function BirthForm() {
         >
           <input
             type="time"
+            step="60"
             className={inputClass}
             value={form.birthTime}
             onChange={(e) => update('birthTime', e.target.value)}
