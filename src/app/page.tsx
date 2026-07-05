@@ -51,18 +51,14 @@ const ANALYSIS_AREAS = [
 
 export default function HomePage() {
   return (
-    <>
-      {/* ── Hero / Form ─────────────────────────────────────────────── */}
-      <main>
-        <section className="home-hero-section">
-          <div className="mx-auto w-full max-w-[540px]">
+    <main>
+      {/* ── Section 1: Hero — two-column on desktop ─────────────────── */}
+      <section className="home-hero-section">
+        <div className="home-hero-cols">
 
-            {/* Eyebrow */}
-            <p className="home-eyebrow animate-fade">
-              HoraHub · Jyotiṣa Engine
-            </p>
-
-            {/* Hero */}
+          {/* Left: headline + cosmic intro */}
+          <div className="home-hero-left">
+            <p className="home-eyebrow animate-fade">HoraHub · Jyotiṣa Engine</p>
             <div className="animate-slide-up">
               <p className="home-preheading">Your personal</p>
               <h1 className="home-h1">
@@ -70,84 +66,77 @@ export default function HomePage() {
                 <span>Report<span className="home-h1-gold">.</span></span>
               </h1>
             </div>
-
-            {/* Subtitle */}
-            <p className="home-subtitle animate-slide-up">
-              Swiss Ephemeris positions. Interpretations sourced verbatim from
-              four classical Vedic texts. No generalised statements, no fabrication.
-            </p>
-
-            {/* Birth form */}
-            <BirthForm />
-
-            {/* Trust signals */}
-            <div className="home-trust-grid">
-              {FEATURES.map(({ label, detail }) => (
-                <div key={label} className="home-trust-card">
-                  <p className="home-trust-label">{label}</p>
-                  <p className="home-trust-detail">{detail}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Sources */}
-            <div className="home-sources">
-              <span className="home-sources-label">Sources</span>
-              {SOURCES.map((s, i) => (
-                <span key={s} className="flex items-center gap-1">
-                  {i > 0 && <span className="home-sources-sep">·</span>}
-                  <span className="home-sources-name">{s}</span>
-                </span>
-              ))}
-            </div>
-
-            {/* Disclaimer */}
-            <p className="home-disclaimer">
-              Classical Vedic astrology · not a substitute for professional advice
+            <h2 className="home-cosmic-heading animate-slide-up" id="cosmic-heading">
+              Explore Your Cosmic Blueprint
+            </h2>
+            <p className="home-cosmic-subheading animate-slide-up">
+              Vedic astrology tracks nine planetary bodies — each influencing
+              a distinct area of your life. Your birth chart captures their
+              exact positions.
             </p>
           </div>
-        </section>
 
-        {/* ── Cosmic Blueprint ─────────────────────────────────────── */}
-        <section className="home-cosmic-section" aria-labelledby="cosmic-heading">
-          <h2 className="home-cosmic-heading" id="cosmic-heading">
-            Explore Your Cosmic Blueprint
-          </h2>
-          <p className="home-cosmic-subheading">
-            Vedic astrology tracks nine planetary bodies — each influencing a distinct
-            area of your life. Your birth chart captures their exact positions.
-          </p>
+          {/* Right: animated solar system */}
+          <div className="home-hero-right">
+            <SolarSystem />
+          </div>
 
-          <SolarSystem />
+        </div>
+      </section>
 
-          <p className="home-cosmic-caption">
-            Your birth chart captures the position of these planetary influences
-            at your exact birth moment — creating a unique celestial signature.
-          </p>
-        </section>
+      {/* ── Section 2: Form + Trust ──────────────────────────────────── */}
+      <section className="home-form-section">
+        <div className="home-form-inner">
 
-        {/* ── What HoraHub Analyzes ─────────────────────────────────── */}
-        <section className="home-analysis-section" aria-labelledby="analysis-heading">
-          <h2 className="home-analysis-heading" id="analysis-heading">
-            What HoraHub Analyzes
-          </h2>
-          <p className="home-analysis-sub">
-            Five domains from classical Vedic texts, mapped to your chart.
-          </p>
+          <BirthForm />
 
-          <div className="home-analysis-grid">
-            {ANALYSIS_AREAS.map(area => (
-              <div
-                key={area.id}
-                className={`home-analysis-card home-analysis-card--${area.variant}`}
-              >
-                <p className="home-analysis-card-title">{area.title}</p>
-                <p className="home-analysis-card-body">{area.body}</p>
+          <div className="home-trust-grid">
+            {FEATURES.map(({ label, detail }) => (
+              <div key={label} className="home-trust-card">
+                <p className="home-trust-label">{label}</p>
+                <p className="home-trust-detail">{detail}</p>
               </div>
             ))}
           </div>
-        </section>
-      </main>
-    </>
+
+          <div className="home-sources">
+            <span className="home-sources-label">Sources</span>
+            {SOURCES.map((s, i) => (
+              <span key={s} className="flex items-center gap-1">
+                {i > 0 && <span className="home-sources-sep">·</span>}
+                <span className="home-sources-name">{s}</span>
+              </span>
+            ))}
+          </div>
+
+          <p className="home-disclaimer">
+            Classical Vedic astrology · not a substitute for professional advice
+          </p>
+
+        </div>
+      </section>
+
+      {/* ── Section 3: What HoraHub Analyzes ────────────────────────── */}
+      <section className="home-analysis-section" aria-labelledby="analysis-heading">
+        <h2 className="home-analysis-heading" id="analysis-heading">
+          What HoraHub Analyzes
+        </h2>
+        <p className="home-analysis-sub">
+          Five domains from classical Vedic texts, mapped to your chart.
+        </p>
+
+        <div className="home-analysis-grid">
+          {ANALYSIS_AREAS.map(area => (
+            <div
+              key={area.id}
+              className={`home-analysis-card home-analysis-card--${area.variant}`}
+            >
+              <p className="home-analysis-card-title">{area.title}</p>
+              <p className="home-analysis-card-body">{area.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

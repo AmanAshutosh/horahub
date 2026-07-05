@@ -2,7 +2,7 @@
 
 /* ── Eyebrow ──────────────────────────────────────────────────── */
   .home-eyebrow {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.24em;
@@ -260,65 +260,89 @@
     letter-spacing: 0.02em;
   }
 
-/* ── Hero wrapper ─────────────────────────────────────────────── */
+/* ── Hero section — two-column split on desktop ───────────────── */
 /*
- * min-height: 100dvh ensures the hero fills the first viewport so
- * the cosmic section only appears after the user scrolls.
- * overflow-x: hidden prevents the solar system's orbit rings from
- * causing a horizontal scroll bar if they are close to the edge.
+ * min-height: 100dvh keeps headline + solar system in the first
+ * viewport on desktop. The flex column + justify-content: center
+ * vertically centres the cols div without hardcoded padding hacks.
  */
 .home-hero-section {
   min-height: 100dvh;
-  padding: 4rem 1.25rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow-x: hidden;
 }
 
-@media (min-width: 640px) {
-  .home-hero-section {
-    padding-top: 6rem;
+/* Inner cols: side-by-side on desktop, stacked on mobile */
+.home-hero-cols {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 3.5rem 2.5rem;
+  max-width: 1060px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Text column — grows to fill remaining space */
+.home-hero-left {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Solar system column — takes its natural width (420 px system) */
+.home-hero-right {
+  flex: 0 0 auto;
+}
+
+/* Mobile: stack vertically, centre-align text */
+@media (max-width: 859px) {
+  .home-hero-cols {
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.25rem 2.5rem;
+    gap: 2rem;
+  }
+
+  .home-hero-left {
+    text-align: center;
+    width: 100%;
+  }
+
+  .home-hero-left .home-cosmic-subheading {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-/* ── Cosmic blueprint section ─────────────────────────────────── */
-.home-cosmic-section {
-  padding: 5rem 1.25rem 4rem;
-  text-align: center;
-  background:
-    radial-gradient(
-      ellipse 700px 500px at 50% 0%,
-      rgba(29, 45, 80, 0.045) 0%,
-      transparent 70%
-    );
-}
-
+/* ── Cosmic heading + subheading ──────────────────────────────── */
 .home-cosmic-heading {
   font-family: var(--font-playfair), Georgia, serif;
-  font-size: clamp(1.625rem, 4.5vw, 2.25rem);
+  font-size: clamp(1.25rem, 3.2vw, 1.75rem);
   font-weight: 600;
   color: var(--color-ink);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  letter-spacing: -0.018em;
+  margin-bottom: 0.625rem;
 }
 
 .home-cosmic-subheading {
   font-size: 0.9375rem;
   color: var(--color-ink-muted);
-  margin-bottom: 3rem;
-  max-width: 42ch;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 0;
+  max-width: 44ch;
   line-height: 1.6;
 }
 
-.home-cosmic-caption {
-  margin-top: 2.5rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--color-ink-subtle);
-  max-width: 48ch;
-  margin-left: auto;
-  margin-right: auto;
-  font-style: italic;
+/* ── Form section — appears below fold after scrolling ───────── */
+.home-form-section {
+  padding: 4rem 1.25rem 3rem;
+}
+
+.home-form-inner {
+  max-width: 540px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* ── Analysis section ─────────────────────────────────────────── */
