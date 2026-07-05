@@ -8,6 +8,8 @@
 @import '../styles/components/input.css';
 @import '../styles/components/card.css';
 @import '../styles/components/home.css';
+@import '../styles/components/solar-system.css';
+@import '../styles/components/footer.css';
 @import '../styles/components/report.css';
 
 @tailwind base;

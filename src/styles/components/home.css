@@ -242,3 +242,144 @@
     color: rgba(122,143,175,0.55);
     letter-spacing: 0.02em;
   }
+
+/* ── Hero wrapper ─────────────────────────────────────────────── */
+.home-hero-section {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .home-hero-section {
+    padding-top: 6rem;
+  }
+}
+
+/* ── Cosmic blueprint section ─────────────────────────────────── */
+.home-cosmic-section {
+  padding: 5rem 1.25rem 4rem;
+  text-align: center;
+  background:
+    radial-gradient(
+      ellipse 700px 500px at 50% 0%,
+      rgba(29, 45, 80, 0.045) 0%,
+      transparent 70%
+    );
+}
+
+.home-cosmic-heading {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.625rem, 4.5vw, 2.25rem);
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.home-cosmic-subheading {
+  font-size: 0.9375rem;
+  color: var(--color-ink-muted);
+  margin-bottom: 3rem;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.home-cosmic-caption {
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--color-ink-subtle);
+  max-width: 48ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+}
+
+/* ── Analysis section ─────────────────────────────────────────── */
+.home-analysis-section {
+  padding: 4rem 1.25rem 5rem;
+}
+
+.home-analysis-heading {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.018em;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.home-analysis-sub {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+  margin-bottom: 2.75rem;
+}
+
+.home-analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+@media (min-width: 540px) {
+  .home-analysis-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.home-analysis-card {
+  padding: 1.5rem 1.375rem;
+  border-radius: 1.25rem;
+  background: var(--color-panel);
+  box-shadow: var(--shadow-neu-sm);
+  transition:
+    box-shadow  var(--dur-base) var(--ease-out),
+    transform   var(--dur-base) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-analysis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: var(--card-accent, var(--color-primary));
+  opacity: 0.55;
+}
+
+.home-analysis-card:hover {
+  box-shadow: var(--shadow-neu-md);
+  transform: translateY(-2px);
+}
+
+.home-analysis-card--career   { --card-accent: var(--color-primary); }
+.home-analysis-card--marriage { --card-accent: var(--planet-venus-glow); }
+.home-analysis-card--finance  { --card-accent: var(--planet-jupiter-glow); }
+.home-analysis-card--dasha    { --card-accent: var(--planet-moon-glow); }
+.home-analysis-card--strengths{ --card-accent: var(--planet-mars-glow); }
+
+.home-analysis-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+}
+
+.home-analysis-card-body {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted);
+}
