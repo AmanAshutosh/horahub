@@ -27,6 +27,7 @@ export const chartService = {
     const [h, mi] = dto.birthTime.split(':').map(Number) as [number, number];
     const resolved = localToUtc(y, mo, d, h, mi, dto.tzName);
     if (!resolved) throw new AppError('Unrecognised timezone', 422);
+    logger.debug({ resolved }, 'chart.service: birth time resolved to UTC');
 
     const hash = birthHash(dto);
     const kb = loadKnowledgeBase();
@@ -42,6 +43,7 @@ export const chartService = {
       facts = facts ?? (existing.facts as unknown as ChartFacts);
     } else {
       facts = facts ?? ephemeris.compute({ utcMs: resolved.utcMs, latitude: dto.latitude, longitude: dto.longitude });
+      logger.debug({ hash }, 'chart.service: chart facts computed');
       const created = await chartRepository.create(hash, facts, undefined);
       chartId = created.id;
       logger.debug({ chartId, hash }, 'chart computed and stored');
@@ -51,6 +53,7 @@ export const chartService = {
     // 2. reading for the active KB version (re-used if already rendered)
     const reading = interpret(facts, kb);
     await chartRepository.upsertReading(chartId, kbVersion, reading);
+    logger.debug({ chartId, kbVersion }, 'chart.service: reading persisted');
 
     // 3. inference engine — populates life-area sections from KB rules
     //    Gracefully absent when kb/graph has not been built yet.
