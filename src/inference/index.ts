@@ -23,6 +23,7 @@ import { buildTimeline } from './timeline';
 import { extractRemedies } from './remedy-engine';
 import { buildPastValidation } from './past-validator';
 import { buildReportSections } from './report-builder';
+import { logger } from '@/lib/logger';
 
 /**
  * Run the full deterministic inference pipeline against a computed chart.
@@ -30,13 +31,22 @@ import { buildReportSections } from './report-builder';
  * @returns InferenceResult or null if the KB graph is unavailable.
  */
 export function runInference(facts: ChartFacts): InferenceResult | null {
+  logger.debug('INFERENCE_START');
+
   // Guard: KB graph must exist
   const kg = getKnowledgeGraph();
-  if (!kg) return null;
+  if (!kg) {
+    logger.warn('GRAPH_LOAD_FAIL — kb/graph/graph.json not found; run `npm run kg:build`');
+    return null;
+  }
+  logger.debug('GRAPH_LOAD_OK');
 
   // Guard: rule index must be populated
   const ruleIndex = getRuleIndex();
-  if (ruleIndex.size === 0) return null;
+  if (ruleIndex.size === 0) {
+    logger.warn('RULE_INDEX_EMPTY — kb/rules/*/rules.jsonl not found or empty');
+    return null;
+  }
 
   const t0 = Date.now();
 
@@ -48,10 +58,12 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
   // ── Stage 2: Rule matching ─────────────────────────────────────────────────
 
   const allMatches = matchRules(facts, yogaNames);
+  logger.debug({ matchedRuleCount: allMatches.length }, 'MATCHED_RULE_COUNT');
 
   // ── Stage 3: Domain aggregation ───────────────────────────────────────────
 
   const domains = aggregateDomains(allMatches, facts, yogaNames);
+  logger.debug({ domainResultsCount: Object.keys(domains).length }, 'DOMAIN_RESULTS_COUNT');
 
   // ── Stage 4: Timeline ─────────────────────────────────────────────────────
 
@@ -94,7 +106,9 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
 export function generateReportSections(facts: ChartFacts): ReportSectionData[] {
   const result = runInference(facts);
   if (!result) return [];
-  return buildReportSections(result, facts);
+  const sections = buildReportSections(result, facts);
+  logger.debug({ sectionsCreated: sections.length }, 'SECTIONS_CREATED');
+  return sections;
 }
 
 // Re-export for external use

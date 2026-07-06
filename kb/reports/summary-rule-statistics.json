@@ -1,0 +1,70 @@
+{
+  "totalRulesAllBooks": 8384,
+  "byBook": [
+    {
+      "slug": "bphs-santhanam",
+      "title": "Brihat Parashara Hora Shastra",
+      "totalRules": 723,
+      "structuredRules": 47,
+      "compositeRules": 5,
+      "byStatus": {
+        "draft": 723
+      },
+      "byPriority": {
+        "1": 6,
+        "2": 124,
+        "3": 442,
+        "4": 148,
+        "5": 3
+      }
+    },
+    {
+      "slug": "phaladeepika-abhushana",
+      "title": "Phaladeepika",
+      "totalRules": 2623,
+      "structuredRules": 321,
+      "compositeRules": 16,
+      "byStatus": {
+        "draft": 2623
+      },
+      "byPriority": {
+        "1": 31,
+        "2": 502,
+        "3": 1248,
+        "4": 767,
+        "5": 75
+      }
+    },
+    {
+      "slug": "horasara",
+      "title": "Horasara",
+      "totalRules": 1983,
+      "structuredRules": 410,
+      "compositeRules": 33,
+      "byStatus": {
+        "draft": 1983
+      },
+      "byPriority": {
+        "2": 446,
+        "3": 872,
+        "4": 494,
+        "5": 171
+      }
+    },
+    {
+      "slug": "light-on-life-svoboda",
+      "title": "Light on Life",
+      "totalRules": 3055,
+      "structuredRules": 574,
+      "compositeRules": 143,
+      "byStatus": {
+        "draft": 3055
+      },
+      "byPriority": {
+        "2": 31,
+        "3": 869,
+        "4": 2155
+      }
+    }
+  ]
+}

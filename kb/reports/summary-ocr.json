@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bphs-santhanam",
+    "title": "Brihat Parashara Hora Shastra",
+    "ocrPages": 482,
+    "digitalPages": 0,
+    "avgOcrConfidence": 0.8064102105205141,
+    "skippedPages": []
+  },
+  {
+    "slug": "phaladeepika-abhushana",
+    "title": "Phaladeepika",
+    "ocrPages": 476,
+    "digitalPages": 0,
+    "avgOcrConfidence": 0.7387821847045095,
+    "skippedPages": [
+      2,
+      3,
+      4,
+      5,
+      8,
+      13,
+      470,
+      472,
+      474,
+      475,
+      476
+    ]
+  },
+  {
+    "slug": "horasara",
+    "title": "Horasara",
+    "ocrPages": 391,
+    "digitalPages": 0,
+    "avgOcrConfidence": 0.7046251163176058,
+    "skippedPages": [
+      379
+    ]
+  },
+  {
+    "slug": "light-on-life-svoboda",
+    "title": "Light on Life",
+    "ocrPages": 8,
+    "digitalPages": 453,
+    "avgOcrConfidence": 0.6718437502042033,
+    "skippedPages": [
+      23
+    ]
+  }
+]

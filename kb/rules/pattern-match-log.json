@@ -1,0 +1,572 @@
+{
+  "PLANET_ASPECT_COOCCURRENCE": {
+    "matchCount": 204,
+    "samples": [
+      {
+        "ruleId": "BPHS_CHUNK_V15_R017",
+        "raw": "Saturn",
+        "sentence": "' .for aspects of Saturn, Mars and Jupiter,"
+      },
+      {
+        "ruleId": "BPHS_CHUNK_V15_R023",
+        "raw": "Rahu",
+        "sentence": "Karakamsa in various signs, effects of planets in Karakamsa, Rahu-Sun in Karakamsa, ‘Gulika in Karakamsa, effects of aspects on Ketu in Karakamsa, effects of 2nd from Kaiakamsa, 3rd from* Kara- kamsa, 4th from Karakamsa, 5th from Karakamsa, 6th from Karakamsa, 7th from Karakamsa, 8th from Karakamsa, 9th from Karakamsa, 10th from Kara- kamsa, | {th from Karakamsa, 12th from Karakamsa, planets in 5th from Karakamsa."
+      },
+      {
+        "ruleId": "BPHS_CH3_V8x9_R009",
+        "raw": "Moon",
+        "sentence": "Should the Moon be conjunct a benefic or aspected by a benefic, she turns a benefic, even if in a waning state."
+      },
+      {
+        "ruleId": "BPHS_CH9_V3x6_R001",
+        "raw": "Moon",
+        "sentence": "SHORT-LIFE COMBINATIONS {upto sloka 23): Should the Moon be in the 6th,-8th, or the 12th from the ascendant and be in aspect to a malefic, the child will die soon."
+      },
+      {
+        "ruleId": "BPHS_CH9_V3x6_R007",
+        "raw": "Moon",
+        "sentence": "The Moon in an evil house at “birth and in aspect toa"
+      }
+    ]
+  },
+  "HOUSE_LORD_STRENGTH": {
+    "matchCount": 95,
+    "samples": [
+      {
+        "ruleId": "BPHS_CHUNK_V15_R035",
+        "raw": "5th lord",
+        "sentence": "Yogas for affluence, effects of angular lord’s divi- sional dignities, effects of 5th lord’s divisional digni- ties, effects of 9th lord’s divisional dignities, angular"
+      },
+      {
+        "ruleId": "BPHS_CH6_V39_R007",
+        "raw": "2nd lord",
+        "sentence": "If Jupiter or the 2nd lord be in ‘Kubera’ Shashtiamsa, one will be very affluent."
+      },
+      {
+        "ruleId": "BPHS_CH6_V39_R008",
+        "raw": "10th lord",
+        "sentence": "If the 10th lord occupies ‘Bhrashta’ shashtiamsa, the native will be wretched in profession."
+      },
+      {
+        "ruleId": "BPHS_CH7_VUNK_R049",
+        "raw": "9th lord",
+        "sentence": "The 9th from the Sun if occupied by a debilitated planet or if the 9th lord from the Sun is weak, then the good indications through Pitru Bhava are neutralized."
+      },
+      {
+        "ruleId": "LOL_CHTHExDIVISIONSxOFxAxCONSTELLATION_VUNK_R023",
+        "raw": "tenth lord",
+        "sentence": "For a Sagittarius ascendant, the tenth house is Virgo and the tenth lord is therefore Mercury."
+      }
+    ]
+  },
+  "DASHA_SHORTHAND_PAIR": {
+    "matchCount": 25,
+    "samples": [
+      {
+        "ruleId": "BPHS_CHUNK_V15_R037",
+        "raw": "Rahu-Ketu",
+        "sentence": "Marakas based on lordship, maraka dasa, star groups related to death, Rahu-Ketu as Marakas, 3rd house and death, occupants of the 8th house, fate of the corpse, serpent decanates, prenatal abode, ascent after death,"
+      },
+      {
+        "ruleId": "LOL_CHCHAPTERxELEVEN_VUNK_R001",
+        "raw": "RAHU-KETU",
+        "sentence": "VIMSHOTTARI DASHA 3O 9 DASHA ANALYSIS: Basic Principles; Anahsis of Jtqiter Dasba and of Saturn Dashafor Chart I 3 I I BHllKTIS 320 BHUKTI INTERPRETATION 3~~ RAHU-KETU 3 29 GOCHARA (TRANSITS) 330 TRANSITS FROM T H E CHANDRA LAGNA 3 34 SADE SATI 331 A BINARY METHOD 3 l6"
+      },
+      {
+        "ruleId": "LOL_CHBHUKTIS_VUNK_R010",
+        "raw": "Rahu-Mars",
+        "sentence": "For example, to calculate the period of Mars within the major period of Rahu, a period usually expressed in astrological shorthand as Rahu-Mars, multiply the 18 years of the Rahu Dasha by the 7 years of the Mars Dasha t o arrive at 126."
+      },
+      {
+        "ruleId": "LOL_CHBHUKTIS_VUNK_R012",
+        "raw": "Jupiter-Saturn",
+        "sentence": "Jupiter-Saturn (the minor period of Saturn within the major period of Jupiter) = 1 6 x 19 = 304 or j o months and (3 X 4 = 12) 1 2 days, so Jupiter- Saturn lasts 2 years, 6 months and 1 2 days."
+      },
+      {
+        "ruleId": "LOL_CHBHUKTIS_VUNK_R015",
+        "raw": "Sun-Sun",
+        "sentence": "Therefore the first bhukti in the Maha Dasha of the Sun is that of the Sun itself (written Sun-Sun); in the major period of Mercury it is Mercury-Mercury, and so on."
+      }
+    ]
+  },
+  "PLANET_HOUSE_COOCCURRENCE": {
+    "matchCount": 232,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_V18_R016",
+        "raw": "Ketu ... 9th",
+        "sentence": "is in Krittika in the 9th house, the evil effects due to father will be given by Ketu in Sun’s dasa (related to Krittika)."
+      },
+      {
+        "ruleId": "BPHS_CH4_VUNK_R027",
+        "raw": "Saturn ... 9th",
+        "sentence": "Now A, Band C are explained, “A” is the angular dist- ance between Saturn and Gulika at birth. ‘B’’ is the distance between the cusp of the ascendant and that of the 9th house counted in a direct order (i.e. via 4th and 7th cusps). “C”’ is required if the ascendant lord is in the invisible half (i.e. ascen- dant and descendant intersected by the nadir)."
+      },
+      {
+        "ruleId": "PHALA_CH4_V5_R001",
+        "raw": "Moon ... 10th",
+        "sentence": "The Moon is strong and auspicious when she has her full Paksha bala and the Sun when he has his full Dig-bala (ic, when he is in the 10th house or the Meridian)."
+      },
+      {
+        "ruleId": "PHALA_CH5_V1_R002",
+        "raw": "Sun ... 10th",
+        "sentence": "The source of such an acquisition will be the father, mother, a foe, a friend, a brother, a wife ora servant, according as the Sun orany of the other planets taken in order occupies the 10th place from the Lagna or the Moon whichever is stronger."
+      },
+      {
+        "ruleId": "PHALA_CH5_V2_R001",
+        "raw": "Sun ... 10th",
+        "sentence": "Sloka 2.--If the lord of the 10th house be posited in the Sun’s Navamsa, the person born will earn his liveli- hood through fruit-trees, by the repetitions of Mantras, by fraud, by gambling, by uttering falsehood, through wool, medicine andthe like, by working on"
+      }
+    ]
+  },
+  "PLANET_NAKSHATRA_COOCCURRENCE": {
+    "matchCount": 24,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_V18_R016",
+        "raw": "Ketu ... Krittika",
+        "sentence": "is in Krittika in the 9th house, the evil effects due to father will be given by Ketu in Sun’s dasa (related to Krittika)."
+      },
+      {
+        "ruleId": "PHALA_CH13_V7_R002",
+        "raw": "Moon ... Pushya",
+        "sentence": "Jf there be a hirth when the Moon is in the asterisms qt (Pushya), qarwer (Purvastadha)}, and feyay (Chitra), the death of the father, the mother, the child or the maternal uncle respectively should be predicted according as"
+      },
+      {
+        "ruleId": "PHALA_CH26_VUNK_R014",
+        "raw": "Sun ... Mula",
+        "sentence": "Thus, if the Sun should occupy at any, time, say the asterism ‘Mula’, his Latta Star (which is the 12th from Mula) will be Krittika."
+      },
+      {
+        "ruleId": "HORA_CH20_V19_R001",
+        "raw": "Mars ... Anuradha",
+        "sentence": "_ Sloka 19.—If Mars occupy Aswini, Anuradha or shta, identical with the 10th house, or if the Sun"
+      },
+      {
+        "ruleId": "LOL_CHTxHxExNAKSHATRAS_VUNK_R002",
+        "raw": "Moon ... Hasta",
+        "sentence": "For example, jyotishis who wish to achieve success at palmistry will often begin worship of the goddess PancbanguIi ('Five Fingers') when the Moon occupies the nakshatra Hasta (which means 'the hand')."
+      }
+    ]
+  },
+  "PLANET_LAGNA_PLACEMENT": {
+    "matchCount": 33,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_VUNK_R022",
+        "raw": "Jupiter is IN the ascendant",
+        "sentence": "direction lorded by it, If Jupiter is IN the ascendant, the periods of Jupiter will give success in north-east, the direction ruled by"
+      },
+      {
+        "ruleId": "BPHS_CH3_V41_R003",
+        "raw": "Rahu is in the ascendant",
+        "sentence": "‘for example, Rahu is in the ascendant or is a significant planet in a horary chart, then the query relates to a metal."
+      },
+      {
+        "ruleId": "BPHS_CH9_V3x6_R004",
+        "raw": "Mars placed in the ascendant",
+        "sentence": "Mars placed in the ascendant or in the 8th and be conjunct Saturn or Sun or be in aspect to a malefic, being bereft of benefic aspect will prove a source of (immediate) death."
+      },
+      {
+        "ruleId": "PHALA_CH8_V7_R007",
+        "raw": "Mars occupy the Lagna",
+        "sentence": "Siota &.-If Mars occupy the Lagna at a person's birth, he will have an injured limb; he will be short-lived and will be very cruel and adventurous."
+      },
+      {
+        "ruleId": "PHALA_CH8_V14_R001",
+        "raw": "Jupiter should be posited in the Lagna",
+        "sentence": "Sloka 14.--If at a birth Jupiter should be posited in the Lagna, the person concerned will be handsome, for- tunate, long-lived, fearless, and blessed with children."
+      }
+    ]
+  },
+  "PLANET_DIGNITY": {
+    "matchCount": 90,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_VUNK_R029",
+        "raw": "Sun is exalted",
+        "sentence": "For cxample, the Sun is exalted in Aries and is the most Powerful on the 10th degree therein, In Libra he gets debilitat- edand if be in 10th degree of Libra, he is worst affected, Similarly suitable deductions be made for other planets."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R031",
+        "raw": "Sun’s Moolatrikona",
+        "sentence": "20 degrees are the Sun’s Moolatrikona while the rest is his own house."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R032",
+        "raw": "Moon the rest is her Moolatrikona",
+        "sentence": "After the first_3 degrees of exaltation portion in Taurus, for the Moon the rest is her Moolatrikona."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R055",
+        "raw": "Sun to Saturn, no one is exalted",
+        "sentence": "L From the Sun to Saturn, no one is exalted in the above- mentioned exaltation signs, nor debilitated in the above mentioned debilitation signs."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R056",
+        "raw": "Sun) have own sign",
+        "sentence": "Gulika etc. four except Kala (related to the Sun) have own sign system in the respective signs ruled by their fathers."
+      }
+    ]
+  },
+  "PLANET_DIGNITY_COOCCURRENCE": {
+    "matchCount": 87,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_VUNK_R033",
+        "raw": "Mars ... Moolatrikona",
+        "sentence": "Mars has thé first 12 degrecs in Aries as Moolatrikona with the rest there- in becoming simply his own house."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R034",
+        "raw": "Mercury ... own house",
+        "sentence": "For Mercury, in Virgo the first 15 degrees arc exaltation zone, the next 5 degrees Moolatri- Kona and the last 10 degrees arc own house."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R035",
+        "raw": "Jupiter ... Moolatrikona",
+        "sentence": "The first one third of Sagittarius is the Moolatrikona of Jupiter while, the remain- ing part thercof is his own house."
+      },
+      {
+        "ruleId": "BPHS_CH3_VUNK_R036",
+        "raw": "Venus ... Moolatrikona",
+        "sentence": "Venus divides Libra into two halves kceping the first as Moolatrikona and the second as own house."
+      },
+      {
+        "ruleId": "BPHS_CH3_V55_R006",
+        "raw": "Mars ... Moolatrikona",
+        "sentence": "He owns the 2nd and 7th from the Moolatrikona ot Mars, thus becoming friend and enemy respectively."
+      }
+    ]
+  },
+  "PLANET_IN_SIGN": {
+    "matchCount": 25,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_V3_R003",
+        "raw": "Sun is in Taurus",
+        "sentence": "Let us assume that the Sun is in Taurus 10 degrees and Calculate the 5 Upagrahas, as under :"
+      },
+      {
+        "ruleId": "BPHS_CH3_V71x74_R005",
+        "raw": "Sun is in Aries",
+        "sentence": "Suppose the Sun is in Aries 15 degrces, we gct 1704+15=185 or Libra 5 degrees as Pranapada ascendant."
+      },
+      {
+        "ruleId": "BPHS_CH4_VUNK_R001",
+        "raw": "Rahu is in Scorpio",
+        "sentence": "In the above case, if Rahu is in Scorpio ascendant, there will bea scar etc. onthe head."
+      },
+      {
+        "ruleId": "BPHS_CH4_VUNK_R043",
+        "raw": "Moon is in Aquarius",
+        "sentence": "In the Adhana chart before us, the Moon is in Aquarius and hence the natal ‘Moon should be Leo or in Scorpio."
+      },
+      {
+        "ruleId": "BPHS_CH6_V53_R001",
+        "raw": "Venus is placed in Capricorn",
+        "sentence": "Assume that Venus is placed in Capricorn 13° 25’."
+      }
+    ]
+  },
+  "PLANET_SIGN_COOCCURRENCE": {
+    "matchCount": 26,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH3_VUNK_R059",
+        "raw": "Mercury ... Gemini",
+        "sentence": "Ardhaprahara, Mercury’s son, is in own sign if in Gemini."
+      },
+      {
+        "ruleId": "BPHS_CH3_V71x74_R006",
+        "raw": "Sun ... Taurus",
+        "sentence": "In the same example if the Sun is in a fixed sign, say Taurus 15 degrees, we have to add another 240 degrees, So to say, 45 (the Sun) +240+ 170= 455 or 95 degrecs (Cancer 5 degrees) as Pranapada asceadant."
+      },
+      {
+        "ruleId": "BPHS_CH3_V71x74_R007",
+        "raw": "Sun ... Gemini",
+        "sentence": "Again, alternatively if the Sun is in a dual sign, say Gemini 15°, we have to add only 120 degrecs in place of 240 degrees."
+      },
+      {
+        "ruleId": "PHALA_CH8_VUNK_R002",
+        "raw": "Sun ... Cancer",
+        "sentence": "Cancer and the Sun occupy it, he will have a cataract inthe eyes; if it be Mesha, he will suffer from eye- disease."
+      },
+      {
+        "ruleId": "PHALA_CH8_VUNK_R004",
+        "raw": "Sun ... Libra",
+        "sentence": "If Libra be the Lagna and the Sun occupy it, he will suffer from poverty and loss of children."
+      }
+    ]
+  },
+  "PLANET_HOUSE_PLACEMENT": {
+    "matchCount": 212,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH4_VUNK_R037",
+        "raw": "Sun) and is in the 2nd house",
+        "sentence": "In the Adhana chart before us, the Moon is decreasing (i.e. approaching the Sun) and is in the 2nd house (i.e. invisible half)."
+      },
+      {
+        "ruleId": "PHALA_CH5_V5_R003",
+        "raw": "Sun occupy the 2nd",
+        "sentence": "faded aanaargeac: ak: ahraz- faatacBhrathacar 3 haz feaktale aqua aeqasy darar a df afr ttsaan Rance: Ree: wan Sloka 5.--When planets other than the Sun occupy the 2nd, the 12th or both houses reckoned from the Moon, the resulting 3 Yogas are respectively styled want (Sunapha), amr (Anapha) and geqcr (Duru"
+      },
+      {
+        "ruleId": "PHALA_CH7_V13_R002",
+        "raw": "Venus or the Moon occupy the 9th",
+        "sentence": "Sioka 14.—If ata birth Jupiter, Mercury, Venus or the Moon occupy the 9th with bright rays, uneclipsed and also be aspected by, or associated .with, friendly planets, the native concerned will become a great King worshipped by his subjects like a deity."
+      },
+      {
+        "ruleId": "PHALA_CH7_V24_R001",
+        "raw": "Mars and Mercury occupying the 2nd house",
+        "sentence": "Sloka 24.—The following are 4 Rajayogas declared by those versed in the science: (1) malefics posited in the 3rd, 6th and 11th houses reckoned from the one occupied by the lord of the Lagna or of the Janma Rasi ; (2) Mars and Mercury occupying the 2nd house from the Lagna; (3) the Sun and Venus situated in the 4th house from the Lagna; and (4) Mars, Saturn and Jupiter quartered in the 10th, 11th and the Lagna."
+      },
+      {
+        "ruleId": "PHALA_CH8_VUNK_R006",
+        "raw": "Sun should occupy the 3rd house",
+        "sentence": "If the Sun should occupy the 3rd house, the person concerned will be strong, brave, wealthy and liberal, but inimical towards his relations."
+      }
+    ]
+  },
+  "PLANET_ASPECT_GENERIC": {
+    "matchCount": 120,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH8_V4x5_R002",
+        "raw": "Mars aspects",
+        "sentence": "(a) Mars aspects Saturn, Moon and the nodes."
+      },
+      {
+        "ruleId": "BPHS_CH8_V4x5_R003",
+        "raw": "Venus, the Sun and Mercury aspect",
+        "sentence": "(b) Venus, the Sun and Mercury aspect none."
+      },
+      {
+        "ruleId": "BPHS_CH8_V4x5_R004",
+        "raw": "Jupiter aspects",
+        "sentence": "(c) Jupiter aspects the Moon, Ketu, Sun and Venus. (d) Saturn and Rahu aspect Mars, ;"
+      },
+      {
+        "ruleId": "BPHS_CH8_V4x5_R006",
+        "raw": "Moon aspects",
+        "sentence": "(e) Moon aspects Mars and Jupiter."
+      },
+      {
+        "ruleId": "BPHS_CH8_V4x5_R007",
+        "raw": "Ketu aspects",
+        "sentence": "(f}) Ketu aspects Mars and Jupiter."
+      }
+    ]
+  },
+  "YOGA_NAMED_FORMATION": {
+    "matchCount": 128,
+    "samples": [
+      {
+        "ruleId": "BPHS_CH9_V3x6_R009",
+        "raw": "in the said Yoga",
+        "sentence": "Even a benefic’s aspect on the Moon, in the said Yoga, will cause the end at the age of 8, suggests the sage."
+      },
+      {
+        "ruleId": "PHALA_CH6_V2_R001",
+        "raw": "Ruchaka) Yoga",
+        "sentence": "Sloka 2.-The person born in the wayq (Ruchaka) Yoga will have a long face, will acquire wealth by doing many daring deeds, will be brave, will overcome his enemies, will be powerful and will be arrogant."
+      },
+      {
+        "ruleId": "PHALA_CH6_V2_R002",
+        "raw": "Bhadra) Yoga",
+        "sentence": "He will become renowned for his merits, will be a leader of an army and will emerge victorious in all his attempts, The man born in the yx (Bhadra) Yoga will be gifted with long life and keen intellect, will be clean, praised by the learned, will lead men, will be very rich and clever in addressing an assembly."
+      },
+      {
+        "ruleId": "PHALA_CH5_V4_R002",
+        "raw": "Sasa Yoga",
+        "sentence": "Sloka 4.~The person born in the syarqyat (Sasa Yoga) will be extolled by all, will have good servants, will be strong, will be the headman of a village ora King, will be wicked in disposition, will have intrigues with women not his own, will usurp others’ wealth and be happy."
+      },
+      {
+        "ruleId": "PHALA_CH6_VUNK_R007",
+        "raw": "Mahabhagya) Yoga",
+        "sentence": "went (Mahabhagya) Yoga is formed."
+      }
+    ]
+  },
+  "PLANET_PAIR_CONJUNCTION": {
+    "matchCount": 17,
+    "samples": [
+      {
+        "ruleId": "PHALA_CH1_V7_R020",
+        "raw": "Venus being together with Saturn",
+        "sentence": "Effect of Venus being together with Saturn."
+      },
+      {
+        "ruleId": "PHALA_CH10_V8_R007",
+        "raw": "Moon along with Saturn",
+        "sentence": "Sloka 8,—When the Moon along with Saturn occu- pies the 7th house in a woman's nativity, the woman concerned will be remaried and in the case of a male, he will be either wifeless or childless."
+      },
+      {
+        "ruleId": "HORA_CH6_V10_R001",
+        "raw": "Jupiter occupies the Ascendant, Mars conjoined with Saturn",
+        "sentence": "Sloka 10.—When Venus in conjunction with Jupiter occupies the Ascendant, Mars conjoined with Saturn is in the 5th house, and the Moon is weak, the person born under this Yoga will surely be shortclived."
+      },
+      {
+        "ruleId": "HORA_CH6_V57_R002",
+        "raw": "Sun along with Mercury",
+        "sentence": "house, and the Sun along with Mercury is rising, the per- son born will be a favourite of sages and pag lived,"
+      },
+      {
+        "ruleId": "HORA_CH17_V60x614_R002",
+        "raw": "Saturn, is conjoined with Saturn",
+        "sentence": "of Saturn, is conjoined with Saturn or occupies a Rasi of Saturn, orisin a depression Navamsa, or is associated with a malefic, the person concerned will have sexual"
+      }
+    ]
+  },
+  "DASHA_PERIOD": {
+    "matchCount": 161,
+    "samples": [
+      {
+        "ruleId": "PHALA_CH1_V6_R022",
+        "raw": "Rahu's Dasa",
+        "sentence": "Nature of the effects of Rahu's Dasa will be similar tothat of the planet he associates with."
+      },
+      {
+        "ruleId": "PHALA_CH1_V6_R035",
+        "raw": "Sun's Dasa",
+        "sentence": "The Sun's Dasa and effects."
+      },
+      {
+        "ruleId": "PHALA_CH1_V6_R036",
+        "raw": "Moon's Dasa",
+        "sentence": "The Moon's Dasa an‘d effects."
+      },
+      {
+        "ruleId": "PHALA_CH1_V6_R038",
+        "raw": "Rahu's Dasa",
+        "sentence": "Rahu's Dasa and effects."
+      },
+      {
+        "ruleId": "PHALA_CH1_V6_R039",
+        "raw": "Jupiter's Dasa",
+        "sentence": "Jupiter's Dasa and effects."
+      }
+    ]
+  },
+  "YOGA_DECLARED": {
+    "matchCount": 27,
+    "samples": [
+      {
+        "ruleId": "PHALA_CH6_V8_R002",
+        "raw": "the Yoga is sraTHAR",
+        "sentence": "But if, the planets in gestion be malefic, the concerned Yogas are called qrqafa (Papa- vesi), etc., When the 12th and the 2nd Bhavas from the Lagna are occupied by benefics, the Yoga is sraTHAR (Subhakartari)."
+      },
+      {
+        "ruleId": "PHALA_CH6_V8_R003",
+        "raw": "the Yoga is termed",
+        "sentence": "If bene- fics unaspected by malefics, occupy the 2nd house from the Lagna, the Yoga is termed SELES) (Susubha)."
+      },
+      {
+        "ruleId": "PHALA_CH6_V19_R002",
+        "raw": "the Yoga is called",
+        "sentence": "When benefics occupy the 10th house counted from the Lagna or the Moon, the Yoga is called stqa@t (Amala)."
+      },
+      {
+        "ruleId": "PHALA_CH6_V21_R001",
+        "raw": "the Yoga is called",
+        "sentence": "Sloka 21.—If all the benefic planets in regular order occupy the 5th, 6th and 7th houses, the Yoga is called graarat (Subhamala)."
+      },
+      {
+        "ruleId": "PHALA_CH6_V21_R003",
+        "raw": "the Yoga is ama",
+        "sentence": "If the Moon in the above position be aspected by Jupiter, the Yoga is ama (Gauri)."
+      }
+    ]
+  },
+  "PLANET_ASPECTED_BY_NAMED": {
+    "matchCount": 42,
+    "samples": [
+      {
+        "ruleId": "PHALA_CH6_V21_R003",
+        "raw": "Moon in the above position be aspected by Jupiter",
+        "sentence": "If the Moon in the above position be aspected by Jupiter, the Yoga is ama (Gauri)."
+      },
+      {
+        "ruleId": "PHALA_CH7_V15_R003",
+        "raw": "Sun is aspected by Mars",
+        "sentence": "The Sun is aspected by Mars; and sign Mesha is rising."
+      },
+      {
+        "ruleId": "PHALA_CH7_V15_R005",
+        "raw": "Sun aspected by Mars",
+        "sentence": "Another meaning: The Sun aspected by Mars js in Mesha or the Moon is aspected by Mars and the Sun in"
+      },
+      {
+        "ruleId": "PHALA_CH7_V18_R001",
+        "raw": "Moon occu- pying a Kendra be aspected by Venus",
+        "sentence": "Sloka 18.—If at a birth, Jupiter and the Moon occu- pying a Kendra be aspected by Venus and there be no planet in depression, the native will become a King whose fame will be unparalleled."
+      },
+      {
+        "ruleId": "PHALA_CH7_V19_R003",
+        "raw": "Venus is aspected by Jupiter",
+        "sentence": "Shka 20.-A scion of a royal family will become a King if at his birth Venus is aspected by Jupiter."
+      }
+    ]
+  },
+  "MULTI_PLANET_HOUSE_COMBINATION": {
+    "matchCount": 17,
+    "samples": [
+      {
+        "ruleId": "HORA_CH1_VUNK_R021",
+        "raw": "Moon+Jupiter+Mars",
+        "sentence": "‘4, 3 or more piarels in the Ist, 9th or 10th : house and effect 'S1) °° Effect! ofthe Moon, Jupiter and Mars combining ina house Other than their depression, 6th, 7th, and 8th house"
+      },
+      {
+        "ruleId": "HORA_CH1_VUNK_R022",
+        "raw": "Saturn+Moon+Mars+Venus",
+        "sentence": "‘2. “Effect of Saturn, the Moon, Mars and Venus combining in peau the Lagna, 9th or 10th house © ; 153."
+      },
+      {
+        "ruleId": "HORA_CH23_V4_R001",
+        "raw": "Sun+Mercury+Moon",
+        "sentence": "impress well their effects. ai al Raa ar aa QUteTTeTaTT | aial aIaeTAMN wAaaeaa Aga YMA ft 8 Ml 8loka 3.—If the Sun and Mercury be together in the 4th or the Sth house from the Lagna, the person born will possess all kingly qualities; and will be wealthy, In the other houses, this combination will make the native possessed of good qualities. qaatalt Wey TAT TIA Tal | eae: | qaalseal SAAT AAT Jal | AIAN I 8 Ul Sloka 4—When the Sun and the Moon combine in the 9th house, the person born will be wealthy."
+      },
+      {
+        "ruleId": "HORA_CH23_V98_R002",
+        "raw": "Sun+Mars+Mercury+Jupiter",
+        "sentence": "4 _ afrgarqaaiaisa fagaalfad zavay | - eyt caaeld SinraaTIgeadaT |i V9 I -Sloka 27.—When the Sun, Mars and Mercury combine in one house, he will be opposed to righteous acts; he will be‘intent in living in foreign places; he will be a miser and have no mercy ; the wealth earned by himself will all be destroyed and he will be mentally affected thereby. i, Magagetistesna afaaateRaisa | aie ~ S na in of amaisra Waele TAGE! qaqarai Fl Ré Ml a - Sloka 98:—He who is born when the Sun, Mercury and Jupiter combine in one. house, will be intelligent."
+      },
+      {
+        "ruleId": "HORA_CH23_V29_R001",
+        "raw": "Sun+Jupiter+Venus",
+        "sentence": "Sloka 29,—When the Sun, Jupiter and Venus occupy together a single house, the person born will be liberal in his gifts and he will be a renowned king."
+      }
+    ]
+  },
+  "PLANET_IN_NAKSHATRA": {
+    "matchCount": 20,
+    "samples": [
+      {
+        "ruleId": "LOL_CHTxHxExINDIVIDUALxNAKSHATRAS_VUNK_R036",
+        "raw": "Moon occupies Krittika",
+        "sentence": "Varahamihira: When the Moon occupies Krittika, the person may be a glutton, is fond of the spouses of others, has a bright appearance, and possesses widespread fame."
+      },
+      {
+        "ruleId": "LOL_CHTxHxExINDIVIDUALxNAKSHATRAS_VUNK_R045",
+        "raw": "Moon occupies Krittika",
+        "sentence": "When either the lagna or the Moon occupies Krittika, ambition, pride and self-motivated qualities often appear in the native's personality."
+      },
+      {
+        "ruleId": "LOL_CHTxHxExINDIVIDUALxNAKSHATRAS_VUNK_R059",
+        "raw": "Moon occupying Rohini",
+        "sentence": "While the ascendant or the Moon occupying Rohini often indicates a critical or fault-finding nature, a slim physique, and a fondness for the opposite sex, people with the Moon or Venus in Rohini rising in the lagna often have great charm, beauty and charisma, as well as ability or strong attraction for the arts."
+      },
+      {
+        "ruleId": "LOL_CHTxHxExINDIVIDUALxNAKSHATRAS_VUNK_R062",
+        "raw": "Venus appears well-placed in Rohini",
+        "sentence": "Similar results may occur when Moon or Venus appears well-placed in Rohini as the lagna lord."
+      },
+      {
+        "ruleId": "LOL_CHTxHxExINDIVIDUALxNAKSHATRAS_VUNK_R083",
+        "raw": "Moon occupies Ardra",
+        "sentence": "When the lagna or the Moon occupies Ardra, the native may have strong feelings which may be overwhelming."
+      }
+    ]
+  }
+}

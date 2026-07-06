@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "bphs-santhanam",
+    "title": "Brihat Parashara Hora Shastra",
+    "totalRules": 723,
+    "pctWithChapterAndVerse": 55.5,
+    "pctStructured": 6.5,
+    "avgExtractionConfidence": 0.629,
+    "lowConfidenceRules": 198,
+    "originalVerseCandidates": 76,
+    "note": "originalVerseCandidates are unreliable OCR-garble guesses, not verified Sanskrit — see rule-schema.ts"
+  },
+  {
+    "slug": "phaladeepika-abhushana",
+    "title": "Phaladeepika",
+    "totalRules": 2623,
+    "pctWithChapterAndVerse": 61.6,
+    "pctStructured": 12.2,
+    "avgExtractionConfidence": 0.559,
+    "lowConfidenceRules": 1513,
+    "originalVerseCandidates": 375,
+    "note": "originalVerseCandidates are unreliable OCR-garble guesses, not verified Sanskrit — see rule-schema.ts"
+  },
+  {
+    "slug": "horasara",
+    "title": "Horasara",
+    "totalRules": 1983,
+    "pctWithChapterAndVerse": 78.9,
+    "pctStructured": 20.7,
+    "avgExtractionConfidence": 0.661,
+    "lowConfidenceRules": 527,
+    "originalVerseCandidates": 217,
+    "note": "originalVerseCandidates are unreliable OCR-garble guesses, not verified Sanskrit — see rule-schema.ts"
+  },
+  {
+    "slug": "light-on-life-svoboda",
+    "title": "Light on Life",
+    "totalRules": 3055,
+    "pctWithChapterAndVerse": 0,
+    "pctStructured": 18.8,
+    "avgExtractionConfidence": 0.647,
+    "lowConfidenceRules": 0,
+    "originalVerseCandidates": 130,
+    "note": "originalVerseCandidates are unreliable OCR-garble guesses, not verified Sanskrit — see rule-schema.ts"
+  }
+]

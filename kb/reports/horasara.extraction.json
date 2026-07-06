@@ -1,0 +1,13 @@
+{
+  "slug": "horasara",
+  "title": "Horasara",
+  "sourceFile": "005_Horasara.pdf",
+  "totalPages": 391,
+  "digitalPages": 0,
+  "ocrPages": 391,
+  "skippedPages": [
+    379
+  ],
+  "avgOcrConfidence": 0.7046251163176058,
+  "extractedAt": "2026-06-27T14:16:01.626Z"
+}

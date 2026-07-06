@@ -30,11 +30,23 @@ build/
 prisma/dev.db
 prisma/dev.db-journal
 
-# Knowledge Base pipeline (sources + every derived working stage — never push)
+# Knowledge Base pipeline — raw sources, OCR/extraction intermediates, and
+# generated working files are large and/or copyright-sensitive and never push.
 # Promotion to the committed, original-wording src/kb/rules/*.json happens only
 # after human review (see docs/KB_PIPELINE.md). This is a different path and is
 # NOT affected by this rule.
-/kb/
+#
+# kb/rules/*/rules.jsonl and kb/reports/conflicts.json ARE committed: they are
+# the project's own encoded rule wording (not raw scans) and are the only
+# inputs `npm run kg:build` needs to regenerate kb/graph/ during the Vercel
+# build step — see package.json "build" script.
+/kb/sources/
+/kb/extracted/
+/kb/processed/
+/kb/cache/
+/kb/embeddings/
+/kb/graph/
+/kb/rules/index/
 
 # Uploaded PDFs
 *.pdf

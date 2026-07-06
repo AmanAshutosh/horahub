@@ -1,0 +1,38 @@
+{
+  "book": "Horasara",
+  "slug": "horasara",
+  "pages": 391,
+  "ocrPages": 391,
+  "digitalPages": 0,
+  "avgOcrConfidence": 0.7046251163176058,
+  "totalSentencesExtracted": 5478,
+  "candidateRuleSentences": 2004,
+  "candidateCounts": {
+    "career": 19,
+    "marriage": 146,
+    "finance": 223,
+    "health": 110,
+    "business": 4,
+    "education": 34,
+    "foreign": 47,
+    "spirituality": 2,
+    "children": 231,
+    "property": 15,
+    "longevity": 141,
+    "remedies": 2,
+    "timing": 19,
+    "dasha": 319,
+    "transit": 13,
+    "yoga": 214,
+    "planet": 968,
+    "house": 308,
+    "sign": 188,
+    "nakshatra": 54,
+    "divisionalCharts": 177
+  },
+  "skippedPages": [
+    379
+  ],
+  "note": "candidateCounts are a coarse keyword triage signal, not validated rules — see Rule Validation phase",
+  "generatedAt": "2026-06-27T14:23:49.034Z"
+}

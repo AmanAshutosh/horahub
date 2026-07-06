@@ -1,0 +1,23 @@
+{
+  "slug": "phaladeepika-abhushana",
+  "title": "Phaladeepika (English translation, Pandit Abhushana)",
+  "sourceFile": "004_Phaladeepika_English_Pandit_Abhushana.pdf",
+  "totalPages": 476,
+  "digitalPages": 0,
+  "ocrPages": 476,
+  "skippedPages": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    13,
+    470,
+    472,
+    474,
+    475,
+    476
+  ],
+  "avgOcrConfidence": 0.7387821847045095,
+  "extractedAt": "2026-06-27T13:24:35.944Z"
+}

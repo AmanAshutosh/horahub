@@ -4,6 +4,13 @@ const nextConfig = {
   poweredByHeader: false,
   typedRoutes: true,
   serverExternalPackages: ['sweph', 'pino'],
+  // kb/graph and kb/rules are read via runtime fs calls with a computed base
+  // path (process.cwd()); static bundling analysis can miss them, so list
+  // them explicitly to guarantee they ship with the chart API's function.
+  outputFileTracingIncludes: {
+    '/api/chart': ['./kb/graph/**', './kb/rules/**/rules.jsonl'],
+    '/api/chart/[id]': ['./kb/graph/**', './kb/rules/**/rules.jsonl'],
+  },
   async headers() {
     const scriptSrc =
       process.env.NODE_ENV === 'development'

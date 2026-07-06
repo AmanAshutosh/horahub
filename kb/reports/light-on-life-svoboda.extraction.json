@@ -1,0 +1,13 @@
+{
+  "slug": "light-on-life-svoboda",
+  "title": "Light on Life (Robert Svoboda)",
+  "sourceFile": "003_Light_on_Life_Robert_Svoboda.pdf",
+  "totalPages": 461,
+  "digitalPages": 453,
+  "ocrPages": 8,
+  "skippedPages": [
+    23
+  ],
+  "avgOcrConfidence": 0.6718437502042033,
+  "extractedAt": "2026-06-27T12:28:10.467Z"
+}

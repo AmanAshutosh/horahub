@@ -1,0 +1,38 @@
+{
+  "book": "Light on Life",
+  "slug": "light-on-life-svoboda",
+  "pages": 461,
+  "ocrPages": 8,
+  "digitalPages": 453,
+  "avgOcrConfidence": 0.6718437502042033,
+  "totalSentencesExtracted": 5901,
+  "candidateRuleSentences": 3118,
+  "candidateCounts": {
+    "career": 82,
+    "marriage": 122,
+    "finance": 106,
+    "health": 110,
+    "business": 44,
+    "education": 208,
+    "foreign": 26,
+    "spirituality": 102,
+    "children": 147,
+    "property": 42,
+    "longevity": 114,
+    "remedies": 35,
+    "timing": 20,
+    "dasha": 241,
+    "transit": 59,
+    "yoga": 505,
+    "planet": 1697,
+    "house": 100,
+    "sign": 589,
+    "nakshatra": 452,
+    "divisionalCharts": 37
+  },
+  "skippedPages": [
+    23
+  ],
+  "note": "candidateCounts are a coarse keyword triage signal, not validated rules — see Rule Validation phase",
+  "generatedAt": "2026-06-27T13:35:51.637Z"
+}
