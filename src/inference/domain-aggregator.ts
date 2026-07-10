@@ -20,6 +20,10 @@ const MAX_PER_DOMAIN = 15;
 /** Min extraction confidence to include in per-domain results. */
 const MIN_CONFIDENCE_THRESHOLD = 0.15;
 
+/** Scan-size safety valve for the remedy candidate pool — not a content filter
+ *  (buildDomainRemedyCards already caps to a small number of cards downstream). */
+const MAX_REMEDY_CANDIDATES = 40;
+
 // ── Helper ────────────────────────────────────────────────────────────────────
 
 function filterAndSort(matches: MatchedRule[]): MatchedRule[] {
@@ -34,6 +38,19 @@ function filterAndSort(matches: MatchedRule[]): MatchedRule[] {
       return a.priority - b.priority;
     })
     .slice(0, MAX_PER_DOMAIN);
+}
+
+/**
+ * Remedy-bearing matches from the full conflict-resolved pool, uncapped by
+ * MAX_PER_DOMAIN. Remedy rules routinely lose their slot in the top-15
+ * narrative matches to higher-confidence non-remedy rules, which was
+ * starving the remedy-card engine of real candidates it should have seen.
+ */
+function remedyCandidatePool(matches: MatchedRule[]): MatchedRule[] {
+  return matches
+    .filter((m) => m.hasRemedy && m.confidence >= MIN_CONFIDENCE_THRESHOLD && m.sourceText.trim().length > 10)
+    .sort((a, b) => b.confidence - a.confidence)
+    .slice(0, MAX_REMEDY_CANDIDATES);
 }
 
 function buildDomainResult(
@@ -53,6 +70,7 @@ function buildDomainResult(
     structuredCount: allMatches.filter((m) => m.matchType === 'structured').length,
     dimensionCount: allMatches.filter((m) => m.matchType === 'dimension').length,
     matches: top,
+    remedyCandidates: remedyCandidatePool(combined),
   };
 }
 

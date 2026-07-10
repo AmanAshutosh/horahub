@@ -63,6 +63,19 @@ const MIN_CARD_FIELD_CONFIDENCE = 0.5;
 
 const MAX_REMEDY_CARDS_PER_DOMAIN = 6;
 
+/**
+ * True for text carrying the signature of a specific OCR failure mode: a
+ * multi-column reference table scanned as one flat text stream, which
+ * produces a long run of disconnected "* label * label" bullet fragments
+ * instead of coherent prose. extractionConfidence (character-recognition
+ * quality) doesn't catch this — the individual characters are often read
+ * correctly, only their order/structure is scrambled. Confirmed narrow: only
+ * 4 of 886 rules in the one affected book match this pattern.
+ */
+function isCoherentText(text: string): boolean {
+  return (text.match(/\*/g)?.length ?? 0) < 3;
+}
+
 /** First structured condition naming a planet or house — direct field copy, never fabricated. */
 function deriveCause(rule: Rule): RemedyCause | null {
   const condition: RuleCondition | undefined = rule.structuredRule?.conditions.find(
@@ -106,6 +119,7 @@ export function buildDomainRemedyCards(domain: string, domainMatches: MatchedRul
     if (!rule?.remedy) continue;
     if (!REMEDY_TYPES.has(rule.remedy.type)) continue;
     if (rule.extractionConfidence < MIN_CARD_FIELD_CONFIDENCE) continue;
+    if (!isCoherentText(rule.translation)) continue;
 
     const fullCause = deriveCause(rule);
     let tier: RemedyConfidenceTier;

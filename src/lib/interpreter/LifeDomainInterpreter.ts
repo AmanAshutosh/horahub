@@ -315,6 +315,136 @@ const PLANET_WEALTH_GUIDANCE: Partial<Record<string, string>> = {
   Ketu:    'Seek financial stability through depth of expertise rather than breadth of income sources. Saving a consistent portion of irregular income is the key discipline for this placement.',
 };
 
+// ── Love & romantic connection (5th lord + Venus) ─────────────────────────────
+
+const PLANET_LOVE_MEANING: Partial<Record<string, string>> = {
+  Sun:      'You tend to be drawn to romantic connection through admiration and mutual respect — you want to be genuinely proud of who you\'re with, and to be seen clearly in return.',
+  Moon:     'Your romantic attractions tend to be emotionally led — you fall for people through feeling understood, cared for, and emotionally safe rather than through grand gestures.',
+  Mars:     'You tend to pursue romantic interest directly and with real energy. Chemistry and a sense of chase or challenge often play a genuine role in what draws you in.',
+  Mercury:  'Conversation and wit tend to be where your romantic attraction actually starts — you\'re drawn to people you can talk to easily and think alongside.',
+  Jupiter:  'You tend to be drawn to romantic partners who feel expansive — people who bring wisdom, optimism, or a sense of shared growth to the connection.',
+  Venus:    'Romance itself tends to come naturally to you — an eye for beauty, charm, and genuine pleasure in courtship are traditionally associated with this placement.',
+  Saturn:   'Your romantic connections tend to build slowly and seriously — attraction for you often deepens through time and demonstrated reliability rather than instant spark.',
+  Rahu:     'You tend to be drawn to romantic connections that feel unconventional or intensely magnetic — attractions that don\'t follow an obvious or familiar pattern.',
+  Ketu:     'Your romantic attractions can carry a quiet, almost familiar quality — a sense of recognition that\'s hard to fully explain, alongside real comfort with solitude.',
+};
+
+const PLANET_LOVE_GUIDANCE: Partial<Record<string, string>> = {
+  Sun:     'Choose romantic partners whose own sense of self is well developed — connections where you feel diminished rather than admired tend not to hold your interest for long.',
+  Moon:    'Pay attention to how emotionally safe a connection actually feels early on — this tends to be a more reliable signal for you than surface excitement.',
+  Mars:    'Give attraction some time to prove itself beyond the initial chase — connections that only run on intensity can burn out quickly for this placement.',
+  Mercury: 'Notice whether the conversation stays genuinely engaging over time — for this placement, that\'s often a better predictor of lasting interest than physical chemistry alone.',
+  Jupiter: 'Look for partners who share or respect your values — connections that feel small or values-mismatched tend to lose their spark quickly here.',
+  Venus:   'Your natural charm draws people in easily — the discipline worth building is choosing connections for depth, not just for how pleasant they feel at first.',
+  Saturn:  'Don\'t mistake your natural caution for lack of interest — this placement\'s romantic connections are often the ones worth being patient with.',
+  Rahu:    'Stay curious about unconventional attractions, but check that genuine compatibility is present alongside the intensity — that combination is what tends to last.',
+  Ketu:    'Give real weight to quieter, less dramatic connections — for this placement they can carry more substance than they first appear to.',
+};
+
+// ── Education & learning (5th/4th lord + Mercury/Jupiter) ─────────────────────
+
+const PLANET_EDUCATION_MEANING: Partial<Record<string, string>> = {
+  Sun:      'Your learning style tends to be confident and leadership-oriented — you absorb material best when you can take genuine ownership of it rather than just follow along.',
+  Moon:     'You tend to learn best in an emotionally comfortable, supportive environment — a subject taught with warmth tends to stick with you far more than one taught coldly.',
+  Mars:     'You tend to learn through direct engagement and practice rather than passive study — hands-on, competitive, or high-stakes learning environments bring out your focus.',
+  Mercury:  'Learning tends to come naturally to you — quick comprehension, strong reasoning, and genuine intellectual curiosity are traditionally associated with this placement.',
+  Jupiter:  'You tend to be drawn to learning for its own sake — knowledge, philosophy, and big-picture understanding hold real, lasting interest for this placement.',
+  Venus:    'You tend to learn well through aesthetically engaging or socially pleasant material — subjects connected to art, design, or people tend to hold your attention longest.',
+  Saturn:   'Your learning style tends to be slow, thorough, and built through repetition rather than quick absorption — mastery for this placement comes with patient, sustained effort.',
+  Rahu:     'You tend to be drawn to unconventional or cutting-edge subjects — self-directed or unusual paths of learning often suit you better than standard curricula.',
+  Ketu:     'You tend toward deep, narrow, almost intuitive learning in subjects that genuinely interest you — and comparatively little patience for material that doesn\'t.',
+};
+
+const PLANET_EDUCATION_GUIDANCE: Partial<Record<string, string>> = {
+  Sun:     'Seek learning environments where you have real ownership over your work — being talked at rather than engaged tends to disengage this placement quickly.',
+  Moon:    'Choose learning environments and teachers that feel emotionally supportive — this placement genuinely learns better in encouraging settings than critical ones.',
+  Mars:    'Build in hands-on practice alongside any theory — this placement retains far more through doing than through passive reading or listening.',
+  Mercury: 'Keep varying the subjects and formats you study — this placement thrives on intellectual variety and tends to plateau under narrow repetition.',
+  Jupiter: 'Follow genuine curiosity rather than only what\'s required — this placement\'s deepest and most lasting learning tends to come from self-chosen exploration.',
+  Venus:   'Look for ways to make study materially pleasant — a good environment, good materials — since this placement learns notably better when the process itself feels good.',
+  Saturn:  'Trust the slow, steady approach rather than cramming — this placement\'s mastery genuinely comes from sustained repetition over time, not intensity.',
+  Rahu:    'Give yourself permission to pursue non-traditional subjects or methods — this placement often learns best outside conventional structures.',
+  Ketu:    'Follow your natural depth of focus rather than forcing breadth — this placement tends to gain more from mastering a few things deeply than covering many things thinly.',
+};
+
+// ── Family & domestic life (4th/2nd lord + Sun/Moon) ──────────────────────────
+
+const PLANET_FAMILY_MEANING: Partial<Record<string, string>> = {
+  Sun:      'Your relationship with family — and particularly your father figure — tends to be shaped by themes of authority, respect, and personal dignity within the household.',
+  Moon:     'Home and mother tend to occupy a central emotional place for you — your sense of comfort and security is closely tied to your domestic life.',
+  Mars:     'Family dynamics for you can carry real energy — protectiveness and directness are common, alongside occasional friction that tends to pass quickly.',
+  Mercury:  'Communication tends to be the defining thread in your family life — how information, opinions, and daily logistics are exchanged shapes the household mood.',
+  Jupiter:  'Your chart points to family as a source of guidance and growth — a household where wisdom, values, and mutual respect for elders tend to matter.',
+  Venus:    'Comfort, harmony, and genuine affection tend to characterise your domestic life — a pleasant, aesthetically cared-for home environment matters to you.',
+  Saturn:   'Family responsibility tends to weigh seriously for you — duty, structure, and a sense of long-term obligation to household and elders are common themes.',
+  Rahu:     'Your family picture can include unconventional elements — distance from tradition, an unusual household structure, or unexpected family developments.',
+  Ketu:     'There can be a quality of detachment or karmic complexity in family relationships for this placement — alongside real, if understated, loyalty.',
+};
+
+const PLANET_FAMILY_GUIDANCE: Partial<Record<string, string>> = {
+  Sun:     'Approach family authority dynamics with mutual respect rather than one-sided control — this tends to keep the household dignity intact for everyone.',
+  Moon:    'Prioritise emotional stability at home — for this placement, a settled domestic environment supports wellbeing well beyond the household itself.',
+  Mars:    'Address family friction directly rather than letting it build — quick, honest conversation tends to resolve tension faster than avoidance for this placement.',
+  Mercury: 'Keep communication channels genuinely open at home — misunderstandings tend to be this placement\'s main family friction point, and are usually easy to clear up.',
+  Jupiter: 'Lean into your natural role as a source of guidance within the family — this placement is traditionally well-suited to holding that position constructively.',
+  Venus:   'Invest time in shared domestic pleasures — meals, gatherings, small comforts — these tend to be genuinely significant glue for this placement\'s family bonds.',
+  Saturn:  'Balance your sense of duty with rest — this placement can over-carry family responsibility, and periodic boundaries tend to help rather than harm the relationships.',
+  Rahu:    'Give family members room to follow unconventional paths — resistance to that tendency tends to create more friction than the differences themselves.',
+  Ketu:    'Make space for the quieter forms of family closeness this placement favours — presence rather than constant engagement is often what these bonds actually need.',
+};
+
+// ── Mental nature & temperament (Lagna lord + Moon + Mercury) ─────────────────
+
+const PLANET_MENTAL_MEANING: Partial<Record<string, string>> = {
+  Sun:      'Your core temperament carries natural confidence and a clear sense of identity — you tend to know who you are and want that recognised by others.',
+  Moon:     'Your temperament is closely tied to your emotional state — mood, sensitivity, and an intuitive read of situations are central to how your mind works.',
+  Mars:     'Your mental nature tends to be direct, decisive, and action-oriented — you process things quickly and prefer resolving matters over dwelling on them.',
+  Mercury:  'Your temperament is naturally analytical and communicative — you tend to think in words, weigh things logically, and enjoy exchanging ideas.',
+  Jupiter:  'Your mental nature tends toward optimism and big-picture thinking — you naturally look for meaning, growth, and the wider context in things.',
+  Venus:    'Your temperament carries a natural ease and appreciation for harmony — you tend to seek pleasant, balanced, aesthetically comfortable states of mind.',
+  Saturn:   'Your mental nature tends to be serious, disciplined, and cautious — you process things carefully and are naturally inclined toward realism over optimism.',
+  Rahu:     'Your temperament carries an intense, ambitious, restless quality — you tend to think in terms of what\'s next rather than settling into the present.',
+  Ketu:     'Your mental nature tends to be introspective and detached — a natural tendency to step back and observe rather than fully immerse yourself in events.',
+};
+
+const PLANET_MENTAL_GUIDANCE: Partial<Record<string, string>> = {
+  Sun:     'Channel your natural confidence into genuine self-expression rather than needing constant external validation — this tends to be the healthier long-term pattern for this placement.',
+  Moon:    'Build regular practices that support emotional steadiness — since your temperament is closely mood-linked, consistent routines tend to help more than they might for other placements.',
+  Mars:    'Give yourself a brief pause before acting on strong impulses — for this placement, a short delay usually improves the outcome without losing the underlying decisiveness.',
+  Mercury: 'Make space for quiet, unstimulated time — this placement\'s mind runs fast and benefits from deliberate rest as much as from intellectual engagement.',
+  Jupiter: 'Trust your instinct toward the bigger picture, but pair it with attention to practical detail — this combination tends to serve this placement particularly well.',
+  Venus:   'Notice when the pursuit of comfort becomes avoidance — this placement benefits from occasionally choosing what\'s right over what\'s pleasant.',
+  Saturn:  'Balance your natural caution with moments of genuine self-compassion — this placement can be harder on itself than the situation actually calls for.',
+  Rahu:    'Ground your ambition with regular, unglamorous routines — this placement\'s restlessness settles well when there\'s a stable structure underneath it.',
+  Ketu:    'Stay engaged with the people and situations around you even when your instinct is to withdraw — this placement benefits from balancing detachment with real presence.',
+};
+
+// ── Spiritual growth (9th/12th lord + Jupiter/Ketu) ────────────────────────────
+
+const PLANET_SPIRITUALITY_MEANING: Partial<Record<string, string>> = {
+  Sun:      'Your spiritual path tends to centre on personal integrity and purpose — a sense of living in alignment with your own values and higher sense of self.',
+  Moon:     'Your spiritual life tends to be emotionally and intuitively led — devotional practices and a felt, personal connection to the sacred tend to resonate most.',
+  Mars:     'Your spiritual path can carry real discipline and intensity — practices that involve effort, willpower, or active service tend to suit this placement.',
+  Mercury:  'You tend to approach spirituality intellectually at first — study, philosophy, and understanding the reasoning behind a practice matter to you.',
+  Jupiter:  'Your chart points to a naturally strong spiritual and philosophical inclination — wisdom, ethics, and higher learning are traditionally central themes here.',
+  Venus:    'Your spiritual path tends to be drawn toward beauty, devotion, and connection — practices involving ritual, music, or shared community resonate for you.',
+  Saturn:   'Your spiritual path tends to develop slowly, through discipline and sustained practice rather than sudden insight — patience is itself part of the path here.',
+  Rahu:     'Your spiritual interests can be intense and unconventional — you may be drawn to practices or traditions outside your immediate background.',
+  Ketu:     'Your chart points to a naturally strong pull toward liberation, detachment, and inner reflection — classical texts particularly associate this placement with spiritual inclination.',
+};
+
+const PLANET_SPIRITUALITY_GUIDANCE: Partial<Record<string, string>> = {
+  Sun:     'Look for spiritual practice that reinforces genuine integrity rather than status or recognition — that distinction tends to matter for this placement\'s growth.',
+  Moon:    'Trust practices that feel emotionally resonant over ones that are merely intellectually convincing — this placement\'s spiritual growth tends to be felt before it\'s reasoned.',
+  Mars:    'Channel spiritual discipline into consistent practice rather than sporadic intensity — steady effort tends to serve this placement better than occasional bursts.',
+  Mercury: 'Let study lead you toward direct practice rather than stopping at understanding — this placement can over-intellectualise a path that also asks to be lived.',
+  Jupiter: 'Lean into your natural inclination toward teaching or guiding others — sharing wisdom is traditionally considered a strength this placement is well suited to.',
+  Venus:   'Bring beauty and community into your spiritual practice deliberately — ritual and shared devotion tend to deepen this placement\'s growth meaningfully.',
+  Saturn:  'Commit to a practice you can sustain for years rather than searching for a quick breakthrough — this placement\'s spiritual depth is traditionally built slowly.',
+  Rahu:    'Stay grounded in a consistent tradition even while exploring unconventional interests — this combination tends to prevent the restlessness this placement can bring.',
+  Ketu:    'Give real space to solitude and introspection — this placement\'s natural pull toward detachment is traditionally considered a genuine spiritual asset, not something to resist.',
+};
+
 // ── Output type ───────────────────────────────────────────────────────────────
 
 export interface DomainInterpretation {
@@ -638,6 +768,274 @@ function interpretFinance(items: ReportItem[], facts: ChartFacts): DomainInterpr
   return { chartContext: context, summary, strengths, challenges, advice };
 }
 
+// ── Love & romantic connection ─────────────────────────────────────────────────
+
+function interpretLove(items: ReportItem[], facts: ChartFacts): DomainInterpretation {
+  const house5 = houseOf(5, facts);
+  const lord5: PlanetName = house5?.lord ?? 'Venus';
+  const lord5Placement = facts.planets[lord5];
+  const venusPl = facts.planets['Venus'];
+  const occupants = house5?.occupants ?? [];
+
+  const loveMeaning = PLANET_LOVE_MEANING[lord5] ??
+    `In matters of romantic attraction, ${lord5}'s qualities shape how you connect and what draws you in.`;
+
+  let context = loveMeaning;
+
+  if (lord5 !== 'Venus') {
+    const venusMeaning = PLANET_LOVE_MEANING['Venus'];
+    if (venusMeaning) {
+      context += ` Venus — the classical significator of romance and attraction — adds its own layer: ${venusMeaning.split('.')[0]?.toLowerCase() ?? ''}.`;
+    }
+  }
+
+  if (occupants.length > 0) {
+    const occ0 = occupants[0] as PlanetName;
+    const occMeaning = PLANET_LOVE_MEANING[occ0];
+    if (occMeaning) {
+      context += ` ${occ0}'s placement in your romance zone brings additional colour: ${occMeaning.split('.')[0] ?? ''}.`;
+    }
+  }
+
+  const strength = dignityStrength(lord5Placement.dignity);
+  if (strength === 'strong') {
+    context += ' Your romance planet is in a strong position — classical texts associate this with genuine ease and fulfilment in romantic connection.';
+  } else if (strength === 'weak') {
+    context += ' Your romance planet is in a challenging position — classical texts note that romantic connection for this configuration tends to develop with more patience and self-awareness than comes easily at first.';
+  }
+
+  const venusStrength = dignityStrength(venusPl.dignity);
+  if (venusStrength === 'strong' && lord5 !== 'Venus') {
+    context += ' Venus is well-placed in your chart — a positive additional indicator for romantic warmth and attraction.';
+  }
+
+  const summary = `Your romantic chart is shaped most by ${lord5}'s qualities — ${(PLANET_LOVE_MEANING[lord5] ?? '').split('.')[0]?.slice(0, 80) ?? ''}.`;
+
+  const advice: string[] = [];
+  const guidance = PLANET_LOVE_GUIDANCE[lord5];
+  if (guidance) advice.push(`${lord5} as your romance indicator — ${guidance}`);
+  if (lord5 !== 'Venus') {
+    const venusGuidance = PLANET_LOVE_GUIDANCE['Venus'];
+    if (venusGuidance) advice.push(`Venus in your chart adds: ${venusGuidance}`);
+  }
+  if (strength === 'weak') {
+    advice.push('Classical texts suggest giving romantic connections time to develop rather than expecting instant clarity — this tends to serve this configuration better.');
+  }
+
+  const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
+  const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);
+
+  return { chartContext: context, summary, strengths, challenges, advice };
+}
+
+// ── Education ─────────────────────────────────────────────────────────────────
+
+function interpretEducation(items: ReportItem[], facts: ChartFacts): DomainInterpretation {
+  const house5 = houseOf(5, facts);
+  const lord5: PlanetName = house5?.lord ?? 'Mercury';
+  const mercuryPl = facts.planets['Mercury'];
+  const jupiterPl = facts.planets['Jupiter'];
+
+  const eduMeaning = PLANET_EDUCATION_MEANING[lord5] ??
+    `Your approach to learning is shaped by ${lord5}'s qualities — bringing its characteristic style to how you absorb and engage with new knowledge.`;
+
+  let context = eduMeaning;
+
+  const mercuryStrength = dignityStrength(mercuryPl.dignity);
+  if (mercuryStrength === 'strong') {
+    context += ' Mercury — the classical significator of intellect and learning — is well-placed in your chart, traditionally associated with sharp comprehension and ease in study.';
+  } else if (mercuryStrength === 'weak') {
+    context += ' Mercury is in a challenging position in your chart — classical texts suggest learning for this configuration benefits from repetition and structured practice more than relying on quick recall.';
+  }
+
+  const jupiterStrength = dignityStrength(jupiterPl.dignity);
+  if (jupiterStrength === 'strong') {
+    context += ' Jupiter, the significator of wisdom and higher learning, is well-placed — a positive indicator for depth of understanding and genuine intellectual growth over time.';
+  }
+
+  const summary = `Your learning style centres on ${lord5}'s qualities — ${(PLANET_EDUCATION_MEANING[lord5] ?? '').split('.')[0]?.slice(0, 80) ?? ''}.`;
+
+  const advice: string[] = [];
+  const guidance = PLANET_EDUCATION_GUIDANCE[lord5];
+  if (guidance) advice.push(guidance);
+  if (mercuryStrength === 'weak') {
+    advice.push('Classical texts recommend consistent, structured study habits as a way to strengthen a challenged Mercury over time.');
+  }
+  if (jupiterStrength === 'strong') {
+    advice.push('Your chart favours pursuing subjects that carry real depth and meaning — this placement tends to get the most from learning that goes beyond the surface.');
+  }
+
+  const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
+  const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);
+
+  return { chartContext: context, summary, strengths, challenges, advice };
+}
+
+// ── Family ────────────────────────────────────────────────────────────────────
+
+function interpretFamily(items: ReportItem[], facts: ChartFacts): DomainInterpretation {
+  const house4 = houseOf(4, facts);
+  const lord4: PlanetName = house4?.lord ?? 'Moon';
+  const lord4Placement = facts.planets[lord4];
+  const moonPl = facts.planets['Moon'];
+  const occupants = house4?.occupants ?? [];
+
+  const familyMeaning = PLANET_FAMILY_MEANING[lord4] ??
+    `Your domestic and family life is shaped by ${lord4}'s qualities — colouring the tone of your household and closest family bonds.`;
+
+  let context = familyMeaning;
+
+  if (lord4 !== 'Moon') {
+    const moonMeaning = PLANET_FAMILY_MEANING['Moon'];
+    if (moonMeaning) {
+      context += ` The Moon — the classical significator of mother and emotional home life — adds its own layer: ${moonMeaning.split('.')[0]?.toLowerCase() ?? ''}.`;
+    }
+  }
+
+  if (occupants.length > 0) {
+    const occ0 = occupants[0] as PlanetName;
+    const occMeaning = PLANET_FAMILY_MEANING[occ0];
+    if (occMeaning) {
+      context += ` ${occ0}'s placement in your home zone brings additional colour: ${occMeaning.split('.')[0] ?? ''}.`;
+    }
+  }
+
+  const strength = dignityStrength(lord4Placement.dignity);
+  if (strength === 'strong') {
+    context += ' Your home-life planet is well-placed — classical texts associate this with a genuinely stable and supportive domestic foundation.';
+  } else if (strength === 'weak') {
+    context += ' Your home-life planet is in a challenging position — classical texts note that family harmony for this configuration tends to need more deliberate effort and patience.';
+  }
+
+  const moonSignName = signName(moonPl.sign);
+  context += ` The Moon sits in ${moonSignName} in your chart, bringing that sign's emotional quality to your sense of home and belonging.`;
+
+  const summary = `Your family picture centres on ${lord4}'s qualities — ${(PLANET_FAMILY_MEANING[lord4] ?? '').split('.')[0]?.slice(0, 80) ?? ''}.`;
+
+  const advice: string[] = [];
+  const guidance = PLANET_FAMILY_GUIDANCE[lord4];
+  if (guidance) advice.push(guidance);
+  if (lord4 !== 'Moon') {
+    const moonGuidance = PLANET_FAMILY_GUIDANCE['Moon'];
+    if (moonGuidance) advice.push(`For your emotional home life specifically: ${moonGuidance}`);
+  }
+  if (strength === 'weak') {
+    advice.push('Classical texts suggest that deliberate, patient effort tends to matter more than usual for family harmony in this configuration.');
+  }
+
+  const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
+  const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);
+
+  return { chartContext: context, summary, strengths, challenges, advice };
+}
+
+// ── Mental nature ─────────────────────────────────────────────────────────────
+
+function interpretMentalNature(items: ReportItem[], facts: ChartFacts): DomainInterpretation {
+  const house1 = houseOf(1, facts);
+  const lagnaLord: PlanetName = house1?.lord ?? 'Sun';
+  const lagnaLordPl = facts.planets[lagnaLord];
+  const moonPl = facts.planets['Moon'];
+  const mercuryPl = facts.planets['Mercury'];
+
+  const mentalMeaning = PLANET_MENTAL_MEANING[lagnaLord] ??
+    `Your core temperament is shaped by ${lagnaLord}'s qualities, running through how you think, react, and carry yourself.`;
+
+  let context = mentalMeaning;
+
+  const moonSignName = signName(moonPl.sign);
+  const moonMeaning = PLANET_MENTAL_MEANING['Moon'];
+  if (lagnaLord !== 'Moon' && moonMeaning) {
+    context += ` Your mind — governed by the Moon in ${moonSignName} — adds its own layer: ${moonMeaning.split('.')[0]?.toLowerCase() ?? ''}.`;
+  }
+
+  const mercuryStrength = dignityStrength(mercuryPl.dignity);
+  if (mercuryStrength === 'strong') {
+    context += ' Mercury, which shapes reasoning and communication style, is well-placed in your chart — traditionally associated with clear, articulate thinking.';
+  } else if (mercuryStrength === 'weak') {
+    context += ' Mercury is in a challenging position in your chart — classical texts suggest that communication and reasoning for this configuration benefit from deliberate, unhurried expression.';
+  }
+
+  const strength = dignityStrength(lagnaLordPl.dignity);
+  if (strength === 'strong') {
+    context += ' Your Lagna lord is well-placed — classical texts associate this with a resilient, well-integrated temperament.';
+  } else if (strength === 'weak') {
+    context += ' Your Lagna lord is in a challenging position — classical texts note that self-confidence for this configuration tends to build gradually through experience rather than arriving early.';
+  }
+
+  const summary = `Your temperament centres on ${lagnaLord}'s qualities — ${(PLANET_MENTAL_MEANING[lagnaLord] ?? '').split('.')[0]?.slice(0, 80) ?? ''}.`;
+
+  const advice: string[] = [];
+  const guidance = PLANET_MENTAL_GUIDANCE[lagnaLord];
+  if (guidance) advice.push(guidance);
+  if (lagnaLord !== 'Moon') {
+    const moonGuidance = PLANET_MENTAL_GUIDANCE['Moon'];
+    if (moonGuidance) advice.push(`For your emotional mind specifically: ${moonGuidance}`);
+  }
+  if (mercuryStrength === 'weak') {
+    advice.push('Classical texts suggest that slowing down before communicating tends to help this configuration express itself more clearly.');
+  }
+
+  const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
+  const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);
+
+  return { chartContext: context, summary, strengths, challenges, advice };
+}
+
+// ── Spiritual growth ──────────────────────────────────────────────────────────
+
+function interpretSpirituality(items: ReportItem[], facts: ChartFacts): DomainInterpretation {
+  const house9 = houseOf(9, facts);
+  const lord9: PlanetName = house9?.lord ?? 'Jupiter';
+  const lord9Placement = facts.planets[lord9];
+  const jupiterPl = facts.planets['Jupiter'];
+  const ketuPl = facts.planets['Ketu'];
+
+  const spiritMeaning = PLANET_SPIRITUALITY_MEANING[lord9] ??
+    `Your spiritual inclinations are shaped by ${lord9}'s qualities, colouring how you approach questions of meaning and higher purpose.`;
+
+  let context = spiritMeaning;
+
+  if (lord9 !== 'Jupiter') {
+    const jupiterMeaning = PLANET_SPIRITUALITY_MEANING['Jupiter'];
+    if (jupiterMeaning) {
+      context += ` Jupiter — the classical significator of wisdom and dharma — adds its own layer: ${jupiterMeaning.split('.')[0]?.toLowerCase() ?? ''}.`;
+    }
+  }
+
+  const ketuSignName = signName(ketuPl.sign);
+  context += ` Ketu, traditionally associated with detachment and spiritual inclination, sits in ${ketuSignName} in your chart, bringing that sign's quality to your inward path.`;
+
+  const strength = dignityStrength(lord9Placement.dignity);
+  if (strength === 'strong') {
+    context += ' Your 9th house lord is well-placed — classical texts associate this with a naturally strong sense of purpose and fortune.';
+  } else if (strength === 'weak') {
+    context += ' Your 9th house lord is in a challenging position — classical texts note that a sense of purpose for this configuration tends to be found through deliberate reflection rather than arriving readily.';
+  }
+
+  const jupStrength = dignityStrength(jupiterPl.dignity);
+  if (jupStrength === 'strong' && lord9 !== 'Jupiter') {
+    context += ' Jupiter is well-placed in your chart — a positive additional indicator for wisdom and ethical grounding.';
+  }
+
+  const summary = `Your spiritual path centres on ${lord9}'s qualities — ${(PLANET_SPIRITUALITY_MEANING[lord9] ?? '').split('.')[0]?.slice(0, 80) ?? ''}.`;
+
+  const advice: string[] = [];
+  const guidance = PLANET_SPIRITUALITY_GUIDANCE[lord9];
+  if (guidance) advice.push(guidance);
+  if (lord9 !== 'Jupiter') {
+    const jupiterGuidance = PLANET_SPIRITUALITY_GUIDANCE['Jupiter'];
+    if (jupiterGuidance) advice.push(`Jupiter in your chart adds: ${jupiterGuidance}`);
+  }
+  const ketuGuidance = PLANET_SPIRITUALITY_GUIDANCE['Ketu'];
+  if (ketuGuidance) advice.push(`Ketu's placement adds: ${ketuGuidance}`);
+
+  const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
+  const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);
+
+  return { chartContext: context, summary, strengths, challenges, advice };
+}
+
 // ── Main export ───────────────────────────────────────────────────────────────
 
 export function interpretDomain(
@@ -646,10 +1044,15 @@ export function interpretDomain(
   facts: ChartFacts,
 ): DomainInterpretation {
   switch (domainId) {
-    case 'career':   return interpretCareer(items, facts);
-    case 'marriage': return interpretMarriage(items, facts);
-    case 'health':   return interpretHealth(items, facts);
-    case 'finance':  return interpretFinance(items, facts);
+    case 'career':       return interpretCareer(items, facts);
+    case 'marriage':     return interpretMarriage(items, facts);
+    case 'health':       return interpretHealth(items, facts);
+    case 'finance':      return interpretFinance(items, facts);
+    case 'love':         return interpretLove(items, facts);
+    case 'education':    return interpretEducation(items, facts);
+    case 'family':       return interpretFamily(items, facts);
+    case 'mentalNature': return interpretMentalNature(items, facts);
+    case 'spirituality': return interpretSpirituality(items, facts);
     default: {
       const strengths  = items.filter(i => i.direction === 'positive').slice(0, 5);
       const challenges = items.filter(i => i.direction === 'negative').slice(0, 4);

@@ -22,6 +22,7 @@ import { aggregateDomains } from './domain-aggregator';
 import { buildTimeline } from './timeline';
 import { extractRemedies } from './remedy-engine';
 import { buildPastValidation } from './past-validator';
+import { computeTransitPositions, matchTransitRules } from './transit';
 import { buildReportSections } from './report-builder';
 import { logger } from '@/lib/logger';
 
@@ -77,6 +78,17 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
 
   const pastObservations = buildPastValidation(facts, allMatches);
 
+  // ── Stage 7: Transit (current planetary positions vs. natal chart) ──────────
+
+  let transit: InferenceResult['transit'] = null;
+  try {
+    const positions = computeTransitPositions(facts);
+    const matches = matchTransitRules(positions);
+    transit = { positions, matches };
+  } catch (err) {
+    logger.warn({ err }, 'TRANSIT_COMPUTE_FAIL — transit section will render as pending');
+  }
+
   const elapsed = Date.now() - t0;
   if (process.env.NODE_ENV === 'development') {
     console.log(`[inference] completed in ${elapsed}ms — ${allMatches.length} matches from ${ruleIndex.size} rules`);
@@ -96,6 +108,7 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
     timeline,
     remedies,
     pastObservations,
+    transit,
   };
 }
 

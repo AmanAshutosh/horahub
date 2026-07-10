@@ -33,8 +33,8 @@ function InterpretedGroup({
   if (items.length === 0) return null;
 
   const label = variant === 'strengths'
-    ? 'What your chart suggests going for you'
-    : 'Points the classical texts flag';
+    ? 'Possible patterns your chart suggests'
+    : 'Challenges to be aware of';
 
   return (
     <div className={`life-area-group life-area-group--${variant}`}>

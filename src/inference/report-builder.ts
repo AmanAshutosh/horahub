@@ -22,8 +22,11 @@ import type {
 } from '@/types/report';
 import type { ChartFacts } from '@/types/chart';
 import type { InferenceResult, MatchedRule, DomainResult, DetectedYoga, ExtractedRemedy, PastObservation, RemedyCard } from './types';
+import type { TransitPlanetPosition } from './transit';
 import { interpretDomain } from '@/lib/interpreter/LifeDomainInterpreter';
 import { buildDomainRemedyCards } from './remedy-engine';
+import { loadKnowledgeBase } from '@/kb';
+import { RASHI } from '@/constants/astro';
 
 // ── Book display names ────────────────────────────────────────────────────────
 
@@ -166,7 +169,8 @@ function buildLifeAreaSection(
     return { id, title, subtitle, status: 'pending' };
   }
 
-  const remedyCards = buildDomainRemedyCards(id, domain.matches).map(toReportRemedyCard);
+  const remedyPool = domain.remedyCandidates.length > 0 ? domain.remedyCandidates : domain.matches;
+  const remedyCards = buildDomainRemedyCards(id, remedyPool).map(toReportRemedyCard);
 
   const items: ReportItem[] = domain.matches
     .filter((m) => m.sourceText.trim().length > 20) // skip stub-length rules
@@ -327,6 +331,104 @@ function buildRemedySection(
   };
 }
 
+// ── Transit section builder ───────────────────────────────────────────────────
+
+/** Houses only ever run 1..12 in this codebase, so a direct lookup is sufficient. */
+const ORDINAL_SUFFIX: Record<number, string> = { 1: 'st', 2: 'nd', 3: 'rd' };
+function ordinal(n: number): string {
+  return `${n}${ORDINAL_SUFFIX[n] ?? 'th'}`;
+}
+
+const TRANSIT_ACTIVATION_HOUSES: Record<'career' | 'relationship' | 'finance', number[]> = {
+  career: [10],
+  relationship: [5, 7],
+  finance: [2, 11],
+};
+
+function buildTransitSection(
+  positions: TransitPlanetPosition[],
+  matches: MatchedRule[],
+): ReportSectionData {
+  if (positions.length === 0) {
+    return { id: 'transit', title: 'The Sky Right Now', status: 'pending' };
+  }
+
+  const kb = loadKnowledgeBase();
+  const signName = (i: number) => RASHI[i] ?? '?';
+
+  // Position table — real, dated chart facts, always shown once positions exist.
+  const rows: ReportTableRow[] = positions.map((p) => ({
+    cells: [
+      p.planet,
+      signName(p.sign),
+      p.houseFromLagna,
+      p.houseFromMoon,
+      kb.houses[p.houseFromLagna]?.themes ?? '—',
+    ],
+  }));
+  const tables: ReportTable[] = [{
+    caption: 'Current transit positions',
+    columns: ['Planet', 'Sign', 'House from Lagna', 'House from Moon', 'Life Areas Touched'],
+    rows,
+  }];
+
+  // Current phase — position + classical house signification, the same
+  // "chart fact + KB theme" combination already used throughout the report
+  // (src/interpret/index.ts, LifeDomainInterpreter.ts) — never fabricated.
+  const phaseParts = positions.map((p) => {
+    const themes = kb.houses[p.houseFromLagna]?.themes ?? '';
+    const moonNote = p.houseFromMoon !== p.houseFromLagna ? ` (${ordinal(p.houseFromMoon)} house from your Moon)` : '';
+    return `transiting ${p.planet} is moving through your ${ordinal(p.houseFromLagna)} house from your Lagna${moonNote} — traditionally associated with ${themes}`;
+  });
+  const chartContext = `Right now, ${phaseParts.join('; ')}.`;
+
+  // Activation call-outs per life area, source-backed: cite a matched rule
+  // when one exists for that planet+house; otherwise state the plain
+  // position + house-theme fact only (never an invented interpretation).
+  const advice: string[] = [];
+  for (const [area, houses] of Object.entries(TRANSIT_ACTIVATION_HOUSES) as Array<[keyof typeof TRANSIT_ACTIVATION_HOUSES, number[]]>) {
+    const touching = positions.filter((p) => houses.includes(p.houseFromLagna) || houses.includes(p.houseFromMoon));
+    if (touching.length === 0) continue;
+    const label = area === 'career' ? 'Career activation' : area === 'relationship' ? 'Relationship activation' : 'Finance activation';
+    const planetList = touching.map((p) => p.planet).join(' and ');
+    const verb = touching.length > 1 ? 'are' : 'is';
+    const supportingMatch = matches.find((m) => touching.some((p) => m.categories.includes(p.planet.toLowerCase())) || m.categories.includes(area === 'relationship' ? 'marriage' : area));
+    if (supportingMatch) {
+      advice.push(`${label}: transiting ${planetList} ${verb} active over this area right now. Classical texts note — "${supportingMatch.sourceText.trim()}"`);
+    } else {
+      advice.push(`${label}: transiting ${planetList} ${verb} currently moving through your ${area === 'career' ? 'career' : area === 'relationship' ? 'relationship' : 'finance'} house(s), traditionally a period where this area of life tends to feel more active.`);
+    }
+  }
+
+  const challenges: ReportItem[] = matches
+    .filter((m) => m.effectDirection === 'decrease')
+    .slice(0, 4)
+    .map(matchToItem);
+  const strengths: ReportItem[] = matches
+    .filter((m) => m.effectDirection === 'increase')
+    .slice(0, 4)
+    .map(matchToItem);
+
+  const items: ReportItem[] = matches.filter((m) => m.sourceText.trim().length > 20).slice(0, 10).map(matchToItem);
+  const citations: ReportCitation[] = matches.filter((m) => m.chapter).slice(0, 5).map(toReportCitation);
+
+  return {
+    id: 'transit',
+    title: 'The Sky Right Now',
+    status: matches.length > 0 ? 'populated' : 'partial',
+    chartContext,
+    tables,
+    advice: advice.length > 0 ? advice : undefined,
+    strengths: strengths.length > 0 ? strengths : undefined,
+    challenges: challenges.length > 0 ? challenges : undefined,
+    items: items.length > 0 ? items : undefined,
+    citations: citations.length > 0 ? citations : undefined,
+    note: matches.length === 0
+      ? 'No specific classical transit rules matched these exact positions in the current Knowledge Base — the position table above still reflects real, calculated chart data.'
+      : undefined,
+  };
+}
+
 // ── Past validation section builder ──────────────────────────────────────────
 
 function buildPastValidationSection(
@@ -413,6 +515,9 @@ export function buildReportSections(result: InferenceResult, facts?: ChartFacts)
 
   // Past validation
   sections.push(buildPastValidationSection(result.pastObservations));
+
+  // Transit ("The Sky Right Now")
+  sections.push(buildTransitSection(result.transit?.positions ?? [], result.transit?.matches ?? []));
 
   return sections;
 }

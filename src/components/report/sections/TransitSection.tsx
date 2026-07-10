@@ -38,20 +38,63 @@ export function TransitSection({ data, num }: Props) {
         <PendingState willContain={WILL_CONTAIN} />
       ) : (
         <>
+          {data.chartContext && (
+            <p className="life-area-context">{data.chartContext}</p>
+          )}
+
           {data.summary && (
             <p className="mb-4 text-[13.5px] leading-relaxed text-ink-muted print:text-gray-700">
               {data.summary}
             </p>
           )}
+
           {data.tables?.map((t, i) => (
             <div key={i} className="mt-3">
               <DataTable table={t} />
             </div>
           ))}
+
+          {data.strengths && data.strengths.length > 0 && (
+            <div className="life-area-group life-area-group--strengths">
+              <p className="life-area-group-label">Opportunities right now</p>
+              {data.strengths.map((item, i) => (
+                <div key={i} className="life-area-group-item">
+                  <p className="life-area-group-item-body">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {data.challenges && data.challenges.length > 0 && (
+            <div className="life-area-group life-area-group--challenges">
+              <p className="life-area-group-label">Challenges right now</p>
+              {data.challenges.map((item, i) => (
+                <div key={i} className="life-area-group-item">
+                  <p className="life-area-group-item-body">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {data.advice && data.advice.length > 0 && (
+            <div className="life-area-advice">
+              <p className="life-area-advice-label">What&apos;s activated for you right now</p>
+              <ul className="life-area-advice-list">
+                {data.advice.map((line, i) => (
+                  <li key={i}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {data.citations && (
             <div className="mt-3">
               <CitationList citations={data.citations} />
             </div>
+          )}
+
+          {data.note && (
+            <p className="life-area-note">{data.note}</p>
           )}
         </>
       )}

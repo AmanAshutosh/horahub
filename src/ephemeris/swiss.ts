@@ -35,9 +35,9 @@ function ensureLahiri(): void {
 export class SwissEphemeris implements Ephemeris {
   readonly id = 'swiss';
 
-  compute(input: BirthInput): ChartFacts {
+  private siderealAt(utcMs: number): { sidereal: Record<PlanetName, number>; jd: number } {
     ensureLahiri();
-    const { Y, Mo, D, utHours } = utcParts(input.utcMs);
+    const { Y, Mo, D, utHours } = utcParts(utcMs);
     const jd = swe.julday(Y, Mo, D, utHours, C.SE_GREG_CAL);
 
     const sidereal = {} as Record<PlanetName, number>;
@@ -50,11 +50,21 @@ export class SwissEphemeris implements Ephemeris {
     }
     sidereal.Ketu = norm360(sidereal.Rahu + 180);
 
+    return { sidereal, jd };
+  }
+
+  compute(input: BirthInput): ChartFacts {
+    const { sidereal, jd } = this.siderealAt(input.utcMs);
+
     const ayanamsa = swe.get_ayanamsa_ex_ut(jd, C.SEFLG_MOSEPH).data;
     const houses = swe.houses_ex(jd, C.SEFLG_SIDEREAL | C.SEFLG_MOSEPH, input.latitude, input.longitude, 'W');
     const ascLon = houses.data.points[0];
 
     return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs);
+  }
+
+  siderealPositions(utcMs: number): Record<PlanetName, number> {
+    return this.siderealAt(utcMs).sidereal;
   }
 }
 

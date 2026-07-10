@@ -341,4 +341,4 @@ export function matchYogaRules(
   });
 }
 
-export { nodeIdToRuleId };
+export { nodeIdToRuleId, toMatchedRule, getConflictCorroboration };

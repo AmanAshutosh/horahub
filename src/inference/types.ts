@@ -8,6 +8,8 @@
  * a rule's `translation` field (the verbatim extracted source sentence).
  */
 
+import type { PlanetName } from '@/types/chart';
+
 // ── Rule match ────────────────────────────────────────────────────────────────
 
 /**
@@ -66,6 +68,10 @@ export interface DomainResult {
   dimensionCount: number;
   /** Top matches, sorted by confidence descending. */
   matches: MatchedRule[];
+  /** Remedy-bearing matches from the full match pool, uncapped by the narrative
+   *  top-N — used only for remedy-card generation so remedy content isn't
+   *  crowded out by higher-confidence non-remedy matches. */
+  remedyCandidates: MatchedRule[];
 }
 
 // ── Yoga detection ────────────────────────────────────────────────────────────
@@ -185,6 +191,18 @@ export interface PastObservation {
   domains: string[];
 }
 
+// ── Transit ───────────────────────────────────────────────────────────────────
+
+export interface TransitPlanetPosition {
+  planet: PlanetName;
+  sign: number; // 0..11
+  siderealLon: number;
+  /** Whole-sign house counted from the natal Lagna. */
+  houseFromLagna: number; // 1..12
+  /** Whole-sign house counted from the natal Moon. */
+  houseFromMoon: number; // 1..12
+}
+
 // ── Full inference result ─────────────────────────────────────────────────────
 
 export interface InferenceResult {
@@ -205,4 +223,6 @@ export interface InferenceResult {
   remedies: ExtractedRemedy[];
   /** Past and present dasha observations. */
   pastObservations: PastObservation[];
+  /** Current transit positions + matched rules, or null if computation failed. */
+  transit: { positions: TransitPlanetPosition[]; matches: MatchedRule[] } | null;
 }

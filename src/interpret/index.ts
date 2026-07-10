@@ -19,7 +19,7 @@ function planetsSection(facts: ChartFacts, kb: KnowledgeBase): ReadingSection {
     const dignity = pl.dignity !== 'neutral' ? `, ${pl.dignity}` : '';
     return {
       title: `${p} in ${signName(pl.sign)} (House ${pl.house})`,
-      body: `${p} signifies ${rule.themes}. Here it occupies ${signName(pl.sign)}${dignity}, in house ${pl.house}, so a reading weighs those significations through that house's affairs.`,
+      body: `Your chart shows ${p} in ${signName(pl.sign)}${dignity}, in house ${pl.house}. This placement indicates ${rule.themes} come through that house's affairs for you — significations classical texts traditionally associate with ${p} in this position.`,
       tags: [pl.dignity],
       citation: planetCitation(kb, p),
     };
@@ -33,12 +33,13 @@ function housesSection(facts: ChartFacts, kb: KnowledgeBase): ReadingSection {
     const lordPlacement = facts.planets[h.lord];
     const occ = h.occupants.length ? h.occupants.join(', ') : null;
     const body =
-      `Governs ${rule.themes}. This house falls in ${signName(h.sign)}; its lord ${h.lord} ` +
+      `In your case, house ${h.house} falls in ${signName(h.sign)}, and its lord ${h.lord} ` +
       `sits in house ${lordPlacement.house} (${signName(lordPlacement.sign)}` +
       `${lordPlacement.dignity !== 'neutral' ? `, ${lordPlacement.dignity}` : ''}). ` +
       (occ
-        ? `Occupied by ${occ}, whose significations colour this area of life.`
-        : `No planet occupies it, so its lord's placement carries the reading.`);
+        ? `${occ} occupies this house directly, so their significations colour this area for you.`
+        : `No planet occupies this house directly, so the placement of its lord carries the main reading here.`) +
+      ` Classical texts traditionally associate this house with ${rule.themes}.`;
     return {
       title: `House ${h.house} · ${rule.title}`,
       body,
@@ -63,9 +64,9 @@ function dashaEffectsSection(facts: ChartFacts, kb: KnowledgeBase): ReadingSecti
     return {
       title: `${p.lord} Mahādaśā${isCurrent ? ' · current' : ''}`,
       body:
-        `Through this period ${p.lord} colours events with its significations: ${rule.themes}. ` +
-        `In this chart ${p.lord} sits in ${signName(placement.sign)} (house ${placement.house}` +
-        `${placement.dignity !== 'neutral' ? `, ${placement.dignity}` : ''}), so those themes express through house ${placement.house}'s affairs.`,
+        `Your current ${p.lord} period is traditionally associated with ${rule.themes}. ` +
+        `In your chart, ${p.lord} sits in ${signName(placement.sign)} (house ${placement.house}` +
+        `${placement.dignity !== 'neutral' ? `, ${placement.dignity}` : ''}), so classical texts suggest this period's themes express mainly through house ${placement.house}'s affairs for you.`,
       citation: planetCitation(kb, lord),
       note: 'Signification of the period, not a forecast. Detailed daśā-phala needs BPHS Vol.2 chapters.',
     };

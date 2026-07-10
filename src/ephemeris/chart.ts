@@ -13,14 +13,21 @@ import { dayNumber, norm360 } from './math';
 export interface Ephemeris {
   readonly id: string;
   compute(input: BirthInput): ChartFacts;
+  /**
+   * Sidereal longitude for all 9 bodies at an arbitrary UTC instant, with no
+   * ascendant/house/dasha computation — for transit use, where only "what
+   * sign is this planet in right now" matters, not a fresh chart. Planetary
+   * longitude in this codebase is geocentric and needs no reference location.
+   */
+  siderealPositions(utcMs: number): Record<PlanetName, number>;
 }
 
 /** Pure-JS analytic positions (Schlyter). ~arc-minute accuracy; runs anywhere. */
 export class AnalyticEphemeris implements Ephemeris {
   readonly id = 'analytic';
 
-  compute(input: BirthInput): ChartFacts {
-    const { Y, Mo, D, utHours } = utcParts(input.utcMs);
+  private siderealAt(utcMs: number): { sidereal: Record<PlanetName, number>; sun: ReturnType<typeof sunPosition>; ayanamsa: number; utHours: number; d: number } {
+    const { Y, Mo, D, utHours } = utcParts(utcMs);
     const d = dayNumber(Y, Mo, D, utHours);
     const sun = sunPosition(d);
     const ayanamsa = lahiriAyanamsa(d);
@@ -42,8 +49,17 @@ export class AnalyticEphemeris implements Ephemeris {
       sidereal[p] = norm360(tropical[p] - ayanamsa);
     });
 
+    return { sidereal, sun, ayanamsa, utHours, d };
+  }
+
+  compute(input: BirthInput): ChartFacts {
+    const { sidereal, sun, ayanamsa, utHours, d } = this.siderealAt(input.utcMs);
     const ascLon = ascendant(d, sun.meanLon, utHours, input.longitude, input.latitude, ayanamsa);
     return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs);
+  }
+
+  siderealPositions(utcMs: number): Record<PlanetName, number> {
+    return this.siderealAt(utcMs).sidereal;
   }
 }
 
