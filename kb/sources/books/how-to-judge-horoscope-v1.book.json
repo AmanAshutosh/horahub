@@ -1,0 +1,27 @@
+{
+  "slug": "how-to-judge-horoscope-v1",
+  "code": "HJH1",
+  "title": "How to Judge a Horoscope, Volume 1",
+  "author": "Bangalore Venkata Raman",
+  "translator": null,
+  "edition": "unknown",
+  "language": "English (modern, original composition)",
+  "priority": 3,
+  "classicalAuthority": "secondary",
+  "copyright": "in-copyright",
+  "file": "how to judge horoscope p1.pdf",
+  "pages": 311,
+  "extractionStrategy": "text",
+  "textFallbackThreshold": 30,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [
+      {
+        "pattern": "^(\\d{1,2})\\.\\s+[A-Z][a-zA-Z]*(?:\\s+(?:[A-Z][a-zA-Z]*|in|of|the|and|a|on|to|at|from|by))*$",
+        "flags": ""
+      }
+    ],
+    "versePattern": null,
+    "capsHeadingHeuristic": false
+  }
+}

@@ -11,7 +11,7 @@
  *   clamped to [0, 1]
  */
 
-export type BookCode = 'BPHS' | 'HORA' | 'PHALA' | 'LOL' | string;
+export type BookCode = 'BPHS' | 'HORA' | 'PHALA' | 'LOL' | 'HAST' | 'HJH1' | 'HJH2' | string;
 
 /** Input factors for confidence computation. */
 export interface ConfidenceInput {
@@ -40,6 +40,9 @@ const SOURCE_FACTOR: Record<string, number> = {
   BPHS:  1.00,
   HORA:  0.90,
   PHALA: 0.85,
+  HAST:  0.85, // user-flagged high priority for remedies — matches Phaladeepika's tier
+  HJH1:  0.80,
+  HJH2:  0.80,
   LOL:   0.75,
 };
 
@@ -100,7 +103,7 @@ export function computeConfidence(input: ConfidenceInput): number {
  * When two rules conflict, the rule from the higher-authority book is preferred.
  * If same book, surface both (never silently discard evidence).
  */
-export const BOOK_PRIORITY: readonly BookCode[] = ['BPHS', 'HORA', 'PHALA', 'LOL'];
+export const BOOK_PRIORITY: readonly BookCode[] = ['BPHS', 'HORA', 'PHALA', 'HAST', 'HJH1', 'HJH2', 'LOL'];
 
 export function bookPriorityOf(bookCode: BookCode): number {
   const idx = BOOK_PRIORITY.indexOf(bookCode);

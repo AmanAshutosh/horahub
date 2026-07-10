@@ -1,0 +1,23 @@
+{
+  "slug": "hindu-astrology",
+  "code": "HAST",
+  "title": "Learn Hindu Astrology Easily",
+  "author": "K. N. Rao, K. Ashu Rao",
+  "translator": null,
+  "edition": "unknown",
+  "language": "English (modern, original composition)",
+  "priority": 2,
+  "classicalAuthority": "secondary",
+  "copyright": "in-copyright",
+  "file": "hindu astrology.pdf",
+  "pages": 69,
+  "extractionStrategy": "ocr",
+  "textFallbackThreshold": 0,
+  "ocrQuality": "poor",
+  "segmentation": {
+    "chapterMatchers": [],
+    "versePattern": null,
+    "capsHeadingHeuristic": true,
+    "titleCaseHeadingHeuristic": true
+  }
+}

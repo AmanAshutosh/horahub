@@ -6,7 +6,8 @@
  * from metadata (e.g. "BPHS Ch.24, v.12"). No prose is ever synthesised.
  *
  * Sections produced:
- *   career, marriage, health, finance, remedies   — LifeAreaSection
+ *   career, finance, marriage, love, health, education,
+ *   family, mentalNature, spirituality, remedies   — LifeAreaSection
  *   yogas                                          — YogaSection
  *   past-validation                                — (future section)
  */
@@ -17,10 +18,12 @@ import type {
   ReportCitation,
   ReportTable,
   ReportTableRow,
+  ReportRemedyCard,
 } from '@/types/report';
 import type { ChartFacts } from '@/types/chart';
-import type { InferenceResult, MatchedRule, DomainResult, DetectedYoga, ExtractedRemedy, PastObservation } from './types';
+import type { InferenceResult, MatchedRule, DomainResult, DetectedYoga, ExtractedRemedy, PastObservation, RemedyCard } from './types';
 import { interpretDomain } from '@/lib/interpreter/LifeDomainInterpreter';
+import { buildDomainRemedyCards } from './remedy-engine';
 
 // ── Book display names ────────────────────────────────────────────────────────
 
@@ -29,6 +32,9 @@ const BOOK_DISPLAY: Record<string, string> = {
   HORA:  'Horasara',
   PHALA: 'Phaladeepika',
   LOL:   'Light on Life',
+  HAST:  'Learn Hindu Astrology Easily',
+  HJH1:  'How to Judge a Horoscope, Vol. 1',
+  HJH2:  'How to Judge a Horoscope, Vol. 2',
 };
 
 function bookName(code: string): string {
@@ -60,6 +66,38 @@ function toReportCitation(m: MatchedRule): ReportCitation {
     work: bookName(m.bookCode),
     ref,
     text: m.sourceText,
+  };
+}
+
+function fieldRef(chapter: string | null, verse: string | null): string {
+  let ref = chapter ? `Ch.${chapter}` : '';
+  if (verse) ref += `${ref ? ', ' : ''}v.${verse}`;
+  return ref;
+}
+
+function toReportRemedyCard(card: RemedyCard): ReportRemedyCard {
+  return {
+    id: card.id,
+    domain: card.domain,
+    responsiblePlanet: card.responsiblePlanet,
+    cause: card.cause,
+    classicalExplanation: card.classicalExplanation,
+    confidenceTier: card.confidenceTier,
+    fields: card.fields.map((f) => ({
+      type: f.type,
+      raw: f.raw,
+      ruleId: f.ruleId,
+      book: bookName(f.bookCode),
+      bookCode: f.bookCode,
+      chapter: f.chapter,
+      verse: f.verse,
+      extractionConfidence: f.extractionConfidence,
+    })),
+    citations: card.citations.map((c) => ({
+      work: bookName(c.bookCode),
+      ref: fieldRef(c.chapter, c.verse) || `Rule ${c.ruleId}`,
+      text: card.fields.find((f) => f.ruleId === c.ruleId)?.raw ?? '',
+    })),
   };
 }
 
@@ -128,6 +166,8 @@ function buildLifeAreaSection(
     return { id, title, subtitle, status: 'pending' };
   }
 
+  const remedyCards = buildDomainRemedyCards(id, domain.matches).map(toReportRemedyCard);
+
   const items: ReportItem[] = domain.matches
     .filter((m) => m.sourceText.trim().length > 20) // skip stub-length rules
     .map(matchToItem);
@@ -152,6 +192,7 @@ function buildLifeAreaSection(
     citations: topCitations.length > 0 ? topCitations : undefined,
     evidence: domain.matches.slice(0, 8).map(toReportEvidence),
     note,
+    remedyCards: remedyCards.length > 0 ? remedyCards : undefined,
   };
 
   // Enrich with chart-specific interpretation when ChartFacts are available
@@ -328,10 +369,15 @@ function buildPastValidationSection(
 // ── Main export ───────────────────────────────────────────────────────────────
 
 const LIFE_AREA_CONFIG: Array<{ id: string; title: string; subtitle: string }> = [
-  { id: 'career',   title: 'Career & Profession',  subtitle: '10th house, lord, and daśā indicators' },
-  { id: 'marriage', title: 'Marriage & Partnership', subtitle: '7th house, Venus, and Navamsha indicators' },
-  { id: 'health',   title: 'Health & Longevity',    subtitle: '1st, 6th and 8th house indicators' },
-  { id: 'finance',  title: 'Finance & Wealth',      subtitle: '2nd, 11th house and Dhana yoga indicators' },
+  { id: 'career',       title: 'Career & Profession',   subtitle: '10th house, lord, and daśā indicators' },
+  { id: 'finance',      title: 'Finance & Wealth',       subtitle: '2nd, 11th house and Dhana yoga indicators' },
+  { id: 'marriage',     title: 'Marriage & Partnership', subtitle: '7th house, Venus, and Navamsha indicators' },
+  { id: 'love',         title: 'Love & Relationships',   subtitle: 'Venus, 5th and 7th house romantic indicators' },
+  { id: 'health',       title: 'Health & Longevity',     subtitle: '1st, 6th and 8th house indicators' },
+  { id: 'education',    title: 'Education',              subtitle: '4th and 5th house, Mercury and Jupiter indicators' },
+  { id: 'family',       title: 'Family',                 subtitle: '2nd and 4th house, parents and domestic-life indicators' },
+  { id: 'mentalNature', title: 'Mental Nature',          subtitle: 'Lagna, Moon and Mercury temperament indicators' },
+  { id: 'spirituality', title: 'Spiritual Growth',       subtitle: '9th and 12th house, Jupiter and Ketu indicators' },
 ];
 
 /**
@@ -340,7 +386,8 @@ const LIFE_AREA_CONFIG: Array<{ id: string; title: string; subtitle: string }> =
  * chart-specific context via LifeDomainInterpreter.
  *
  * Sections are returned in report order:
- *   career, marriage, health, finance, yogas, remedies, past-validation
+ *   career, finance, marriage, love, health, education, family,
+ *   mentalNature, spirituality, yogas, remedies, past-validation
  */
 export function buildReportSections(result: InferenceResult, facts?: ChartFacts): ReportSectionData[] {
   const domainByKey = new Map<string, DomainResult>(

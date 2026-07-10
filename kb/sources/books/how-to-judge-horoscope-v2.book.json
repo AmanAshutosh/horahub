@@ -1,0 +1,30 @@
+{
+  "slug": "how-to-judge-horoscope-v2",
+  "code": "HJH2",
+  "title": "How to Judge a Horoscope, Volume 2",
+  "author": "Bangalore Venkata Raman, Gayatri Devi Vasudev",
+  "translator": null,
+  "edition": "unknown",
+  "language": "English (modern, original composition)",
+  "priority": 3,
+  "classicalAuthority": "secondary",
+  "copyright": "in-copyright",
+  "file": "how to judge horoscope p2.pdf",
+  "pages": 483,
+  "extractionStrategy": "text",
+  "textFallbackThreshold": 30,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [
+      { "pattern": "^Concerning the Seventh House$", "flags": "", "chapterNumber": 11 },
+      { "pattern": "^Concerning the Eighth House$", "flags": "", "chapterNumber": 12 },
+      { "pattern": "^Concerning the Ninth House$", "flags": "", "chapterNumber": 13 },
+      { "pattern": "^Concerning the Tenth House$", "flags": "", "chapterNumber": 14 },
+      { "pattern": "^Concerning the Eleventh House$", "flags": "", "chapterNumber": 15 },
+      { "pattern": "^Concerning the Twelfth House$", "flags": "", "chapterNumber": 16 },
+      { "pattern": "^Some Practical Illustrations$", "flags": "", "chapterNumber": 17 }
+    ],
+    "versePattern": null,
+    "capsHeadingHeuristic": false
+  }
+}

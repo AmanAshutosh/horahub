@@ -23,6 +23,14 @@ export interface ChapterMatcherConfig {
   pattern: string;
   flags: string;
   isEndMarker?: boolean;
+  /**
+   * Fixed chapter number to use on a match, instead of parsing one out of the
+   * matched text. Needed for books whose real chapter-start heading (e.g. a
+   * recurring running header like "Concerning the Seventh House") never
+   * carries a digit or Roman numeral in the body — only in the table of
+   * contents, which isn't reliably attributable line-by-line.
+   */
+  chapterNumber?: number;
 }
 
 export interface VersePatternConfig {
@@ -34,6 +42,14 @@ export interface SegmentationConfig {
   chapterMatchers: ChapterMatcherConfig[];
   versePattern: VersePatternConfig | null;
   capsHeadingHeuristic?: boolean;
+  /**
+   * Like capsHeadingHeuristic, but for books whose section headings are
+   * short Title Case topic lines rather than ALL-CAPS or numbered headings
+   * (e.g. "Model Exercise", "The Spirituality Associated with Houses").
+   * The matched line text itself becomes the chapter label, same as
+   * capsHeadingHeuristic — there is no numeric chapter index to parse.
+   */
+  titleCaseHeadingHeuristic?: boolean;
 }
 
 export interface BookMeta {
@@ -68,6 +84,7 @@ export function compileChapterMatchers(config: SegmentationConfig) {
   return config.chapterMatchers.map((m) => ({
     pattern: new RegExp(m.pattern, m.flags),
     isEndMarker: m.isEndMarker ?? false,
+    chapterNumber: m.chapterNumber,
   }));
 }
 

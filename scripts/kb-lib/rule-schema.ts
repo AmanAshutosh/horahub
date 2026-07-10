@@ -69,7 +69,7 @@ export interface RuleTiming {
 
 /** Only populated when the text explicitly prescribes a remedy action — never inferred from category alone. */
 export interface RuleRemedy {
-  type: 'gemstone' | 'mantra' | 'donation' | 'fasting';
+  type: 'gemstone' | 'mantra' | 'donation' | 'fasting' | 'worship' | 'lifestyle';
   raw: string;
 }
 

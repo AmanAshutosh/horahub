@@ -781,6 +781,88 @@
     margin-top: 0.15rem;
   }
 
+  /* Remedy cards (embedded per life-area section) */
+  .life-area-remedies {
+    margin-top: 0.5rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .life-area-remedy-card {
+    margin-bottom: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--color-line);
+    border-left: 2px solid var(--color-primary);
+    border-radius: 0.5rem;
+  }
+
+  .life-area-remedy-card[data-tier='lifestyle'] {
+    border-left-color: var(--color-warn);
+  }
+
+  .life-area-remedy-card-planet {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .life-area-remedy-card-cause {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .life-area-remedy-card-cause-label {
+    color: var(--color-ink-subtle);
+  }
+
+  .life-area-remedy-card-explanation {
+    font-size: 0.9375rem;
+    line-height: 1.72;
+    color: var(--color-ink-muted);
+    margin-bottom: 1rem;
+  }
+
+  .life-area-remedy-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .life-area-remedy-field {
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .life-area-remedy-field:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .life-area-remedy-field-label {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.375rem;
+  }
+
+  .life-area-remedy-field-body {
+    font-size: 0.9375rem;
+    line-height: 1.68;
+    color: var(--color-ink-muted);
+  }
+
+  .life-area-remedy-card-note {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-ink-subtle);
+    font-style: italic;
+  }
+
   /* Evidence section divider */
   .life-area-evidence-label {
     margin-top: 2.5rem;

@@ -40,11 +40,16 @@ export function ReportView({ data, person }: Props) {
     data.sections?.find((s) => s.id === id) ?? null;
 
   const lifeAreaData: Record<string, ReportSectionData | null> = {
-    career:   findSection('career'),
-    marriage: findSection('marriage'),
-    health:   findSection('health'),
-    finance:  findSection('finance'),
-    remedies: findSection('remedies'),
+    career:       findSection('career'),
+    finance:      findSection('finance'),
+    marriage:     findSection('marriage'),
+    love:         findSection('love'),
+    health:       findSection('health'),
+    education:    findSection('education'),
+    family:       findSection('family'),
+    mentalNature: findSection('mentalNature'),
+    spirituality: findSection('spirituality'),
+    remedies:     findSection('remedies'),
   };
 
   const yogaData = findSection('yogas');
@@ -78,7 +83,7 @@ export function ReportView({ data, person }: Props) {
         <DashaCallout facts={facts} />
       </div>
 
-      {/* ── §01–04 Life Areas (career, relationships, health, finance) ── */}
+      {/* ── §01–09 Life Areas (career, finance, marriage, love, health, education, family, mental nature, spirituality) ── */}
       {MAIN_AREAS.map((area) => (
         <LifeAreaSection
           key={area.id}
@@ -87,13 +92,13 @@ export function ReportView({ data, person }: Props) {
         />
       ))}
 
-      {/* ── §05 What Makes Your Chart Distinctive (Yogas) ── */}
-      <YogaSection num={5} data={yogaData} />
+      {/* ── §10 What Makes Your Chart Distinctive (Yogas) ── */}
+      <YogaSection num={10} data={yogaData} />
 
-      {/* ── §06 Your Birth Chart ── */}
+      {/* ── §11 Your Birth Chart ── */}
       <SectionShell
         id="charts"
-        num={6}
+        num={11}
         title="Your Birth Chart"
         subtitle="The foundational map — everything in this report is derived from this chart"
       >
@@ -114,26 +119,26 @@ export function ReportView({ data, person }: Props) {
         <SouthChartLegend />
       </SectionShell>
 
-      {/* ── §07 Your Planets ── */}
+      {/* ── §12 Your Planets ── */}
       <SectionShell
         id="planets"
-        num={7}
+        num={12}
         title="Your Planets"
         subtitle="What each planet's placement says about a different dimension of who you are"
       >
         <PlanetGrid facts={facts} section={planetsSection} />
       </SectionShell>
 
-      {/* ── §08 Your Planetary Strengths ── */}
-      <PlanetStrengthSection facts={facts} num={8} />
+      {/* ── §13 Your Planetary Strengths ── */}
+      <PlanetStrengthSection facts={facts} num={13} />
 
-      {/* ── §09 Your Life Areas — In Detail (House Analysis) ── */}
-      <HouseAnalysisSection housesSection={housesSection} num={9} />
+      {/* ── §14 Your Life Areas — In Detail (House Analysis) ── */}
+      <HouseAnalysisSection housesSection={housesSection} num={14} />
 
-      {/* ── §10 Your Life Timeline (full Dasha) ── */}
+      {/* ── §15 Your Life Timeline (full Dasha) ── */}
       <SectionShell
         id="dasha"
-        num={10}
+        num={15}
         title="Your Life Timeline"
         subtitle="The full sequence of planetary periods across your life"
       >
@@ -145,42 +150,42 @@ export function ReportView({ data, person }: Props) {
         )}
       </SectionShell>
 
-      {/* ── §11 The Sky Right Now (Transits) ── */}
-      <TransitSection num={11} data={findSection('transit')} />
+      {/* ── §16 The Sky Right Now (Transits) ── */}
+      <TransitSection num={16} data={findSection('transit')} />
 
-      {/* ── §12 Classical Remedies ── */}
+      {/* ── §17 Classical Remedies ── */}
       <LifeAreaSection config={REMEDIES} data={lifeAreaData['remedies']} />
 
-      {/* ── §13 Your Chart — Verified (Birth Details) ── */}
+      {/* ── §18 Your Chart — Verified (Birth Details) ── */}
       <BirthDetailsSection
         facts={facts}
         person={person}
         utcOffset={resolved.utcOffset}
         coordinates={resolved.coordinates}
-        num={13}
+        num={18}
       />
 
-      {/* ── §14 Technical Reference ── */}
+      {/* ── §19 Technical Reference ── */}
       <TechnicalReferenceSection
         facts={facts}
         person={person}
         utcOffset={resolved.utcOffset}
         coordinates={resolved.coordinates}
-        num={14}
+        num={19}
       />
 
-      {/* ── §15 Appendix ── */}
+      {/* ── §20 Appendix ── */}
       <AppendixSection
         facts={facts}
         chartId={data.chartId}
         kbVersion={kbVersion}
         generatedAt={generatedAt}
-        num={15}
+        num={20}
       />
 
       <p className="report-footer">
         HoraHub · Vedic Astrology · positions by Swiss Ephemeris · all findings drawn from
-        classical texts: BPHS, Phaladeepika, Horasara, Light on Life · nothing invented.
+        the classical texts in this report&apos;s Knowledge Base · nothing invented.
       </p>
     </div>
   );

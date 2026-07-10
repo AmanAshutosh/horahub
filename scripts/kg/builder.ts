@@ -111,10 +111,15 @@ const BOOK_META: Record<string, { code: string; title: string; translator: strin
   'phaladeepika-abhushana': { code: 'PHALA', title: 'Phaladeepika (Mantreswara)', translator: 'V. Subrahmanya Sastri', tradition: 'Classical' },
   'horasara': { code: 'HORA', title: 'Horasara (Prithuyasas)', translator: 'V. Subrahmanya Sastri', tradition: 'Classical' },
   'light-on-life-svoboda': { code: 'LOL', title: 'Light on Life', translator: 'Robert Svoboda', tradition: 'Modern classical' },
+  'how-to-judge-horoscope-v1': { code: 'HJH1', title: 'How to Judge a Horoscope, Volume 1', translator: 'Bangalore Venkata Raman', tradition: 'Modern classical' },
+  'how-to-judge-horoscope-v2': { code: 'HJH2', title: 'How to Judge a Horoscope, Volume 2', translator: 'Bangalore Venkata Raman, Gayatri Devi Vasudev', tradition: 'Modern classical' },
+  'hindu-astrology': { code: 'HAST', title: 'Learn Hindu Astrology Easily', translator: 'K. N. Rao, K. Ashu Rao', tradition: 'Modern classical' },
 };
 
 // Life-area category mapping
-const LIFE_AREA_CATEGORIES = new Set(['career', 'marriage', 'health', 'finance', 'remedies']);
+const LIFE_AREA_CATEGORIES = new Set([
+  'career', 'marriage', 'love', 'health', 'finance', 'education', 'spirituality', 'family', 'mentalNature', 'remedies',
+]);
 
 // ── Builder state ─────────────────────────────────────────────────────────────
 
@@ -227,8 +232,8 @@ class GraphBuilder {
     // Categories
     const ALL_CATEGORIES = [
       'planet', 'house', 'sign', 'nakshatra', 'yoga', 'dasha',
-      'divisionalCharts', 'career', 'marriage', 'health', 'finance',
-      'remedies', 'spirituality', 'education', 'children', 'property',
+      'divisionalCharts', 'career', 'marriage', 'love', 'health', 'finance',
+      'remedies', 'spirituality', 'education', 'children', 'family', 'mentalNature', 'property',
       'foreign', 'longevity', 'business', 'timing', 'transit',
     ];
     for (const cat of ALL_CATEGORIES) {
@@ -245,7 +250,7 @@ class GraphBuilder {
     }
 
     // Remedy types
-    for (const r of ['gemstone', 'mantra', 'donation', 'fasting']) {
+    for (const r of ['gemstone', 'mantra', 'donation', 'fasting', 'worship', 'lifestyle']) {
       this.addNode({
         id: `remedy:${r}`,
         type: 'Remedy',

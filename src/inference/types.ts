@@ -104,7 +104,7 @@ export interface TimelineEvent {
 // ── Remedies ──────────────────────────────────────────────────────────────────
 
 export interface ExtractedRemedy {
-  type: 'gemstone' | 'mantra' | 'donation' | 'fasting';
+  type: 'gemstone' | 'mantra' | 'donation' | 'fasting' | 'worship' | 'lifestyle';
   /** Verbatim remedy text from the rule. */
   raw: string;
   ruleId: string;
@@ -113,6 +113,62 @@ export interface ExtractedRemedy {
   chapter: string | null;
   verse: string | null;
   extractionConfidence: number;
+}
+
+// ── Cause-aware remedy cards ──────────────────────────────────────────────────
+
+/**
+ * Structured "why" behind a remedy — planet/house/condition, when the source
+ * rule's structuredRule provides it. Every field is a direct copy of a
+ * RuleCondition field already present on the encoded rule; never fabricated.
+ */
+export interface RemedyCause {
+  planet: string | null;
+  house: number | null;
+  sign: string | null;
+  dignity: string | null;
+  /** Verbatim condition text this cause was derived from. */
+  conditionRaw: string | null;
+}
+
+/**
+ * Confidence tier for a remedy card — purely structural, not a new score:
+ * - 'structured'  = derived from a rule with a full planet+house condition
+ * - 'planet-only' = rule mentions a planet but has no parsed condition
+ * - 'lifestyle'   = remedy type is 'lifestyle' — always lowest tier,
+ *                   regardless of cause quality, per the conservative-
+ *                   extraction design.
+ */
+export type RemedyConfidenceTier = 'structured' | 'planet-only' | 'lifestyle';
+
+/** One cited classical remedy prescription within a RemedyCard. */
+export interface RemedyField {
+  type: ExtractedRemedy['type'];
+  raw: string;
+  ruleId: string;
+  book: string;
+  bookCode: string;
+  chapter: string | null;
+  verse: string | null;
+  extractionConfidence: number;
+}
+
+/**
+ * One "problem card" for a life-area section: a responsible planet, its
+ * chart-derived cause (when available), the classical explanation, and every
+ * distinct remedy type matched rules prescribe for that planet within this
+ * domain. Fields are omitted — never fabricated — when no rule supports them.
+ */
+export interface RemedyCard {
+  id: string;
+  domain: string;
+  responsiblePlanet: string | null;
+  cause: RemedyCause | null;
+  /** Verbatim source sentence providing the classical explanation. */
+  classicalExplanation: string;
+  confidenceTier: RemedyConfidenceTier;
+  fields: RemedyField[];
+  citations: Array<{ ruleId: string; book: string; bookCode: string; chapter: string | null; verse: string | null }>;
 }
 
 // ── Past validation ───────────────────────────────────────────────────────────

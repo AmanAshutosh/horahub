@@ -58,6 +58,28 @@ function isCapsHeading(line: string): boolean {
   return t.replace(/[^A-Z]/g, '').length >= 5;
 }
 
+const TITLE_CASE_CONNECTORS = new Set([
+  'in', 'of', 'the', 'and', 'a', 'an', 'on', 'to', 'at', 'from', 'by', 'with', 'your', 'this', 'or',
+]);
+
+/**
+ * True for a short standalone line where every word is either Title Case
+ * or a common lowercase connector — e.g. "The Spirituality Associated with
+ * Houses" — and false for ordinary prose (which mixes in lowercase content
+ * words) or noisy OCR garble (which rarely produces clean capitalization).
+ */
+function isTitleCaseHeading(line: string): boolean {
+  const t = line.trim();
+  if (t.length < 5 || t.length > 60) return false;
+  const words = t.split(/\s+/);
+  if (words.length < 2 || words.length > 10) return false;
+  return words.every((w, i) => {
+    const lower = w.toLowerCase();
+    if (i > 0 && TITLE_CASE_CONNECTORS.has(lower)) return true;
+    return /^[A-Z][a-z']*$/.test(w);
+  });
+}
+
 function splitSentences(paragraph: string): string[] {
   const cleaned = paragraph.replace(/\s+/g, ' ').trim();
   if (!cleaned) return [];
@@ -86,6 +108,7 @@ function segmentBook(book: BookMeta) {
   const chapterMatchers = compileChapterMatchers(book.segmentation);
   const versePattern = compileVersePattern(book.segmentation);
   const capsHeadingHeuristic = book.segmentation.capsHeadingHeuristic ?? false;
+  const titleCaseHeadingHeuristic = book.segmentation.titleCaseHeadingHeuristic ?? false;
 
   const pageFiles = readdirSync(bookDir)
     .filter((f) => /^page-\d{4}\.txt$/.test(f))
@@ -138,6 +161,12 @@ function segmentBook(book: BookMeta) {
       for (const matcher of chapterMatchers) {
         const m = line.match(matcher.pattern);
         if (m) {
+          if (matcher.chapterNumber != null) {
+            currentChapter = String(matcher.isEndMarker ? matcher.chapterNumber + 1 : matcher.chapterNumber);
+            currentVerse = null;
+            matchedHere = true;
+            break;
+          }
           const raw = m[1] ?? m[2];
           if (!raw) continue;
           const asRoman = romanToInt(raw);
@@ -156,6 +185,12 @@ function segmentBook(book: BookMeta) {
       }
 
       if (capsHeadingHeuristic && isCapsHeading(line)) {
+        currentChapter = line;
+        chapterMatchedThisPage = true;
+        continue;
+      }
+
+      if (titleCaseHeadingHeuristic && isTitleCaseHeading(line)) {
         currentChapter = line;
         chapterMatchedThisPage = true;
         continue;

@@ -77,7 +77,14 @@ const REMEDY_TYPE_RE: Array<[RegExp, RuleRemedy['type']]> = [
   [/\bmantra\b/i, 'mantra'],
   [/\bdonat\w*\b/i, 'donation'],
   [/\bfast\w*\b/i, 'fasting'],
+  // Ordered after the 4 above: a sentence naming both a gemstone and worship
+  // should still resolve to the more concrete 'gemstone' prescription.
+  [/\b(worship|puja|pooja|homa|havan|temple\s+visit|deity)\b/i, 'worship'],
 ];
+// Narrower than REMEDY_VERB_RE on purpose: only fires as a fallback (see
+// tryParseLifestyleRemedy) when nothing above matched, so it never
+// recategorizes a concrete gemstone/mantra/donation/fasting/worship rule.
+const LIFESTYLE_REMEDY_RE = /\b(should|must|ought to)\s+(avoid|abstain from|observe|practice|maintain|refrain from|control|cultivate|serve|respect)\b/i;
 const INCREASE_RE = /\b(gain|gains|increase|increases|prosperity|wealthy|success|successful|auspicious|beneficial|happiness|fame|growth|favourable|favorable)\b/i;
 const DECREASE_RE = /\b(loss|losses|decrease|decreases|trouble|troubles|misery|inauspicious|harm|danger|poverty|disease|suffering|affliction|unfavourable|unfavorable|malefic)\b/i;
 
@@ -108,6 +115,7 @@ function extractDimensions(text: string): RuleDimensions {
   if (/mantra/i.test(text)) remedyTypes.push('mantra');
   if (/donation/i.test(text)) remedyTypes.push('donation');
   if (/fasting/i.test(text)) remedyTypes.push('fasting');
+  if (/\b(worship|puja|pooja|homa|havan)\b/i.test(text)) remedyTypes.push('worship');
   return { planets, secondaryPoints, houses, signs, nakshatras, yogas, dashaPlanets, divisionalCharts, remedyTypes };
 }
 
@@ -135,6 +143,23 @@ function tryParseRemedy(text: string): RuleRemedy | null {
     if (m) return { type, raw: `${text.match(REMEDY_VERB_RE)![0]} ... ${m[0]}` };
   }
   return null;
+}
+
+/**
+ * Best-effort, deliberately conservative behavioral/lifestyle remedy detector.
+ * Called ONLY when tryParseRemedy() found nothing, so it never recategorizes
+ * a rule that already has a concrete gemstone/mantra/donation/fasting/worship
+ * prescription. Requires both: (1) the sentence already independently
+ * classified into the 'remedies' category (categories.ts), and (2) an
+ * explicit prescriptive-modal + behavior-verb co-occurrence — narrower than
+ * REMEDY_VERB_RE, no bare verbs. Precision/recall unverified until run
+ * against real book text; expect tuning after inspecting kb:report output.
+ */
+function tryParseLifestyleRemedy(text: string, categories: string[]): RuleRemedy | null {
+  if (!categories.includes('remedies')) return null;
+  const m = text.match(LIFESTYLE_REMEDY_RE);
+  if (!m) return null;
+  return { type: 'lifestyle', raw: m[0] };
 }
 
 /** Crude OCR-garble detector: fraction of "words" that don't look like ordinary English tokens. */
@@ -253,7 +278,7 @@ function encodeBook(book: BookMeta, patternStats: Map<string, PatternStatEntry>)
       patternIds: firedPatternIds,
       isComposite: conditions.length >= 2,
       timing: tryParseTiming(s.text),
-      remedy: tryParseRemedy(s.text),
+      remedy: tryParseRemedy(s.text) ?? tryParseLifestyleRemedy(s.text, categories),
       originalVerse,
       originalVerseReliable: false,
       translation: s.text,

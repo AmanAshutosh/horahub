@@ -40,7 +40,15 @@ prisma/dev.db-journal
 # the project's own encoded rule wording (not raw scans) and are the only
 # inputs `npm run kg:build` needs to regenerate kb/graph/ during the Vercel
 # build step — see package.json "build" script.
-/kb/sources/
+#
+# kb/sources/books/*.book.json ARE also committed: they're small registration
+# metadata (title/author/segmentation config), not book content, and without
+# them `npm run kb:extract`/`kb:segment`/`kb:encode` can't be re-run for any
+# book from a fresh clone — see scripts/kb-lib/registry.ts.
+/kb/sources/*
+!/kb/sources/books/
+/kb/sources/books/*
+!/kb/sources/books/*.book.json
 /kb/extracted/
 /kb/processed/
 /kb/cache/

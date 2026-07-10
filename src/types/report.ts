@@ -46,6 +46,43 @@ export interface ReportTable {
   rows: ReportTableRow[];
 }
 
+/** Structured "why" behind a remedy card — direct copy of a matched rule's
+ *  condition fields, never fabricated. Omitted fields mean the source rule
+ *  simply didn't provide that detail. */
+export interface ReportRemedyCause {
+  planet: string | null;
+  house: number | null;
+  sign: string | null;
+  dignity: string | null;
+  conditionRaw: string | null;
+}
+
+/** One cited classical remedy prescription within a ReportRemedyCard. */
+export interface ReportRemedyField {
+  type: 'gemstone' | 'mantra' | 'donation' | 'fasting' | 'worship' | 'lifestyle';
+  raw: string;
+  ruleId: string;
+  book: string;
+  bookCode: string;
+  chapter: string | null;
+  verse: string | null;
+  extractionConfidence: number;
+}
+
+/** One "problem card" for a life-area section: responsible planet, chart-derived
+ *  cause (when available), classical explanation, and every distinct remedy
+ *  type matched rules prescribe for that planet — each independently cited. */
+export interface ReportRemedyCard {
+  id: string;
+  domain: string;
+  responsiblePlanet: string | null;
+  cause: ReportRemedyCause | null;
+  classicalExplanation: string;
+  confidenceTier: 'structured' | 'planet-only' | 'lifestyle';
+  fields: ReportRemedyField[];
+  citations: ReportCitation[];
+}
+
 /** A single claim inside a section — backed by evidence, never invented. */
 export interface ReportItem {
   title: string;
@@ -68,6 +105,14 @@ export interface ReportSectionData {
   citations?: ReportCitation[];
   evidence?: ReportEvidence[];
   note?: string;
+
+  /**
+   * Cause-linked remedy recommendations for this life area — populated only
+   * when at least one matched rule in this domain prescribes a remedy
+   * connected to a planet. Omitted (undefined) when none qualify — never a
+   * placeholder.
+   */
+  remedyCards?: ReportRemedyCard[];
 
   /**
    * Chart-specific factual context paragraph — states which houses/planets/signs

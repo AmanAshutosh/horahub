@@ -25,16 +25,19 @@ const nakshatraAlt = NAKSHATRAS.join('|');
 export const CATEGORY_PATTERNS: Record<string, RegExp> = {
   career: /\b(career|profession|occupation|livelihood|employment|vocation)\b/i,
   marriage: /\b(marriage|spouse|wife|husband|conjugal|matrimony|matrimonial)\b/i,
+  love: /\b(love|romance|romantic|courtship|dating|beloved|infatuation|lovers?)\b/i,
   finance: /\b(wealth|riches|money|finance|financial|income|prosperity|poverty)\b/i,
   health: /\b(disease|diseases|health|illness|ailment|sickness|injury|wound|fever)\b/i,
   business: /\b(business|trade|commerce|partnership|enterprise)\b/i,
   education: /\b(education|learning|knowledge|scholar|student|study|studies|vidya)\b/i,
   foreign: /\b(foreign|abroad|overseas|distant land|videsha)\b/i,
-  spirituality: /\b(spiritual|spirituality|moksha|liberation|renunciation|sannyasa|devotion|asceticism)\b/i,
+  spirituality: /\b(spiritual|spirituality|spiritual growth|inner peace|self[- ]realization|dharma|moksha|liberation|renunciation|sannyasa|devotion|asceticism)\b/i,
   children: /\b(children|child|progeny|son|sons|daughter|daughters|offspring|putra)\b/i,
+  family: /\b(family|parents|father|mother|siblings|brother|sister|relatives|kinsmen|domestic|home\s+life|ancestral)\b/i,
+  mentalNature: /\b(temperament|personality|disposition|character|mental\s+(?:strength|nature|makeup|state)|intellect|intelligence|psychology|psychological)\b/i,
   property: /\b(property|land|house\s+(?:and|or)\s+land|real estate|estate|building|vehicle)\b/i,
   longevity: /\b(longevity|life\s*span|length of life|ayurdaya|death|mortality)\b/i,
-  remedies: /\b(remedy|remedies|gemstone|mantra|donation|fasting|propitiat\w*|upaya)\b/i,
+  remedies: /\b(remedy|remedies|gemstone|mantra|donation|fasting|propitiat\w*|upaya|worship|puja|pooja)\b/i,
   timing: /\b(at the time of|during the period|years? of age|in the \d+\w{0,2} year)\b/i,
   dasha: /\b(dasha|dasa|mahadasha|mahadasa|antardasha|antardasa|bhukti)\b/i,
   transit: /\b(transit|transiting|gochara)\b/i,
@@ -50,8 +53,8 @@ export type CategoryName = keyof typeof CATEGORY_PATTERNS;
 
 /** Life-domain categories — used to pick a structuredRule effect's `domain`. Excludes structural tags (planet/house/sign/etc). */
 export const DOMAIN_CATEGORIES = [
-  'career', 'marriage', 'finance', 'health', 'business', 'education', 'foreign',
-  'spirituality', 'children', 'property', 'longevity', 'remedies', 'timing',
+  'career', 'marriage', 'love', 'finance', 'health', 'business', 'education', 'foreign',
+  'spirituality', 'children', 'family', 'mentalNature', 'property', 'longevity', 'remedies', 'timing',
 ];
 
 export function classifyCategories(text: string): string[] {

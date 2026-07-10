@@ -1,0 +1,22 @@
+{
+  "slug": "bphs-santhanam",
+  "code": "BPHS",
+  "title": "Brihat Parashara Hora Shastra",
+  "author": "Maharishi Parashara",
+  "translator": "R. Santhanam",
+  "edition": "Vol. 1, Ranjan Publications",
+  "language": "English (translated from Sanskrit)",
+  "priority": 1,
+  "classicalAuthority": "primary",
+  "copyright": "in-copyright",
+  "file": "002_BPHS_R_Santhanam_Translation.pdf.pdf",
+  "pages": 482,
+  "extractionStrategy": "ocr",
+  "textFallbackThreshold": 0,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [{ "pattern": "^chapter\\s+(\\d+)\\b", "flags": "i", "isEndMarker": false }],
+    "versePattern": { "pattern": "^(\\d+(?:-\\d+)?)\\.\\s+[A-Z]", "flags": "" },
+    "capsHeadingHeuristic": false
+  }
+}

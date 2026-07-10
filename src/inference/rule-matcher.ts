@@ -22,7 +22,9 @@ import { computeConfidence } from './confidence';
 // ── Domain configuration ──────────────────────────────────────────────────────
 
 /** Life-area categories that map to KB category nodes. */
-const LIFE_AREA_CATEGORIES = ['career', 'marriage', 'health', 'finance', 'remedies'];
+const LIFE_AREA_CATEGORIES = [
+  'career', 'marriage', 'love', 'health', 'finance', 'education', 'spirituality', 'family', 'mentalNature', 'remedies',
+];
 
 /** Additional general categories to query for comprehensive coverage. */
 const GENERAL_CATEGORIES = ['planet', 'house', 'dasha', 'yoga', 'nakshatra', 'timing'];

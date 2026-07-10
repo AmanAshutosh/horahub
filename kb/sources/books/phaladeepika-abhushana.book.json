@@ -1,0 +1,25 @@
+{
+  "slug": "phaladeepika-abhushana",
+  "code": "PHALA",
+  "title": "Phaladeepika",
+  "author": "Mantreswara",
+  "translator": "Panditabhushana V. Subrahmanya Sastri, B.A.",
+  "edition": "Adhyayas I-XXVIII, Aruna Press, Bangalore (verified from title page)",
+  "language": "English (translated from Sanskrit)",
+  "priority": 2,
+  "classicalAuthority": "primary",
+  "copyright": "in-copyright",
+  "file": "004_Phaladeepika_English_Pandit_Abhushana.pdf",
+  "pages": 476,
+  "extractionStrategy": "ocr",
+  "textFallbackThreshold": 0,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [
+      { "pattern": "thus ends the (\\d+)(?:st|nd|rd|th)?\\s+adhyaya", "flags": "i", "isEndMarker": true },
+      { "pattern": "adh\\w*\\.?,?\\s*([ivxlcdm]+)\\b", "flags": "i", "isEndMarker": false }
+    ],
+    "versePattern": { "pattern": "sloka s?\\.?\\s*(\\d+(?:-\\d+)?)|slokas?\\s+(\\d+(?:-\\d+)?)", "flags": "i" },
+    "capsHeadingHeuristic": false
+  }
+}

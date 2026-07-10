@@ -8,11 +8,14 @@ export const metadata: Metadata = {
     'Precise nine-planet birth chart with interpretations sourced from classical Vedic texts. Swiss Ephemeris positions. Nothing fabricated.',
 };
 
-const SOURCES = ['BPHS', 'Phaladeepika', 'Horasara', 'Light on Life'] as const;
+const SOURCES = [
+  'BPHS', 'Phaladeepika', 'Horasara', 'Light on Life',
+  'Learn Hindu Astrology Easily', 'How to Judge a Horoscope',
+] as const;
 
 const FEATURES = [
   { label: 'Swiss Ephemeris',  detail: 'DE431 precision planetary positions' },
-  { label: '1,352 Rules',      detail: 'Extracted from four classical Vedic texts' },
+  { label: '5,073 Rules',      detail: 'Extracted from seven classical Vedic texts' },
   { label: 'Zero Fabrication', detail: 'Every insight cites its source verse' },
 ] as const;
 

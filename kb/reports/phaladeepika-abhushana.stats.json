@@ -6,10 +6,11 @@
   "digitalPages": 0,
   "avgOcrConfidence": 0.7387821847045095,
   "totalSentencesExtracted": 8500,
-  "candidateRuleSentences": 2731,
+  "candidateRuleSentences": 2837,
   "candidateCounts": {
     "career": 19,
     "marriage": 168,
+    "love": 11,
     "finance": 276,
     "health": 219,
     "business": 27,
@@ -17,9 +18,11 @@
     "foreign": 15,
     "spirituality": 17,
     "children": 279,
+    "family": 190,
+    "mentalNature": 49,
     "property": 24,
     "longevity": 157,
-    "remedies": 10,
+    "remedies": 22,
     "timing": 33,
     "dasha": 321,
     "transit": 128,
@@ -44,5 +47,5 @@
     476
   ],
   "note": "candidateCounts are a coarse keyword triage signal, not validated rules — see Rule Validation phase",
-  "generatedAt": "2026-06-27T13:32:01.852Z"
+  "generatedAt": "2026-07-10T10:09:28.083Z"
 }

@@ -1,0 +1,22 @@
+{
+  "slug": "light-on-life-svoboda",
+  "code": "LOL",
+  "title": "Light on Life",
+  "author": "Robert Svoboda",
+  "translator": null,
+  "edition": "unknown",
+  "language": "English (modern, original composition)",
+  "priority": 4,
+  "classicalAuthority": "modern",
+  "copyright": "in-copyright",
+  "file": "003_Light_on_Life_Robert_Svoboda.pdf",
+  "pages": 461,
+  "extractionStrategy": "text",
+  "textFallbackThreshold": 30,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [{ "pattern": "^chapter\\s+(\\d+)\\b", "flags": "i", "isEndMarker": false }],
+    "versePattern": null,
+    "capsHeadingHeuristic": true
+  }
+}

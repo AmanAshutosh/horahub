@@ -32,9 +32,9 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
       { cells: ['Chart ID',              chartId] },
       { cells: ['Knowledge Base version', kbVersion] },
       { cells: ['Generated at',          generatedAt] },
-      { cells: ['Books in the Knowledge Base', '4 (BPHS, Phaladeepika, Horasara, Light on Life)'] },
-      { cells: ['Total rules extracted', '8,384 rules across all four books'] },
-      { cells: ['Structured rules',      '1,352 — these have verified conditions and are used for inference'] },
+      { cells: ['Books in the Knowledge Base', '7 (BPHS, Phaladeepika, Horasara, Light on Life, Learn Hindu Astrology Easily, How to Judge a Horoscope Vol. 1 & 2)'] },
+      { cells: ['Total rules extracted', '17,050 rules across all seven books'] },
+      { cells: ['Structured rules',      '5,073 — these have verified conditions and are used for inference'] },
     ],
   };
 
@@ -42,10 +42,13 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
     caption: 'Classical texts used as the source of all findings in this report',
     columns: ['Code', 'Full Title', 'Translator', 'Structured rules'],
     rows: [
-      { cells: ['BPHS',  'Brihat Parashara Hora Shastra',    'R. Santhanam',             '47'] },
-      { cells: ['PHAL',  'Phaladeepika (Mantreswara)',        'V. Subrahmanya Sastri',    '321'] },
-      { cells: ['HORA',  'Horasara (Prithuyasas)',            'V. Subrahmanya Sastri',    '410'] },
-      { cells: ['LOL',   'Light on Life',                     'Robert Svoboda',           '574'] },
+      { cells: ['BPHS',  'Brihat Parashara Hora Shastra',        'R. Santhanam',                              '47'] },
+      { cells: ['PHAL',  'Phaladeepika (Mantreswara)',           'V. Subrahmanya Sastri',                     '321'] },
+      { cells: ['HORA',  'Horasara (Prithuyasas)',               'V. Subrahmanya Sastri',                     '410'] },
+      { cells: ['LOL',   'Light on Life',                        'Robert Svoboda',                            '576'] },
+      { cells: ['HAST',  'Learn Hindu Astrology Easily',         'K. N. Rao, K. Ashu Rao',                    '175'] },
+      { cells: ['HJH1',  'How to Judge a Horoscope, Vol. 1',     'Bangalore Venkata Raman',                   '1,014'] },
+      { cells: ['HJH2',  'How to Judge a Horoscope, Vol. 2',     'Bangalore Venkata Raman, Gayatri Devi Vasudev', '2,530'] },
     ],
   };
 
@@ -60,7 +63,7 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
       <p className="mb-4 text-[13px] leading-relaxed text-ink-muted print:text-gray-500">
         This appendix shows exactly how your chart was calculated and which classical sources
         back the findings in this report. Every rule cited traces to a specific chapter and verse
-        in one of the four books listed below.
+        in one of the seven books listed below.
       </p>
 
       <div className="space-y-5">
@@ -75,7 +78,7 @@ export function AppendixSection({ facts, chartId, kbVersion, generatedAt, num }:
         All findings are drawn verbatim from those texts — nothing is fabricated or paraphrased
         from general astrology knowledge.
         This is not a substitute for medical, legal, financial, or personal professional advice.
-        The structured rule set covers 16% of the total extracted rules (1,352 of 8,384) — accuracy
+        The structured rule set covers 30% of the total extracted rules (5,073 of 17,050) — accuracy
         of individual rules has not been independently validated by a human expert.
       </p>
     </SectionShell>

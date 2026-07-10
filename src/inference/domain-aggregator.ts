@@ -59,7 +59,9 @@ function buildDomainResult(
 // ── Life-area domains ─────────────────────────────────────────────────────────
 
 /** Per-domain config: category key and max items. */
-const LIFE_AREA_DOMAINS: readonly string[] = ['career', 'marriage', 'health', 'finance', 'remedies'];
+const LIFE_AREA_DOMAINS: readonly string[] = [
+  'career', 'finance', 'marriage', 'love', 'health', 'education', 'family', 'mentalNature', 'spirituality', 'remedies',
+];
 
 /**
  * Aggregate all life-area domains from the full matched rule set.

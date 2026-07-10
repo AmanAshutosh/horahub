@@ -1,0 +1,25 @@
+{
+  "slug": "horasara",
+  "code": "HORA",
+  "title": "Horasara",
+  "author": "Prithuyasas (son of Varahamihira)",
+  "translator": "Panditabhushana V. Subrahmanya Sastri, B.A. (with M. Ramakrishna Bhat)",
+  "edition": "verified from title page",
+  "language": "English (translated from Sanskrit)",
+  "priority": 3,
+  "classicalAuthority": "secondary",
+  "copyright": "in-copyright",
+  "file": "005_Horasara.pdf",
+  "pages": 391,
+  "extractionStrategy": "ocr",
+  "textFallbackThreshold": 0,
+  "ocrQuality": "unknown",
+  "segmentation": {
+    "chapterMatchers": [
+      { "pattern": "thus ends the (\\d+)(?:st|nd|rd|th)?\\s+adhyaya", "flags": "i", "isEndMarker": true },
+      { "pattern": "adh\\w*\\.?,?\\s*([ivxlcdm]+)\\b", "flags": "i", "isEndMarker": false }
+    ],
+    "versePattern": { "pattern": "sloka s?\\.?\\s*(\\d+(?:-\\d+)?)|slokas?\\s+(\\d+(?:-\\d+)?)", "flags": "i" },
+    "capsHeadingHeuristic": false
+  }
+}
