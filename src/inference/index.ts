@@ -17,6 +17,7 @@ import type { ReportSectionData } from '@/types/report';
 import type { InferenceResult } from './types';
 import { getKnowledgeGraph, getRuleIndex } from './loader';
 import { detectYogas, detectedYogaNameSet } from './yoga-detector';
+import { detectDoshas } from './dosha-detector';
 import { matchRules } from './rule-matcher';
 import { aggregateDomains } from './domain-aggregator';
 import { buildTimeline } from './timeline';
@@ -55,6 +56,7 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
 
   const detectedYogas = detectYogas(facts);
   const yogaNames = detectedYogaNameSet(detectedYogas);
+  const detectedDoshas = detectDoshas(facts);
 
   // ── Stage 2: Rule matching ─────────────────────────────────────────────────
 
@@ -105,6 +107,7 @@ export function runInference(facts: ChartFacts): InferenceResult | null {
     dimensionMatched,
     domains,
     yogas: detectedYogas,
+    doshas: detectedDoshas,
     timeline,
     remedies,
     pastObservations,

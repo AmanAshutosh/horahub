@@ -4,6 +4,11 @@ import { buildVimshottari } from './dasha';
 import { dignityOf } from './dignity';
 import { norm360 } from './math';
 import { nakshatraOf, navamsaSign } from './nakshatra';
+import { buildAllDivisionalCharts } from './varga';
+import { computeShadbala } from './shadbala';
+
+/** Bump when ChartFacts gains a field that changes downstream reasoning (see src/types/chart.ts). */
+export const FACTS_VERSION = 5;
 
 export const PLANET_ORDER: PlanetName[] = [
   'Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu', 'Ketu',
@@ -20,6 +25,7 @@ export function assembleChartFacts(
   ascendantLon: number,
   ayanamsa: number,
   birthUtcMs: number,
+  retrograde: Partial<Record<PlanetName, boolean>> = {},
 ): ChartFacts {
   const lagnaSign = Math.floor(norm360(ascendantLon) / 30);
 
@@ -37,6 +43,7 @@ export function assembleChartFacts(
       pada: nak.pada,
       navamsaSign: navamsaSign(lon),
       dignity: dignityOf(name, sign),
+      retrograde: retrograde[name] ?? false,
     };
   }
 
@@ -54,7 +61,13 @@ export function assembleChartFacts(
   const moon = planets.Moon;
   const dasha = buildVimshottari(moon.siderealLon, birthUtcMs);
 
+  const rawLon = {} as Record<PlanetName, number>;
+  for (const name of PLANET_ORDER) rawLon[name] = norm360(sidereal[name]);
+  const divisionalCharts = buildAllDivisionalCharts(rawLon, norm360(ascendantLon));
+  const shadbala = computeShadbala(planets);
+
   return {
+    factsVersion: FACTS_VERSION,
     ayanamsa,
     ascendant: { sign: lagnaSign, degree: norm360(ascendantLon) % 30 },
     lagnaSign,
@@ -62,6 +75,8 @@ export function assembleChartFacts(
     planets,
     houses,
     dasha,
+    divisionalCharts,
+    shadbala,
   };
 }
 

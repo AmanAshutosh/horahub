@@ -54,6 +54,8 @@ function makeFacts(overrides: Partial<ChartFacts> = {}): ChartFacts {
       ],
       currentMahaIndex: 1, // Rahu
       currentAntarIndex: 0, // Rahu-Rahu
+      tree: [],
+      currentPath: { mahaIndex: -1, antarIndex: -1, pratyantarIndex: -1 },
     },
   };
   return { ...base, ...overrides };

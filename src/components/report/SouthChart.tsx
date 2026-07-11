@@ -1,4 +1,4 @@
-import type { ChartFacts, PlanetName } from '@/types/chart';
+import type { ChartFacts, DivisionalChart, PlanetName } from '@/types/chart';
 import { PLANET_SHORT, RASHI_SHORT, SOUTH_CELLS } from '@/constants/astro';
 
 const ORDER: PlanetName[] = ['Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn', 'Rahu', 'Ketu'];
@@ -7,14 +7,23 @@ export function SouthChart({
   facts,
   variant,
   label,
+  divisionalChart,
 }: {
   facts: ChartFacts;
-  variant: 'rasi' | 'navamsa';
+  variant: 'rasi' | 'navamsa' | 'varga';
   label: string;
+  /** Required when variant === 'varga' — a full chart from ChartFacts.divisionalCharts. */
+  divisionalChart?: DivisionalChart;
 }) {
-  const signOf = (p: PlanetName) =>
-    variant === 'rasi' ? facts.planets[p].sign : facts.planets[p].navamsaSign;
-  const lagnaSign = variant === 'rasi' ? facts.lagnaSign : navamsaOfAsc(facts);
+  const signOf = (p: PlanetName) => {
+    if (variant === 'rasi') return facts.planets[p].sign;
+    if (variant === 'navamsa') return facts.planets[p].navamsaSign;
+    return divisionalChart!.planets[p].sign;
+  };
+  const lagnaSign =
+    variant === 'rasi' ? facts.lagnaSign
+    : variant === 'navamsa' ? navamsaOfAsc(facts)
+    : divisionalChart!.lagnaSign;
 
   return (
     <div>
@@ -26,7 +35,9 @@ export function SouthChart({
                 key={idx}
                 className="col-start-2 col-end-4 row-start-2 row-end-4 flex items-center justify-center text-[11px] text-ink-muted"
               >
-                {variant === 'rasi' ? 'Rāśi D1' : 'Navāṁśa D9'}
+                {variant === 'rasi' ? 'Rāśi D1'
+                  : variant === 'navamsa' ? 'Navāṁśa D9'
+                  : `D${divisionalChart!.division}`}
               </div>
             ) : null;
           }

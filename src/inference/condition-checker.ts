@@ -11,6 +11,7 @@
  */
 import type { ChartFacts, PlanetName } from '@/types/chart';
 import type { RuleCondition } from '../../scripts/kb-lib/rule-schema';
+import { isRelativelyStrong } from '@/ephemeris/shadbala';
 
 // ── Static lookup tables ──────────────────────────────────────────────────────
 
@@ -151,7 +152,15 @@ export function checkCondition(
       if (!houseData) return false;
       const lord = houseData.lord;
       if (!isPlanetName(lord)) return false;
-      const strength = dignityStrength(facts.planets[lord].dignity);
+
+      let strength = dignityStrength(facts.planets[lord].dignity);
+      if (strength === 'neutral' && facts.shadbala) {
+        // Dignity alone can't distinguish neutral cases — fall back to this
+        // chart's relative (partial) Shadbala ranking. See
+        // ephemeris/shadbala.ts for why this is relative, not absolute.
+        const relativelyStrong = isRelativelyStrong(lord, facts.shadbala);
+        if (relativelyStrong !== null) strength = relativelyStrong ? 'strong' : 'weak';
+      }
       if (strength === 'neutral') return false; // cannot verify
       if (!cond.dignity) return strength === 'strong'; // default: check for strength
       return strength === cond.dignity;

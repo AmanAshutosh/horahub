@@ -42,7 +42,10 @@ function makeMinimalFacts(partial: Partial<ChartFacts['planets']> = {}): ChartFa
     moon: { sign: planets.Moon.sign, nakshatra: planets.Moon.nakshatra, pada: 1 },
     planets,
     houses,
-    dasha: { periods: [], antardashas: [], currentMahaIndex: 0, currentAntarIndex: 0 },
+    dasha: {
+      periods: [], antardashas: [], currentMahaIndex: 0, currentAntarIndex: 0,
+      tree: [], currentPath: { mahaIndex: -1, antarIndex: -1, pratyantarIndex: -1 },
+    },
   };
 }
 

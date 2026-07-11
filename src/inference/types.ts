@@ -92,6 +92,26 @@ export interface DetectedYoga {
   kgRuleIds: string[];
 }
 
+// ── Dosha detection ───────────────────────────────────────────────────────────
+
+export type DoshaSeverity = 'high' | 'medium' | 'low' | 'cancelled';
+
+export interface DetectedDosha {
+  /** Canonical dosha name (e.g. "Mangal Dosha", "Kaal Sarp Dosha — Anant"). */
+  name: string;
+  severity: DoshaSeverity;
+  /** Planets that form the dosha in this chart. */
+  planets: string[];
+  /** House(es) involved, if applicable. */
+  houses: number[];
+  /** One-line description of the formation condition (derived, not fabricated prose). */
+  formationNote: string;
+  /** Reasons the dosha is fully or partially cancelled — empty if not cancelled. */
+  cancellationReasons: string[];
+  /** Rules from the KB that reference this dosha by name, if any. */
+  kgRuleIds: string[];
+}
+
 // ── Timeline ─────────────────────────────────────────────────────────────────
 
 export interface TimelineEvent {
@@ -217,6 +237,8 @@ export interface InferenceResult {
   domains: DomainResult[];
   /** Yogas detected in this chart. */
   yogas: DetectedYoga[];
+  /** Doshas (inauspicious combinations) detected in this chart. */
+  doshas: DetectedDosha[];
   /** Dasha timeline events. */
   timeline: TimelineEvent[];
   /** Extracted remedy rules. */

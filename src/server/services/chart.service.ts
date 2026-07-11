@@ -2,6 +2,7 @@ import type { GenerateChartDto } from '@/server/validators/chart.validator';
 import type { GenerateChartResponse } from '@/types/api';
 import type { ChartFacts } from '@/types/chart';
 import { ephemeris } from '@/ephemeris/provider';
+import { FACTS_VERSION } from '@/ephemeris';
 import { interpret } from '@/interpret';
 import { loadKnowledgeBase } from '@/kb';
 import { chartRepository } from '@/server/repositories/chart.repository';
@@ -13,6 +14,32 @@ import { isDatabasePlaceholder } from '@/lib/prisma';
 import { APP, env } from '@/config';
 import { logger } from '@/lib/logger';
 import { generateReportSections } from '@/inference';
+
+/**
+ * A chart row's facts may predate a ChartFacts shape change (new varga
+ * coverage, dasha tree, etc). When that happens and the chart has a linked
+ * Profile (birth data we can recompute from), migrate it on read rather than
+ * running a bulk backfill. Profile-less charts have no honest recompute path
+ * (inputHash is a one-way hash) — they're returned as-is; new-field consumers
+ * must treat those fields as optional.
+ */
+async function ensureFreshFacts(chart: {
+  id: string;
+  facts: unknown;
+  profile: { birthDate: Date; latitude: number; longitude: number } | null;
+}): Promise<ChartFacts> {
+  const facts = chart.facts as unknown as ChartFacts;
+  if (facts.factsVersion === FACTS_VERSION || !chart.profile) return facts;
+
+  const fresh = ephemeris.compute({
+    utcMs: chart.profile.birthDate.getTime(),
+    latitude: chart.profile.latitude,
+    longitude: chart.profile.longitude,
+  });
+  await chartRepository.updateFacts(chart.id, fresh);
+  logger.debug({ chartId: chart.id, from: facts.factsVersion, to: FACTS_VERSION }, 'chart.service: migrated stale facts on read');
+  return fresh;
+}
 
 /**
  * Orchestrates chart generation:
@@ -40,7 +67,7 @@ export const chartService = {
     const existing = await chartRepository.findByHash(hash);
     if (existing) {
       chartId = existing.id;
-      facts = facts ?? (existing.facts as unknown as ChartFacts);
+      facts = facts ?? (await ensureFreshFacts(existing));
     } else {
       facts = facts ?? ephemeris.compute({ utcMs: resolved.utcMs, latitude: dto.latitude, longitude: dto.longitude });
       logger.debug({ hash }, 'chart.service: chart facts computed');
@@ -80,7 +107,7 @@ export const chartService = {
 
     const chart = await chartRepository.findById(id);
     if (!chart) return null;
-    const facts = chart.facts as unknown as ChartFacts;
+    const facts = await ensureFreshFacts(chart);
     const kbVersion = env.KB_VERSION;
     const existing = chart.readings.find((r: { kbVersion: string; sections: unknown }) => r.kbVersion === kbVersion);
     const reading = existing

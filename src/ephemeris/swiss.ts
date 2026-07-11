@@ -4,6 +4,7 @@ import type { BirthInput, ChartFacts, PlanetName } from '@/types/chart';
 import { assembleChartFacts, utcParts } from './assemble';
 import type { Ephemeris } from './chart';
 import { norm360 } from './math';
+import { computeRetrograde, ONE_DAY_MS } from './retrograde';
 
 const C = swe.constants;
 const BASE_FLAG = C.SEFLG_MOSEPH | C.SEFLG_SIDEREAL; // Moshier model → no data files.
@@ -60,7 +61,10 @@ export class SwissEphemeris implements Ephemeris {
     const houses = swe.houses_ex(jd, C.SEFLG_SIDEREAL | C.SEFLG_MOSEPH, input.latitude, input.longitude, 'W');
     const ascLon = houses.data.points[0];
 
-    return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs);
+    const previousDay = this.siderealPositions(input.utcMs - ONE_DAY_MS);
+    const retrograde = computeRetrograde(sidereal, previousDay);
+
+    return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs, retrograde);
   }
 
   siderealPositions(utcMs: number): Record<PlanetName, number> {

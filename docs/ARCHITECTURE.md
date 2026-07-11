@@ -61,6 +61,34 @@ birth is served from Redis or Postgres and never recomputed. Readings are keyed
 by KB version, so re-indexing the knowledge base produces a *new* reading rather
 than mutating an existing one.
 
+## Narrative Engine (in progress)
+
+A second, richer interpretation path exists alongside `interpret/`:
+
+```
+ephemeris/ (ChartFacts, now incl. divisionalCharts/shadbala/dasha.tree)
+   → inference/        deterministic KB rule-matching, confidence scoring,
+                        conflict resolution, yoga/dosha detection, timeline
+   → narrative/         (NEW, Phase B — partially built)
+                        projects InferenceResult into structured, non-prose
+                        Observations, to eventually feed an LLM writing layer
+   → llm/                (NOT YET BUILT — Phase C)
+                        will turn narrative/'s structured output into prose
+```
+
+`src/inference/*` was already fully built (KB rule-matching over ~17k
+classical-text rules, yoga/dosha detection, dasha timeline, remedy
+extraction) but its output was never persisted or run through an LLM —
+`generateReportSections()` renders it as verbatim-citation report sections
+today. `src/narrative/*` is a new layer on top of it, being built to
+eventually replace both `interpret/` and the citation-dump rendering with
+LLM-written prose grounded in deterministic chart reasoning.
+
+**Current status**: only `src/narrative/observation-compiler.ts` (Phase B1)
+exists — it projects an `InferenceResult` into `Observation[]`. Nothing
+consumes it yet. See `NARRATIVE_ENGINE_HANDOFF.md` at the repo root for the
+full plan, what's done, and what's next.
+
 ## Request lifecycle (POST /api/chart)
 
 ```

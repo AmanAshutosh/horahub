@@ -4,6 +4,7 @@ import { ascendant } from './ascendant';
 import { lahiriAyanamsa } from './ayanamsa';
 import { moonPosition, planetPosition, rahuPosition, sunPosition } from './bodies';
 import { dayNumber, norm360 } from './math';
+import { computeRetrograde, ONE_DAY_MS } from './retrograde';
 
 /**
  * The seam between calculation and interpretation. Any implementation that
@@ -55,7 +56,9 @@ export class AnalyticEphemeris implements Ephemeris {
   compute(input: BirthInput): ChartFacts {
     const { sidereal, sun, ayanamsa, utHours, d } = this.siderealAt(input.utcMs);
     const ascLon = ascendant(d, sun.meanLon, utHours, input.longitude, input.latitude, ayanamsa);
-    return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs);
+    const previousDay = this.siderealPositions(input.utcMs - ONE_DAY_MS);
+    const retrograde = computeRetrograde(sidereal, previousDay);
+    return assembleChartFacts(sidereal, ascLon, ayanamsa, input.utcMs, retrograde);
   }
 
   siderealPositions(utcMs: number): Record<PlanetName, number> {

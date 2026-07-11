@@ -11,10 +11,18 @@ src/
     BirthForm/         feature: form, place search, types, validation
     report/            report view + sections (nav, charts, planets, daśā)
     ui/                reusable primitives (Field, Accordion, Cite, Spinner)
-  ephemeris/           CALCULATION — Schlyter positions, ayanāṁśa, daśā, ascendant
-                       chart.ts exposes Ephemeris + ChartFacts builder
-  interpret/           INTERPRETATION — pure (ChartFacts, KB) → ReadingSection[]
-  kb/                  knowledge base: rules/*.json (own wording) + loader
+  ephemeris/           CALCULATION — Schlyter/Swiss positions, ayanāṁśa, daśā (+ Pratyantardaśā
+                       tree), ascendant, divisional charts (varga.ts), retrograde, Shadbala
+                       (partial — see shadbala.ts doc comment for scope). chart.ts exposes
+                       Ephemeris + ChartFacts builder.
+  interpret/           INTERPRETATION (legacy) — pure (ChartFacts, KB) → ReadingSection[]
+  inference/           deterministic KB rule-matching engine (~17k rules), confidence scoring,
+                       conflict resolution, yoga/dosha detection, dasha timeline, remedies
+  narrative/           NARRATIVE ENGINE (in progress, Phase B) — projects inference/ output
+                       into structured, non-prose Observations for an LLM writing layer
+                       (not yet built). See NARRATIVE_ENGINE_HANDOFF.md at repo root.
+  kb/                  small hand-authored knowledge base: rules/*.json + loader (distinct
+                       from the large root-level kb/ pipeline that inference/ reads from)
   server/
     controllers/       HTTP concerns only
     services/          business orchestration

@@ -11,7 +11,7 @@ export const chartRepository = {
   findByHash(inputHash: string) {
     return prisma.chart.findUnique({
       where: { inputHash },
-      include: { readings: true },
+      include: { readings: true, profile: true },
     });
   },
 
@@ -22,7 +22,7 @@ export const chartRepository = {
   },
 
   findById(id: string) {
-    return prisma.chart.findUnique({ where: { id }, include: { readings: true } });
+    return prisma.chart.findUnique({ where: { id }, include: { readings: true, profile: true } });
   },
 
   upsertReading(chartId: string, kbVersion: string, sections: ReadingSection[]) {
@@ -30,6 +30,14 @@ export const chartRepository = {
       where: { chartId_kbVersion: { chartId, kbVersion } },
       create: { chartId, kbVersion, sections: toJson(sections) },
       update: { sections: toJson(sections) },
+    });
+  },
+
+  /** Overwrite a chart's cached facts — used for migrate-on-read when factsVersion is stale. */
+  updateFacts(chartId: string, facts: ChartFacts) {
+    return prisma.chart.update({
+      where: { id: chartId },
+      data: { facts: toJson(facts) },
     });
   },
 };
