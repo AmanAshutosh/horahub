@@ -1,3 +1,13 @@
+/**
+ * LEGACY interpretation engine — kept deliberately, not deprecated-by-
+ * neglect. This is the ONLY path persisted to Postgres as `Reading`
+ * (chart.repository.ts's upsertReading), and ReportView.tsx still reads its
+ * output directly for the Planets/Houses/Dasha-effects grids — real,
+ * currently-rendered structural content that the Narrative Engine
+ * (src/narrative/*, src/llm/*) does not replace (it produces prose, not
+ * tabular grid data). Do not delete or stop calling this until those grids
+ * have their own replacement data source.
+ */
 import type { ChartFacts, PlanetName } from '@/types/chart';
 import type { Citation, ReadingItem, ReadingSection } from '@/types/reading';
 import type { KnowledgeBase } from '@/kb';

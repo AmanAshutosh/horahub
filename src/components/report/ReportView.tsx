@@ -1,11 +1,12 @@
 'use client';
 import Link from 'next/link';
-import type { GenerateChartResponse } from '@/types/api';
+import type { GenerateChartResponse, NarrativeReportResponse } from '@/types/api';
 import type { PersonInfo, ReportSectionData } from '@/types/report';
 import { ReportNav } from './ReportNav';
 import { PlanetGrid } from './PlanetGrid';
 import { DashaTimeline } from './DashaTimeline';
 import { DashaCallout } from './DashaCallout';
+import { NarrativeSection } from './NarrativeSection';
 import { SectionShell } from './primitives/SectionShell';
 import { SouthChart, SouthChartLegend } from './SouthChart';
 import { SectionAccordions } from './SectionAccordions';
@@ -23,9 +24,12 @@ import { TechnicalReferenceSection } from './sections/TechnicalReferenceSection'
 interface Props {
   data: GenerateChartResponse;
   person: PersonInfo | null;
+  narrative?: NarrativeReportResponse | null;
+  narrativeStatus?: 'idle' | 'generating' | 'failed' | 'complete';
+  onGenerateNarrative?: () => void;
 }
 
-export function ReportView({ data, person }: Props) {
+export function ReportView({ data, person, narrative = null, narrativeStatus = 'idle', onGenerateNarrative }: Props) {
   const { facts, reading, kbVersion, resolved } = data;
 
   const planetsSection = reading.find((s) => s.id === 'planets');
@@ -77,6 +81,15 @@ export function ReportView({ data, person }: Props) {
 
       {/* ── At a Glance ── */}
       <AtAGlanceSection facts={facts} sections={data.sections} />
+
+      {/* ── Your Personalized Reading (Narrative Engine — LLM-written, no section number) ── */}
+      {onGenerateNarrative && (
+        <NarrativeSection
+          status={narrativeStatus}
+          narrative={narrative}
+          onGenerate={onGenerateNarrative}
+        />
+      )}
 
       {/* ── Current Life Chapter (Dasha callout — human-first, no section number) ── */}
       <div className="mb-10">

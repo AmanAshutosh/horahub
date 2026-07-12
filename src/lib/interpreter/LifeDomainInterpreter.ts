@@ -1,5 +1,21 @@
 /**
- * LifeDomainInterpreter — human-first chart interpretation.
+ * LEGACY — LifeDomainInterpreter, human-first chart interpretation via
+ * fixed template dictionaries (not an LLM). This is functionally superseded
+ * by the Narrative Engine (src/narrative/*, src/llm/*), which produces real
+ * LLM-written prose from the same underlying data instead of template
+ * selection.
+ *
+ * NOT YET SAFE TO DELETE: this module's sole caller,
+ * src/inference/report-builder.ts's buildLifeAreaSection(), still feeds the
+ * per-life-area sections (career/finance/marriage/etc.) that
+ * components/report/sections/LifeAreaSection.tsx renders as sections 1-9 of
+ * the existing report — those are still live, still rendered, and the
+ * Narrative Engine's prose is currently added as a separate prominent block
+ * (see ReportView.tsx's NarrativeSection), not yet wired to replace this
+ * component's content. Delete this file only after repointing
+ * buildLifeAreaSection (or removing LifeAreaSection's use of it) once the
+ * Narrative Engine's per-domain prose is confirmed to cover the same
+ * ground.
  *
  * Writing principle:
  *   Human Meaning → Practical Guidance → Astrology Evidence (collapsed)

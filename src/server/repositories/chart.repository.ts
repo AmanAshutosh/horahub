@@ -1,5 +1,7 @@
 import type { ChartFacts } from '@/types/chart';
 import type { ReadingSection } from '@/types/reading';
+import type { ReportBrief } from '@/narrative';
+import type { NarrativeSections } from '@/llm/generate-report';
 import { prisma } from '@/lib/prisma';
 import { toJson } from '@/lib/json';
 
@@ -38,6 +40,47 @@ export const chartRepository = {
     return prisma.chart.update({
       where: { id: chartId },
       data: { facts: toJson(facts) },
+    });
+  },
+
+  // ── Narrative Engine (ReportBrief / NarrativeReport) ────────────────────────
+
+  createReportBrief(chartId: string, kbVersion: string, briefVersion: string, data: ReportBrief) {
+    return prisma.reportBrief.upsert({
+      where: { chartId_kbVersion_briefVersion: { chartId, kbVersion, briefVersion } },
+      create: { chartId, kbVersion, briefVersion, data: toJson(data) },
+      update: { data: toJson(data) },
+    });
+  },
+
+  findReportBrief(chartId: string, kbVersion: string, briefVersion: string) {
+    return prisma.reportBrief.findUnique({
+      where: { chartId_kbVersion_briefVersion: { chartId, kbVersion, briefVersion } },
+    });
+  },
+
+  createNarrativeReport(params: {
+    chartId: string;
+    reportBriefId: string;
+    llmProvider: string;
+    llmModel: string;
+    promptVersion: string;
+    sections: NarrativeSections;
+    status: 'generating' | 'complete' | 'failed';
+  }) {
+    const { chartId, reportBriefId, llmProvider, llmModel, promptVersion, sections, status } = params;
+    return prisma.narrativeReport.upsert({
+      where: { chartId_reportBriefId_llmProvider_llmModel_promptVersion: { chartId, reportBriefId, llmProvider, llmModel, promptVersion } },
+      create: { chartId, reportBriefId, llmProvider, llmModel, promptVersion, sections: toJson(sections), status },
+      update: { sections: toJson(sections), status },
+    });
+  },
+
+  /** Latest complete narrative report for a chart, regardless of which brief/model/prompt version produced it. */
+  findLatestNarrativeReport(chartId: string) {
+    return prisma.narrativeReport.findFirst({
+      where: { chartId, status: 'complete' },
+      orderBy: { createdAt: 'desc' },
     });
   },
 };

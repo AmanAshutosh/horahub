@@ -31,6 +31,11 @@ function claimOf(domain: string, m: MatchedRule): string {
   return `Notable influence on ${focus}`;
 }
 
+/** effectDomain when the rule has one (real topic signal); otherwise unique-per-rule (no merging). */
+function topicKeyOf(domain: string, m: MatchedRule): string {
+  return m.effectDomain ? `${domain}::${m.effectDomain}` : `${domain}::rule:${m.ruleId}`;
+}
+
 /**
  * Rule IDs tied to the CURRENTLY running mahadasha/antardasha, read from the
  * timeline's current-period events (src/inference/timeline.ts already did
@@ -60,6 +65,7 @@ function domainObservations(
       observations.push({
         id: `obs:${match.ruleId}`,
         domain,
+        topicKey: topicKeyOf(domain, match),
         claim: claimOf(domain, match),
         sourceText: match.sourceText,
         polarity: polarityOf(match),
@@ -82,6 +88,7 @@ function yogaObservations(yogas: DetectedYoga[]): Observation[] {
     return {
       id: `obs:yoga:${i}:${yoga.name}`,
       domain: 'Overall Life Direction' satisfies LifeDomain,
+      topicKey: `yoga:${yoga.name}`,
       claim: negative
         ? `${yoga.name} present — a classically inauspicious combination`
         : `${yoga.name} present — a classically auspicious combination`,
@@ -110,6 +117,7 @@ function doshaObservations(doshas: DetectedDosha[]): Observation[] {
     return {
       id: `obs:dosha:${i}:${dosha.name}`,
       domain: doshaDomainFor(dosha.name),
+      topicKey: `dosha:${dosha.name}`,
       claim: isCancelled
         ? `${dosha.name} present but classically cancelled`
         : `${dosha.name} present (${dosha.severity} severity)`,
@@ -131,6 +139,7 @@ function transitObservations(result: InferenceResult): Observation[] {
     return {
       id: `obs:transit:${match.ruleId}`,
       domain,
+      topicKey: topicKeyOf(domain, match),
       claim: claimOf(domain, match),
       sourceText: match.sourceText,
       polarity: polarityOf(match),

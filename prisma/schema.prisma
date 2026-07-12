@@ -58,13 +58,15 @@ model Profile {
 
 /// A computed chart. inputHash makes identical births a cache hit.
 model Chart {
-  id        String    @id @default(cuid())
-  profileId String?
-  profile   Profile?  @relation(fields: [profileId], references: [id], onDelete: SetNull)
-  inputHash String    @unique
-  facts     Json // serialized ChartFacts
-  createdAt DateTime  @default(now())
-  readings  Reading[]
+  id               String            @id @default(cuid())
+  profileId        String?
+  profile          Profile?          @relation(fields: [profileId], references: [id], onDelete: SetNull)
+  inputHash        String            @unique
+  facts            Json // serialized ChartFacts
+  createdAt        DateTime          @default(now())
+  readings         Reading[]
+  reportBriefs     ReportBrief[]
+  narrativeReports NarrativeReport[]
 
   @@index([profileId])
 }
@@ -80,6 +82,47 @@ model Reading {
 
   @@unique([chartId, kbVersion])
   @@index([chartId])
+}
+
+/// The deterministic structured brief (src/narrative/report-brief.ts's
+/// ReportBrief) handed to the LLM — versioned like Reading, but keyed by an
+/// extra briefVersion axis since this layer's shape (unlike KB rule
+/// matching) is expected to evolve across this project's phases.
+model ReportBrief {
+  id               String            @id @default(cuid())
+  chartId          String
+  chart            Chart             @relation(fields: [chartId], references: [id], onDelete: Cascade)
+  kbVersion        String
+  briefVersion     String // bump when src/narrative/report-brief.ts's ReportBrief shape changes materially
+  data             Json // serialized ReportBrief
+  createdAt        DateTime          @default(now())
+  narrativeReports NarrativeReport[]
+
+  @@unique([chartId, kbVersion, briefVersion])
+  @@index([chartId])
+}
+
+/// The final LLM-generated narrative report — the user-facing prose output
+/// of src/llm/generate-report.ts's generateNarrativeReport(). Cache key is
+/// more granular than Reading's: LLM output isn't perfectly deterministic
+/// across model/prompt versions the way KB rule matching is, so a change to
+/// either must produce a new row rather than silently reusing a stale one.
+model NarrativeReport {
+  id            String      @id @default(cuid())
+  chartId       String
+  chart         Chart       @relation(fields: [chartId], references: [id], onDelete: Cascade)
+  reportBriefId String
+  reportBrief   ReportBrief @relation(fields: [reportBriefId], references: [id], onDelete: Cascade)
+  llmProvider   String // e.g. "anthropic"
+  llmModel      String // exact model id used, for reproducibility/audit
+  promptVersion String // bump when src/llm/prompts/* changes materially
+  sections      Json // serialized NarrativeSections ({ overview, lifeDomains, mahadashas, antardashas })
+  status        String      @default("complete") // "generating" | "complete" | "failed"
+  createdAt     DateTime    @default(now())
+
+  @@unique([chartId, reportBriefId, llmProvider, llmModel, promptVersion], map: "NarrativeReport_cache_key")
+  @@index([chartId])
+  @@index([reportBriefId])
 }
 
 /// A published, immutable snapshot of the knowledge base.

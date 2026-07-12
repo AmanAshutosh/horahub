@@ -27,6 +27,31 @@ export interface GenerateChartResponse {
   resolved: { utcOffset: string; coordinates: { lat: number; lon: number } };
 }
 
+/**
+ * Mirrors src/llm/generate-report.ts's NarrativeSections shape. Duplicated
+ * here (rather than imported) because that module chain pulls in
+ * 'server-only' — this file is imported by client components and must stay
+ * free of any server-only runtime dependency.
+ */
+export interface NarrativeSectionsResponse {
+  overview: string | null;
+  lifeDomains: Record<string, string>;
+  mahadashas: Array<{ lord: string; startMs: number; endMs: number; isCurrent: boolean; isPast: boolean; text: string }>;
+  antardashas: Array<{ lord: string; parentLord: string; startMs: number; endMs: number; isCurrent: boolean; isPast: boolean; text: string }>;
+}
+
+export interface NarrativeReportResponse {
+  id: string;
+  chartId: string;
+  reportBriefId: string;
+  llmProvider: string;
+  llmModel: string;
+  promptVersion: string;
+  sections: NarrativeSectionsResponse;
+  status: 'generating' | 'complete' | 'failed';
+  createdAt: string;
+}
+
 export interface GeocodeResult {
   name: string;
   latitude: number;

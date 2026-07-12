@@ -33,3 +33,8 @@ export const KB_CATEGORY_TO_DOMAIN: Readonly<Record<string, LifeDomain>> = {
   education: 'Education',
   spirituality: 'Spiritual Growth',
 };
+
+/** Inverse of KB_CATEGORY_TO_DOMAIN — used to look a domain's InferenceResult.domains entry back up. */
+export const DOMAIN_TO_KB_CATEGORY: Readonly<Partial<Record<LifeDomain, string>>> = Object.fromEntries(
+  Object.entries(KB_CATEGORY_TO_DOMAIN).map(([category, domain]) => [domain, category]),
+);

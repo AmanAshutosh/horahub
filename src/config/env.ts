@@ -10,6 +10,9 @@ const schema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   KB_VERSION: z.string().default('kb-v1'),
   EPHEMERIS_PROVIDER: z.enum(['analytic', 'swiss']).default('analytic'),
+  LLM_PROVIDER: z.enum(['anthropic']).default('anthropic'),
+  ANTHROPIC_API_KEY: z.string().optional(),
+  ANTHROPIC_MODEL: z.string().default('claude-sonnet-5'),
 });
 
 const parsed = schema.safeParse(process.env);
@@ -36,4 +39,7 @@ export const env = parsed.success
         : 'development',
       KB_VERSION: process.env.KB_VERSION || 'kb-v1',
       EPHEMERIS_PROVIDER: process.env.EPHEMERIS_PROVIDER === 'swiss' ? 'swiss' : 'analytic',
+      LLM_PROVIDER: 'anthropic',
+      ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
+      ANTHROPIC_MODEL: process.env.ANTHROPIC_MODEL || 'claude-sonnet-5',
     } satisfies z.infer<typeof schema>);
