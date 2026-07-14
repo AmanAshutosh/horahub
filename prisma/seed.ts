@@ -10,7 +10,11 @@ async function main() {
   const kb = await prisma.kbVersion.upsert({
     where: { version },
     update: { published: true },
-    create: { version, notes: 'Initial BPHS Ch.3 significations + house significations.', published: true },
+    create: {
+      version,
+      notes: 'Initial BPHS Ch.3 significations + house significations.',
+      published: true,
+    },
   });
 
   for (const r of planetData.rules) {
@@ -47,7 +51,9 @@ async function main() {
     });
   }
 
-  console.log(`Seeded ${version}: ${planetData.rules.length} planet + ${houseData.rules.length} house rules.`);
+  console.log(
+    `Seeded ${version}: ${planetData.rules.length} planet + ${houseData.rules.length} house rules.`,
+  );
 }
 
 main()
