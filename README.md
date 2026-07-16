@@ -24,7 +24,7 @@ Zustand · Zod · Vitest · optional Upstash Redis (cache + rate limit).
 git clone <your-fork> horahub && cd horahub
 npm install                      # also runs prisma generate
 cp .env.example .env             # fill DATABASE_URL (see docs/INSTALLATION.md)
-npm run db:migrate               # create tables
+npm run db: migrate               # create tables
 npm run db:seed                  # load the kb-v1 knowledge base
 npm run dev                      # http://localhost:3000
 ```
@@ -57,6 +57,8 @@ birth form ──► /api/chart ──► chartService
 
 | Command | Purpose |
 |---|---|
+
+
 | `npm run dev` | Start the dev server |
 | `npm run build` | `prisma generate` + production build |
 | `npm test` | Run the Vitest suite |
@@ -65,6 +67,8 @@ birth form ──► /api/chart ──► chartService
 | `npm run db:deploy` | Apply migrations (production) |
 | `npm run db:seed` | Seed the knowledge base |
 | `npm run kb:build` | Validate KB rule files |
+
+
 
 ## Documentation
 
