@@ -1,4 +1,4 @@
-# HoraHub
+# HoraHub || Astrology 
 
 Open-source Vedic astrology engine. Enter birth details, get a computed
 nine-graha chart with **sourced, citation-backed** interpretation — and
